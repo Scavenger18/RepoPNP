@@ -1,0 +1,283 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:transistor
+LIBS:sources
+LIBS:sensors
+LIBS:MC_Board_Headers
+LIBS:logic
+LIBS:lipo
+LIBS:ic
+LIBS:driver
+LIBS:SumoBot-cache
+EELAYER 25 0
+EELAYER END
+$Descr A3 16535 11693
+encoding utf-8
+Sheet 1 1
+Title "Motor Encoder"
+Date "2017-12-16"
+Rev "2.0"
+Comp "Hochschule Luzern"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L DVR5013 U1
+U 1 1 59E4CE79
+P 2600 1900
+F 0 "U1" H 2400 2200 60  0000 C CNN
+F 1 "DRV5013" H 2450 1600 60  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 2600 1900 60  0001 C CNN
+F 3 "" H 2600 1900 60  0001 C CNN
+	1    2600 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR01
+U 1 1 59EC019D
+P 2850 2100
+F 0 "#PWR01" H 2850 1850 50  0001 C CNN
+F 1 "GND" H 2850 1950 50  0000 C CNN
+F 2 "" H 2850 2100 50  0001 C CNN
+F 3 "" H 2850 2100 50  0001 C CNN
+	1    2850 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3V3 #PWR02
+U 1 1 59EC13DE
+P 3100 1450
+F 0 "#PWR02" H 3100 1300 50  0001 C CNN
+F 1 "+3V3" H 3100 1590 50  0000 C CNN
+F 2 "" H 3100 1450 50  0001 C CNN
+F 3 "" H 3100 1450 50  0001 C CNN
+	1    3100 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 59EC1BDD
+P 3100 1700
+F 0 "R2" V 3000 1700 50  0000 C CNN
+F 1 "N/P" V 3200 1700 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 3030 1700 50  0001 C CNN
+F 3 "" H 3100 1700 50  0001 C CNN
+	1    3100 1700
+	1    0    0    -1  
+$EndComp
+Text Label 3650 1900 2    60   ~ 0
+Enc_L_A
+Text Notes 2400 1100 0    118  ~ 0
+Motor Encoder
+Wire Wire Line
+	2800 1750 2900 1750
+Wire Wire Line
+	2900 1750 2900 1500
+Wire Wire Line
+	2900 1500 3100 1500
+Wire Wire Line
+	3100 1450 3100 1550
+Connection ~ 3100 1500
+Wire Wire Line
+	2800 1900 3650 1900
+Wire Wire Line
+	3100 1900 3100 1850
+Wire Wire Line
+	2800 2050 2850 2050
+Wire Wire Line
+	2850 2050 2850 2100
+Connection ~ 3100 1900
+Connection ~ 3100 2800
+Wire Wire Line
+	2850 2950 2850 3000
+Wire Wire Line
+	2800 2950 2850 2950
+Wire Wire Line
+	3100 2800 3100 2750
+Wire Wire Line
+	2800 2800 3650 2800
+Connection ~ 3100 2400
+Wire Wire Line
+	2900 2400 3100 2400
+Wire Wire Line
+	2900 2650 2900 2400
+Wire Wire Line
+	2800 2650 2900 2650
+Text Label 3650 2800 2    60   ~ 0
+Enc_L_B
+$Comp
+L R R3
+U 1 1 59EC2C5F
+P 3100 2600
+F 0 "R3" V 3000 2600 50  0000 C CNN
+F 1 "N/P" V 3200 2600 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805" V 3030 2600 50  0001 C CNN
+F 3 "" H 3100 2600 50  0001 C CNN
+	1    3100 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3V3 #PWR03
+U 1 1 59EC15CB
+P 3100 2300
+F 0 "#PWR03" H 3100 2150 50  0001 C CNN
+F 1 "+3V3" H 3100 2440 50  0000 C CNN
+F 2 "" H 3100 2300 50  0001 C CNN
+F 3 "" H 3100 2300 50  0001 C CNN
+	1    3100 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L DVR5013 U2
+U 1 1 59EC1216
+P 2600 2800
+F 0 "U2" H 2400 3100 60  0000 C CNN
+F 1 "DRV5013" H 2450 2500 60  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 2600 2800 60  0001 C CNN
+F 3 "" H 2600 2800 60  0001 C CNN
+	1    2600 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR04
+U 1 1 59EC0235
+P 2850 3000
+F 0 "#PWR04" H 2850 2750 50  0001 C CNN
+F 1 "GND" H 2850 2850 50  0000 C CNN
+F 2 "" H 2850 3000 50  0001 C CNN
+F 3 "" H 2850 3000 50  0001 C CNN
+	1    2850 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3650 1900 3650 2500
+Wire Wire Line
+	3650 2500 4250 2500
+Wire Wire Line
+	4250 2600 3650 2600
+Wire Wire Line
+	3650 2600 3650 2800
+$Comp
+L Conn_01x06 J1
+U 1 1 5A9DB9A5
+P 4450 2700
+F 0 "J1" H 4450 3000 50  0000 C CNN
+F 1 "Conn_01x06" H 4450 2300 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm" H 4450 2700 50  0001 C CNN
+F 3 "" H 4450 2700 50  0001 C CNN
+	1    4450 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Conn_01x01 J2
+U 1 1 5A9DBA4D
+P 4500 3400
+F 0 "J2" H 4500 3500 50  0000 C CNN
+F 1 "Mot+" H 4500 3300 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 4500 3400 50  0001 C CNN
+F 3 "" H 4500 3400 50  0001 C CNN
+	1    4500 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Conn_01x01 J3
+U 1 1 5A9DBB26
+P 4500 3850
+F 0 "J3" H 4500 3950 50  0000 C CNN
+F 1 "Mot-" H 4500 3750 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 4500 3850 50  0001 C CNN
+F 3 "" H 4500 3850 50  0001 C CNN
+	1    4500 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4250 2900 3950 2900
+Wire Wire Line
+	3950 2900 3950 3850
+Wire Wire Line
+	3950 3850 4300 3850
+Wire Wire Line
+	4050 3400 4300 3400
+Wire Wire Line
+	4050 3400 4050 3000
+Wire Wire Line
+	4050 3000 4250 3000
+$Comp
+L C C1
+U 1 1 5A9DD613
+P 4150 3650
+F 0 "C1" H 4175 3750 50  0000 L CNN
+F 1 "3n3" H 4175 3550 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 4188 3500 50  0001 C CNN
+F 3 "" H 4150 3650 50  0001 C CNN
+	1    4150 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 3800 4150 3850
+Connection ~ 4150 3850
+Wire Wire Line
+	4150 3500 4150 3400
+Connection ~ 4150 3400
+Wire Wire Line
+	4250 2700 4150 2700
+Wire Wire Line
+	4150 2800 4250 2800
+$Comp
+L GND #PWR05
+U 1 1 5A9DDC0D
+P 4150 2800
+F 0 "#PWR05" H 4150 2550 50  0001 C CNN
+F 1 "GND" H 4150 2650 50  0000 C CNN
+F 2 "" H 4150 2800 50  0001 C CNN
+F 3 "" H 4150 2800 50  0001 C CNN
+	1    4150 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L +3V3 #PWR06
+U 1 1 5A9DDC38
+P 4150 2700
+F 0 "#PWR06" H 4150 2550 50  0001 C CNN
+F 1 "+3V3" H 4150 2840 50  0000 C CNN
+F 2 "" H 4150 2700 50  0001 C CNN
+F 3 "" H 4150 2700 50  0001 C CNN
+	1    4150 2700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3100 2300 3100 2450
+$EndSCHEMATC
