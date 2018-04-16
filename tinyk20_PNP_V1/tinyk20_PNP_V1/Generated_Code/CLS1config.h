@@ -48,11 +48,11 @@
 #endif
 
 #ifndef CLS1_CONFIG_PROMPT_STRING
-  #define CLS1_CONFIG_PROMPT_STRING    "CMD> "
+  #define CLS1_CONFIG_PROMPT_STRING    ""
 #endif
 
 #ifndef CLS1_CONFIG_PROJECT_NAME_STRING
-  #define CLS1_CONFIG_PROJECT_NAME_STRING    "My Project Name"
+  #define CLS1_CONFIG_PROJECT_NAME_STRING    "TinyK20 OpenPnP"
 #endif
 
 

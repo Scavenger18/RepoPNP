@@ -5,9 +5,9 @@
 **     Processor   : MK20DN128VFT5
 **     Component   : LED
 **     Version     : Component 01.074, Driver 01.00, CPU db: 3.00.000
-**     Repository  : My Components
+**     Repository  : MonEc
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 11:17, # CodeGen: 3
+**     Date/Time   : 2018-04-16, 15:36, # CodeGen: 13
 **     Abstract    :
 **          This component implements a universal driver for a single LED.
 **     Settings    :

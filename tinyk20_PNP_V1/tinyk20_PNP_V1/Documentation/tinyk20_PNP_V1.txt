@@ -173,36 +173,6 @@ Module "HMODE"     (component BitIO)
    - HMODE_SetVal -Sets (to one) the output value. It is equivalent to the [PutVal(TRUE)]. This method is available only if the 
                 direction = _[output]_ or _[input/output]_.
 
-Module "AS1"       (component AsynchroSerial)
-   - AS1_RecvChar -If any data is received, this method returns one character, otherwise it returns an error code (it does not 
-                wait for data). This method is enabled only if the receiver property is enabled.  [Note:] Because the preferred 
-                method to handle error and break exception in the interrupt mode is to use events <OnError> and <OnBreak> the 
-                return value ERR_RXEMPTY has higher priority than other error codes. As a consequence the information about an 
-                exception in interrupt mode is returned only if there is a valid character ready to be read.
-   - AS1_SendChar -Sends one character to the channel. If the component is temporarily disabled (Disable method) SendChar 
-                method only stores data into an output buffer. In case of a zero output buffer size, only one character can be 
-                stored. Enabling the component (Enable method) starts the transmission of the stored data. This method is 
-                available only if the transmitter property is enabled.
-   - AS1_GetCharsInRxBuf -Returns the number of characters in the input buffer. This method is available only if the receiver 
-                property is enabled.
-   - AS1_GetCharsInTxBuf -Returns the number of characters in the output buffer. This method is available only if the 
-                transmitter property is enabled.
-
-Module "AS2"       (component AsynchroSerial)
-   - AS2_RecvChar -If any data is received, this method returns one character, otherwise it returns an error code (it does not 
-                wait for data). This method is enabled only if the receiver property is enabled.  [Note:] Because the preferred 
-                method to handle error and break exception in the interrupt mode is to use events <OnError> and <OnBreak> the 
-                return value ERR_RXEMPTY has higher priority than other error codes. As a consequence the information about an 
-                exception in interrupt mode is returned only if there is a valid character ready to be read.
-   - AS2_SendChar -Sends one character to the channel. If the component is temporarily disabled (Disable method) SendChar 
-                method only stores data into an output buffer. In case of a zero output buffer size, only one character can be 
-                stored. Enabling the component (Enable method) starts the transmission of the stored data. This method is 
-                available only if the transmitter property is enabled.
-   - AS2_GetCharsInRxBuf -Returns the number of characters in the input buffer. This method is available only if the receiver 
-                property is enabled.
-   - AS2_GetCharsInTxBuf -Returns the number of characters in the output buffer. This method is available only if the 
-                transmitter property is enabled.
-
 Module "FRTOS1"    (component FreeRTOS)
    - FRTOS1_xTaskCreate -Create a new task and add it to the list of tasks that are ready to run.
    - FRTOS1_xTaskCreateStatic -Create a new task and add it to the list of tasks that are ready to run.
@@ -884,6 +854,33 @@ Module "LED2"      (component LED)
                 values smaller 0x7FFF means off, while values greater means on.
    - LED2_Deinit -Deinitializes the driver
    - LED2_Init -Performs the LED driver initialization.
+
+Module "AS1"       (component AsynchroSerial)
+   - AS1_RecvChar -If any data is received, this method returns one character, otherwise it returns an error code (it does not 
+                wait for data). This method is enabled only if the receiver property is enabled.  [Note:] Because the preferred 
+                method to handle error and break exception in the interrupt mode is to use events <OnError> and <OnBreak> the 
+                return value ERR_RXEMPTY has higher priority than other error codes. As a consequence the information about an 
+                exception in interrupt mode is returned only if there is a valid character ready to be read.
+   - AS1_SendChar -Sends one character to the channel. If the component is temporarily disabled (Disable method) SendChar 
+                method only stores data into an output buffer. In case of a zero output buffer size, only one character can be 
+                stored. Enabling the component (Enable method) starts the transmission of the stored data. This method is 
+                available only if the transmitter property is enabled.
+   - AS1_RecvBlock -If any data is received, this method returns the block of the data and its length (and incidental error), 
+                otherwise it returns an error code (it does not wait for data).  This method is available only if non-zero 
+                length of the input buffer is defined and the receiver property is enabled.  If less than requested number of 
+                characters is received only the available data is copied from the receive buffer to the user specified 
+                destination. The value ERR_EXEMPTY is returned and the value of variable pointed by the Rcv parameter is set to 
+                the number of received characters.
+   - AS1_SendBlock -Sends a block of characters to the channel.  This method is available only if non-zero length of the output 
+                buffer is defined and the transmitter property is enabled.
+   - AS1_ClearRxBuf -Clears the receive buffer.  This method is available only if non-zero length of the input buffer is 
+                defined and the receiver property is enabled.
+   - AS1_ClearTxBuf -Clears the transmit buffer.  This method is available only if non-zero length of the output buffer is 
+                defined and the receiver property is enabled.
+   - AS1_GetCharsInRxBuf -Returns the number of characters in the input buffer. This method is available only if the receiver 
+                property is enabled.
+   - AS1_GetCharsInTxBuf -Returns the number of characters in the output buffer. This method is available only if the 
+                transmitter property is enabled.
 
 Module "Cpu"       (component MK20DX128FT5)
 

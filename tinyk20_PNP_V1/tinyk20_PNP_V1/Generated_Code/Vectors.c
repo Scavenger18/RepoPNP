@@ -6,7 +6,7 @@
 **     Version     : Component 01.001, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 13:35, # CodeGen: 9
+**     Date/Time   : 2018-04-16, 17:07, # CodeGen: 20
 **     Abstract    :
 **
 **     Settings    :
@@ -79,10 +79,6 @@
   #include "TU2.h"
   #include "HMODE.h"
   #include "BitIoLdd8.h"
-  #include "AS1.h"
-  #include "ASerialLdd1.h"
-  #include "AS2.h"
-  #include "ASerialLdd2.h"
   #include "FRTOS1.h"
   #include "UTIL1.h"
   #include "SYS1.h"
@@ -94,6 +90,8 @@
   #include "LED2.h"
   #include "LEDpin2.h"
   #include "BitIoLdd9.h"
+  #include "AS1.h"
+  #include "ASerialLdd1.h"
   #include "Events.h"
 
 
@@ -149,8 +147,8 @@
     (tIsrFunc)&Cpu_Interrupt,          /* 0x21  0x00000084   -   ivINT_UART0_ERR               unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x22  0x00000088   -   ivINT_UART1_RX_TX             unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x23  0x0000008C   -   ivINT_UART1_ERR               unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x24  0x00000090   -   ivINT_UART2_RX_TX             unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x25  0x00000094   -   ivINT_UART2_ERR               unused by PE */
+    (tIsrFunc)&ASerialLdd1_Interrupt,  /* 0x24  0x00000090   8   ivINT_UART2_RX_TX             used by PE */
+    (tIsrFunc)&ASerialLdd1_Interrupt,  /* 0x25  0x00000094   8   ivINT_UART2_ERR               used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x26  0x00000098   -   ivINT_ADC0                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x27  0x0000009C   -   ivINT_CMP0                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x28  0x000000A0   -   ivINT_CMP1                    unused by PE */

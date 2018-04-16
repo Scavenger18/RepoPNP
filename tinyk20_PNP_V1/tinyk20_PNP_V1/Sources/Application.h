@@ -19,6 +19,8 @@ typedef enum{
 
 FSM_State taskState;
 
+signed int APP_Counter;
+
 void APP_Init(void);
 void APP_Run(void);
 

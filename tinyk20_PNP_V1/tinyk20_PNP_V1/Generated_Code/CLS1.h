@@ -5,16 +5,16 @@
 **     Processor   : MK20DN128VFT5
 **     Component   : Shell
 **     Version     : Component 01.095, Driver 01.00, CPU db: 3.00.000
-**     Repository  : My Components
+**     Repository  : MonEc
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 11:17, # CodeGen: 3
+**     Date/Time   : 2018-04-16, 19:17, # CodeGen: 24
 **     Abstract    :
 **
 **     Settings    :
 **          Component name                                 : CLS1
 **          Echo                                           : no
-**          Prompt                                         : "CMD> "
-**          Project Name                                   : My Project Name
+**          Prompt                                         : ""
+**          Project Name                                   : TinyK20 OpenPnP
 **          Silent Mode Prefix                             : #
 **          Buffer Size                                    : 48
 **          Blocking Send                                  : Enabled

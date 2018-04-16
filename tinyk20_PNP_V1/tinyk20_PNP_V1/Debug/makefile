@@ -52,7 +52,7 @@ all: tinyk20_PNP_V1.elf secondary-outputs
 tinyk20_PNP_V1.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "C:/Users/Simon/Documents/HSLU/FS18/INTRO/Workspace/tinyk20_PNP_V1/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/Simon/Documents/HSLU/FS18/INTRO/Workspace/tinyk20_PNP_V1/Project_Settings/Linker_Files" -Wl,-Map,"tinyk20_PNP_V1.map" -specs=nano.specs -specs=nosys.specs -o "tinyk20_PNP_V1.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Project_Settings/Linker_Files" -Wl,-Map,"tinyk20_PNP_V1.map" -specs=nano.specs -specs=nosys.specs -o "tinyk20_PNP_V1.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

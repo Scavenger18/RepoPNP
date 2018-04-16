@@ -14,7 +14,7 @@
 #include "LED1.h"
 
 #if PL_MOTOR_EN
-#include "motor.h"
+//#include "motor.h"
 #endif
 
 volatile bool enc_state = 0;
@@ -71,7 +71,7 @@ unsigned int ENC_GetVal(void){
 
     if(enc_cnt == enc_step){
     	/* motor off*/
-    	MOT_Speed(MOT_SPROC,0,MOT_FWD);
+ //   	MOT_Speed(MOT_SPROC,0,MOT_FWD);	// -> moved to application
  //   	LED2_Neg();
     	ENC_SetTrigger(1);
     	enc_cnt = 0;				// reset counter

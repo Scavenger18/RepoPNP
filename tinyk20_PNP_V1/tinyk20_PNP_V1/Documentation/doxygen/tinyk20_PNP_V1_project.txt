@@ -39,7 +39,6 @@
 - \subpage PwmLdd2
 - \subpage BitIoLdd8
 - \subpage ASerialLdd1
-- \subpage ASerialLdd2
 - \subpage BitIoLdd9
 
 */

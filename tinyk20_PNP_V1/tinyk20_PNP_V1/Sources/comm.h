@@ -11,12 +11,11 @@
 //#include "stdint.h"
 #include "CLS1.h"
 
-volatile uint8_t COMM_fwd, COMM_rev;
+#define ADD_NEWLINE (1)
 
-
-uint8_t	COMM_GetFWD();
-uint8_t	COMM_GetREV();
+void COMM_SendError();
 
 uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
+uint8_t COMM_ReadAndParse(uint8_t *cmdBuf, size_t cmdBufSize, CLS1_ConstStdIOType *io);
 
 #endif /* SOURCES_COMM_H_ */

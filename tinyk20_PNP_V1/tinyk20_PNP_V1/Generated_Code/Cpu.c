@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K20P48M50SF0RM Rev. 1, Oct 2011
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 13:41, # CodeGen: 11
+**     Date/Time   : 2018-04-16, 17:07, # CodeGen: 20
 **     Abstract    :
 **
 **     Settings    :
@@ -234,10 +234,6 @@
 #include "TU2.h"
 #include "HMODE.h"
 #include "BitIoLdd8.h"
-#include "AS1.h"
-#include "ASerialLdd1.h"
-#include "AS2.h"
-#include "ASerialLdd2.h"
 #include "FRTOS1.h"
 #include "UTIL1.h"
 #include "SYS1.h"
@@ -249,6 +245,8 @@
 #include "LED2.h"
 #include "LEDpin2.h"
 #include "BitIoLdd9.h"
+#include "AS1.h"
+#include "ASerialLdd1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -495,15 +493,13 @@ void PE_low_level_init(void)
   (void)PwmLdd2_Init(NULL);
   /* ### BitIO_LDD "BitIoLdd8" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd8_Init(NULL);
-  /* ### Asynchro serial "AS1" init code ... */
-  AS1_Init();
-  /* ### Asynchro serial "AS2" init code ... */
-  AS2_Init();
   /* ### FreeRTOS "FRTOS1" init code ... */
   /* PEX_RTOS_INIT() should have been called at this time already with the most critical setup */
   WAIT1_Init();
   /* ### XFormat "XF1" init code ... */
   /* ### CriticalSection "CS1" init code ... */
+  /* ### Asynchro serial "AS1" init code ... */
+  AS1_Init();
   /* ### Shell "CLS1" init code ... */
   CLS1_Init(); /* initialize shell */
   /* ### SeggerRTT "RTT1" init code ... */
