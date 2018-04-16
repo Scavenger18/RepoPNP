@@ -1,0 +1,1 @@
+$(function(){$(".showMore").click(function(){var b=$(this);$("#"+b.data("ref")).toggle(400);var a=b.text();b.text(b.data("alt-text"));b.data("alt-text",a)})});

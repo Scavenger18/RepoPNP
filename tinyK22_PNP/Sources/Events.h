@@ -34,20 +34,10 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 #include "Pins1.h"
-#include "FRTOS1.h"
-#include "RTOSCNTRLDD1.h"
 #include "MCUC1.h"
-#include "UTIL1.h"
 #include "LED1.h"
 #include "LEDpin1.h"
 #include "BitIoLdd1.h"
-#include "WAIT1.h"
-#include "RTT1.h"
-#include "CLS1.h"
-#include "XF1.h"
-#include "CS1.h"
-#include "KIN1.h"
-#include "SYS1.h"
 #include "DIRS.h"
 #include "BitIoLdd2.h"
 #include "DIRT.h"
@@ -57,6 +47,9 @@
 #include "PWMS.h"
 #include "PwmLdd1.h"
 #include "TU1.h"
+#include "FRTOS1.h"
+#include "UTIL1.h"
+#include "WAIT1.h"
 #include "PWMT.h"
 #include "PwmLdd2.h"
 #include "BUT1.h"
@@ -115,34 +108,6 @@ void FRTOS1_vApplicationMallocFailedHook(void);
 ** ===================================================================
 */
 
-void FRTOS1_vApplicationTickHook(void);
-/*
-** ===================================================================
-**     Event       :  FRTOS1_vApplicationTickHook (module Events)
-**
-**     Component   :  FRTOS1 [FreeRTOS]
-**     Description :
-**         If enabled, this hook will be called by the RTOS for every
-**         tick increment.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-
-void FRTOS1_vApplicationIdleHook(void);
-/*
-** ===================================================================
-**     Event       :  FRTOS1_vApplicationIdleHook (module Events)
-**
-**     Component   :  FRTOS1 [FreeRTOS]
-**     Description :
-**         If enabled, this hook will be called when the RTOS is idle.
-**         This might be a good place to go into low power mode.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-
 void FRTOS1_vOnPreSleepProcessing(portTickType expectedIdleTicks);
 /*
 ** ===================================================================
@@ -169,6 +134,34 @@ void ENC_OnInterrupt(void);
 **     Description :
 **         This event is called when an active signal edge/level has
 **         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+void FRTOS1_vApplicationTickHook(void);
+/*
+** ===================================================================
+**     Event       :  FRTOS1_vApplicationTickHook (module Events)
+**
+**     Component   :  FRTOS1 [FreeRTOS]
+**     Description :
+**         If enabled, this hook will be called by the RTOS for every
+**         tick increment.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+void FRTOS1_vApplicationIdleHook(void);
+/*
+** ===================================================================
+**     Event       :  FRTOS1_vApplicationIdleHook (module Events)
+**
+**     Component   :  FRTOS1 [FreeRTOS]
+**     Description :
+**         If enabled, this hook will be called when the RTOS is idle.
+**         This might be a good place to go into low power mode.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================

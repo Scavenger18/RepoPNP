@@ -30,6 +30,7 @@
 #include "Events.h"
 #include "Init_Config.h"
 #include "PDD_Includes.h"
+#include "platform.h"
 
 #if PL_ENCODER_EN
 	#include "encoder.h"
@@ -115,43 +116,6 @@ void FRTOS1_vApplicationMallocFailedHook(void)
 
 /*
 ** ===================================================================
-**     Event       :  FRTOS1_vApplicationTickHook (module Events)
-**
-**     Component   :  FRTOS1 [FreeRTOS]
-**     Description :
-**         If enabled, this hook will be called by the RTOS for every
-**         tick increment.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-void FRTOS1_vApplicationTickHook(void)
-{
-  /* Called for every RTOS tick. */
-  /* Write your code here ... */
-}
-
-/*
-** ===================================================================
-**     Event       :  FRTOS1_vApplicationIdleHook (module Events)
-**
-**     Component   :  FRTOS1 [FreeRTOS]
-**     Description :
-**         If enabled, this hook will be called when the RTOS is idle.
-**         This might be a good place to go into low power mode.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-void FRTOS1_vApplicationIdleHook(void)
-{
-  /* Called whenever the RTOS is idle (from the IDLE task).
-     Here would be a good place to put the CPU into low power mode. */
-  /* Write your code here ... */
-}
-
-/*
-** ===================================================================
 **     Event       :  FRTOS1_vOnPreSleepProcessing (module Events)
 **
 **     Component   :  FRTOS1 [FreeRTOS]
@@ -204,6 +168,43 @@ void ENC_OnInterrupt(void)
   /* Called when encoder hits a rising edge */
 
 	ENC_Interrupt();
+}
+
+/*
+** ===================================================================
+**     Event       :  FRTOS1_vApplicationTickHook (module Events)
+**
+**     Component   :  FRTOS1 [FreeRTOS]
+**     Description :
+**         If enabled, this hook will be called by the RTOS for every
+**         tick increment.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void FRTOS1_vApplicationTickHook(void)
+{
+  /* Called for every RTOS tick. */
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  FRTOS1_vApplicationIdleHook (module Events)
+**
+**     Component   :  FRTOS1 [FreeRTOS]
+**     Description :
+**         If enabled, this hook will be called when the RTOS is idle.
+**         This might be a good place to go into low power mode.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void FRTOS1_vApplicationIdleHook(void)
+{
+  /* Called whenever the RTOS is idle (from the IDLE task).
+     Here would be a good place to put the CPU into low power mode. */
+  /* Write your code here ... */
 }
 
 /* END Events */
