@@ -182,7 +182,7 @@ static void RunFeeder(void){
 				taskState = FSM_IDLE;
 				break;
 			}
-			peelState = 1;
+			peelState = 1;	// möglicherweise verzögert absetzen
 
 		}
 		break;
@@ -212,15 +212,15 @@ static void RunFeeder(void){
 	} /* for */
 }
 
-static void but_task(void *param){
-
-
-    (void)param;
-    for(;;) {
-    	BUT_Process();
-    	vTaskDelay(pdMS_TO_TICKS(50));
-    } /* for */
-}
+//static void but_task(void *param){
+//
+//
+//    (void)param;
+//    for(;;) {
+//    	BUT_Process();
+//    	vTaskDelay(pdMS_TO_TICKS(50));
+//    } /* for */
+//}
 
  static void uart_task(void *param) {
 	CLS1_SendStr("STS 0 Feeder online", CLS1_GetStdio()->stdOut);

@@ -10902,7 +10902,7 @@
     </ItemState>
   </Configuration>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>LED</BeanType>
     <Name>LED1</Name>
     <CompNumb>6</CompNumb>
@@ -11696,7 +11696,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>McuLibConfig</BeanType>
     <Name>MCUC1</Name>
     <CompNumb>9</CompNumb>
@@ -21235,7 +21235,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>FreeRTOS</BeanType>
     <Name>FRTOS1</Name>
     <CompNumb>39</CompNumb>
@@ -24692,7 +24692,7 @@
     </Events>
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>Utility</BeanType>
     <Name>UTIL1</Name>
     <CompNumb>41</CompNumb>
@@ -25553,7 +25553,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>SeggerSystemView</BeanType>
     <Name>SYS1</Name>
     <CompNumb>42</CompNumb>
@@ -25884,7 +25884,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>SeggerRTT</BeanType>
     <Name>RTT1</Name>
     <CompNumb>43</CompNumb>
@@ -26319,7 +26319,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>Wait</BeanType>
     <Name>WAIT1</Name>
     <CompNumb>45</CompNumb>
@@ -26554,7 +26554,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>Shell</BeanType>
     <Name>CLS1</Name>
     <CompNumb>46</CompNumb>
@@ -27173,7 +27173,7 @@
     </Events>
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>XFormat</BeanType>
     <Name>XF1</Name>
     <CompNumb>47</CompNumb>
@@ -27257,7 +27257,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>CriticalSection</BeanType>
     <Name>CS1</Name>
     <CompNumb>48</CompNumb>
@@ -27337,7 +27337,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/D:\Projects\Kinetis\PE_Repo</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>LED</BeanType>
     <Name>LED2</Name>
     <CompNumb>49</CompNumb>
@@ -28173,7 +28173,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>SpecInt</ItemSymbol>
-        <Value>INT_UART0_ERR</Value>
+        <Value>INT_UART2_ERR</Value>
         <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
       </ItemState>
       <ItemState>
@@ -29244,7 +29244,7 @@
               <ItemSymbol>BdRate</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>init:;prec:1.5%;RTS:none;clksrc_presc[SpeedMode0]Auto select;clksrc_presc[SpeedMode1]Auto select;clksrc_presc[SpeedMode2]Auto select;clksrc_presc[SpeedMode3]Auto select;clksrc_presc[SpeedMode4]Auto select;clksrc_presc[SpeedMode5]Auto select;clksrc_presc[SpeedMode6]Auto select;clksrc_presc[SpeedMode7]Auto select</Value>
+              <Value>init:38400 baud;prec:1.5%;RTS:none;clksrc_presc[SpeedMode0]Auto select;clksrc_presc[SpeedMode1]Auto select;clksrc_presc[SpeedMode2]Auto select;clksrc_presc[SpeedMode3]Auto select;clksrc_presc[SpeedMode4]Auto select;clksrc_presc[SpeedMode5]Auto select;clksrc_presc[SpeedMode6]Auto select;clksrc_presc[SpeedMode7]Auto select</Value>
               <RuntimeSetting>0</RuntimeSetting>
               <ReqDevPrescHigh>-1</ReqDevPrescHigh>
               <ReqDevPrescLow>-1</ReqDevPrescLow>

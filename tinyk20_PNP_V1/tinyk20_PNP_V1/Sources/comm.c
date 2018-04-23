@@ -41,8 +41,8 @@ void COMM_SendError(const unsigned char *cmd){
 	unsigned char tmpCMD[maxBuf];
 	unsigned char* ptr;
 
-	UTIL1_strcpy(tmpCMD, maxBuf, "ERR 0 ");
-	ptr = tmpCMD+sizeof("ERR 0 ")-1;
+	UTIL1_strcpy(tmpCMD, maxBuf, "CMD -1 err");
+	ptr = tmpCMD+sizeof("CMD -1 err")-1;
 	UTIL1_strcpy(ptr, maxBuf, cmd);
 
 	CLS1_SendStr((unsigned char*)tmpCMD, CLS1_GetStdio()->stdOut);
@@ -53,8 +53,8 @@ void COMM_SendStatus(const unsigned char *cmd){
 	unsigned char tmpCMD[maxBuf];
 	unsigned char* ptr;
 
-	UTIL1_strcpy(tmpCMD, maxBuf, "STS 0 ");
-	ptr = tmpCMD+sizeof("STS 0 ")-1;
+	UTIL1_strcpy(tmpCMD, maxBuf, "CMD -1 ");
+	ptr = tmpCMD+sizeof("CMD -1 ")-1;
 	UTIL1_strcpy(ptr, maxBuf, cmd);
 
 	CLS1_SendStr((unsigned char*)tmpCMD, CLS1_GetStdio()->stdOut);
@@ -76,7 +76,7 @@ void COMM_SendStatus(const unsigned char *cmd){
 
 uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io)
 {
-    int8_t value;	//signed since address dekrementing falls below 0
+    int8_t value;	//signed since address decrementing falls below 0
     uint8_t res;
 	const unsigned char *tmpCMD;
 
@@ -92,48 +92,37 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 		// if address is 0 execute command
 		if(value == 0){
 			tmpCMD = cmd+sizeof("CMD 0 ")-1;
-//		  if (UTIL1_strcmp((char*)cmd, CLS1_CMD_HELP)==0 || UTIL1_strcmp((char*)cmd, "COMM help")==0) {
-//			*handled = TRUE;
-//			CLS1_SendStr((unsigned char*)"FWD, REV, STEP (xx)mm", io->stdErr);
-//			//return PrintHelp(io);
-//		  }  else
 
 			if (UTIL1_strcmp((char*)tmpCMD, "FWD")==0) {
-				//CLS1_SendStr((unsigned char*)"STS 0 FWD OK", io->stdOut);
-				COMM_SendStatus("FWD OK");
-			*handled = TRUE;
-			COMM_SetFWD();
-			return ERR_OK;
+				COMM_SendStatus("FWD ok");
+				*handled = TRUE;
+				COMM_SetFWD();
+				return ERR_OK;
 
 			} else if (UTIL1_strcmp((char*)tmpCMD, "REV")==0) {
-				//CLS1_SendStr((unsigned char*)"STS 0 REV OK", io->stdOut);
-				COMM_SendStatus("REV OK");
-			*handled = TRUE;
-			COMM_SetREV();
-			return ERR_OK;
+				COMM_SendStatus("REV ok");
+				*handled = TRUE;
+				COMM_SetREV();
+				return ERR_OK;
 
-			} else if (UTIL1_strncmp((char*)tmpCMD, "STEP", sizeof("STEP")-1)==0) {
+			} else if (UTIL1_strncmp((char*)tmpCMD, "SET STEP", sizeof("SET STEP")-1)==0) {
 				uint8_t value;
 				uint8_t res;
 				const unsigned char *p;
 
-				p = tmpCMD+sizeof("STEP")-1;
+				p = tmpCMD+sizeof("SET STEP")-1;
 				res = UTIL1_ScanDecimal8uNumber(&p, &value);
 
 				if (*p=='m' ) { /* millimeter value && (*p-1)=='m' */
 					value = (uint8_t) value;
 
 					if(value == 1){
-						//CLS1_SendStr((unsigned char*)"ERR 0 minimal step is 2mm", io->stdOut);
 						COMM_SendError("minimal step is 2mm");
 						value = 2;
 						return ERR_VALUE;
 					}
-				//	CLS1_SendStr((unsigned char*)"Step size changed.", io->stdOut);
-				//	CLS1_SendStr((unsigned char*)"STS 0 STEP OK", io->stdOut);
-					COMM_SendStatus("STEP OK");
+					COMM_SendStatus("SET STEP ok");
 				}else{
-					  //CLS1_SendStr((unsigned char*)"ERR 0 invalid number format", io->stdOut);
 					COMM_SendError("invalid number format");
 					return ERR_VALUE;
 
@@ -148,15 +137,13 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 
 
 		  // else decrement address and send command on
-		}else if(value > 0){//if (UTIL1_strncmp((char*)cmd, "0", sizeof("99")-1)>0) {
+		}else {		//else if(value > 0){//if (UTIL1_strncmp((char*)cmd, "0", sizeof("99")-1)>0) {
 
-			unsigned char tmpStr[sizeof("99")-1];
+			unsigned char tmpStr[sizeof("999")-1];
 			unsigned char *p;
 			unsigned char *newAddress;
 
 			uint8_t ind = strlen(cmd);
-
-//			res = UTIL1_ScanDecimal8uNumber(&tmpCMD, &value);
 			value--;
 
 			UTIL1_Num8sToStr(tmpStr, ind, value);
@@ -165,7 +152,6 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 			ind += strlen("CMD ");
 
 			unsigned char newCMD[ind];
-//			newCMD[0] = '/0';
 
 			tmpCMD = cmd+(sizeof("CMD ")+strlen(tmpStr)-1);
 
@@ -180,16 +166,17 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 			*handled = TRUE;
 			return ERR_OK;
 
-		}else {
-		//	CLS1_SendStr((unsigned char*)cmd, io->stdOut);
-		// negative address ?!?
-			CLS1_SendStr((unsigned char*)"ERR 0 Negative CMD Address", io->stdOut);
+/*		// ALL NONE-ZERO ADRESSES ARE DECREMENTED, see above
+  		}else {
+		// negative address -> just dekrement
+			COMM_SendError("Negative CMD Address");
 			*handled = TRUE;
 			return ERR_FAILED;
-
+*/
 		}
 	// else if it is an error to be passed on
-	}else if (UTIL1_strncmp((char*)cmd, "ERR", sizeof("ERR")-1)==0){
+/*  // ALL COMMUNICATION RUNS WITH <CMD> HEADER
+    }else if (UTIL1_strncmp((char*)cmd, "ERR", sizeof("ERR")-1)==0){
 
 		unsigned char tmpStr[sizeof("99")-1];
 		unsigned char *p;
@@ -247,8 +234,10 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 		return ERR_OK;
 
 	// else generate unknown command error
+	 *
+	 */
 	}else{
-		CLS1_SendStr((unsigned char*)"ERR 0 unknown command", io->stdOut);
+		COMM_SendError("unknown message");
 		*handled = TRUE;
 		return ERR_FAILED;
 	}
