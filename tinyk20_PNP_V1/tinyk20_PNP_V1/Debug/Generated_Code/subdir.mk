@@ -45,7 +45,6 @@ C_SRCS += \
 ../Generated_Code/SW_REV.c \
 ../Generated_Code/SYS1.c \
 ../Generated_Code/TU1.c \
-../Generated_Code/TU2.c \
 ../Generated_Code/UTIL1.c \
 ../Generated_Code/Vectors.c \
 ../Generated_Code/WAIT1.c \
@@ -108,7 +107,6 @@ OBJS += \
 ./Generated_Code/SW_REV.o \
 ./Generated_Code/SYS1.o \
 ./Generated_Code/TU1.o \
-./Generated_Code/TU2.o \
 ./Generated_Code/UTIL1.o \
 ./Generated_Code/Vectors.o \
 ./Generated_Code/WAIT1.o \
@@ -171,7 +169,6 @@ C_DEPS += \
 ./Generated_Code/SW_REV.d \
 ./Generated_Code/SYS1.d \
 ./Generated_Code/TU1.d \
-./Generated_Code/TU2.d \
 ./Generated_Code/UTIL1.d \
 ./Generated_Code/Vectors.d \
 ./Generated_Code/WAIT1.d \
@@ -197,7 +194,7 @@ C_DEPS += \
 Generated_Code/%.o: ../Generated_Code/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/PDD" -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/IO_Map" -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources" -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/PDD" -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/IO_Map" -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources" -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

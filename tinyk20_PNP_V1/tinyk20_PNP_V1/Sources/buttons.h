@@ -14,7 +14,7 @@
 # define FWD_INVERT (1)
 # define REV_INVERT (1)
 
-#define LPRESS_CNT (1000)
+#define LPRESS_CNT (200)
 
 #if PL_TAPE_EN
 # define MSW_INVERT	(0)

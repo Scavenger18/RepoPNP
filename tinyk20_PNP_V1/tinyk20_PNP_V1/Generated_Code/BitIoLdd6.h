@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 12:59, # CodeGen: 7
+**     Date/Time   : 2018-04-23, 18:53, # CodeGen: 29
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,9 +17,9 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd6
-**          Pin for I/O                                    : ADC0_SE8/TSI0_CH0/PTB0/LLWU_P5/I2C0_SCL/FTM1_CH0/FTM1_QD_PHA
+**          Pin for I/O                                    : TSI0_CH9/PTB16/UART0_RX/EWM_IN
 **          Pin signal                                     : 
-**          Direction                                      : Input/Output
+**          Direction                                      : Output
 **          Initialization                                 : 
 **            Init. direction                              : Output
 **            Init. value                                  : 0
@@ -27,7 +27,6 @@
 **          Safe mode                                      : no
 **     Contents    :
 **         Init   - LDD_TDeviceData* BitIoLdd6_Init(LDD_TUserData *UserDataPtr);
-**         SetDir - void BitIoLdd6_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
 **         GetVal - bool BitIoLdd6_GetVal(LDD_TDeviceData *DeviceDataPtr);
 **         PutVal - void BitIoLdd6_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
 **         ClrVal - void BitIoLdd6_ClrVal(LDD_TDeviceData *DeviceDataPtr);
@@ -110,7 +109,6 @@ extern "C" {
 
 /* Methods configuration constants - generated for all enabled component's methods */
 #define BitIoLdd6_Init_METHOD_ENABLED  /*!< Init method of the component BitIoLdd6 is enabled (generated) */
-#define BitIoLdd6_SetDir_METHOD_ENABLED /*!< SetDir method of the component BitIoLdd6 is enabled (generated) */
 #define BitIoLdd6_GetVal_METHOD_ENABLED /*!< GetVal method of the component BitIoLdd6 is enabled (generated) */
 #define BitIoLdd6_PutVal_METHOD_ENABLED /*!< PutVal method of the component BitIoLdd6 is enabled (generated) */
 #define BitIoLdd6_ClrVal_METHOD_ENABLED /*!< ClrVal method of the component BitIoLdd6 is enabled (generated) */
@@ -119,7 +117,7 @@ extern "C" {
 /* Definition of implementation constants */
 #define BitIoLdd6_MODULE_BASE_ADDRESS PTB_BASE_PTR /*!< Name of macro used as the base address */
 #define BitIoLdd6_PORTCONTROL_BASE_ADDRESS PORTB_BASE_PTR /*!< Name of macro used as the base address */
-#define BitIoLdd6_PORT_MASK 0x01U      /*!< Mask of the allocated pin from the port */
+#define BitIoLdd6_PORT_MASK 0x00010000U /*!< Mask of the allocated pin from the port */
 
 
 
@@ -146,25 +144,6 @@ extern "C" {
 */
 /* ===================================================================*/
 LDD_TDeviceData* BitIoLdd6_Init(LDD_TUserData *UserDataPtr);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd6_SetDir (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Sets a pin direction (available only if the direction =
-**         _[input/output]_).
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-**     @param
-**         Dir             - Direction to set. Possible values:
-**                           <false> - Input
-**                           <true> - Output
-*/
-/* ===================================================================*/
-void BitIoLdd6_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
 
 /*
 ** ===================================================================

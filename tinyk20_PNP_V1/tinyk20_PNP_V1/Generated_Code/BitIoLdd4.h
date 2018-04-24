@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 12:59, # CodeGen: 7
+**     Date/Time   : 2018-04-23, 18:53, # CodeGen: 29
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,21 +17,17 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd4
-**          Pin for I/O                                    : TSI0_CH10/PTB17/UART0_TX/EWM_OUT_b
+**          Pin for I/O                                    : PTC5/LLWU_P9/SPI0_SCK/LPTMR0_ALT2/I2S0_RXD0/CMP0_OUT
 **          Pin signal                                     : 
-**          Direction                                      : Input/Output
+**          Direction                                      : Input
 **          Initialization                                 : 
-**            Init. direction                              : Output
+**            Init. direction                              : Input
 **            Init. value                                  : 0
 **            Auto initialization                          : yes
 **          Safe mode                                      : no
 **     Contents    :
 **         Init   - LDD_TDeviceData* BitIoLdd4_Init(LDD_TUserData *UserDataPtr);
-**         SetDir - void BitIoLdd4_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
 **         GetVal - bool BitIoLdd4_GetVal(LDD_TDeviceData *DeviceDataPtr);
-**         PutVal - void BitIoLdd4_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
-**         ClrVal - void BitIoLdd4_ClrVal(LDD_TDeviceData *DeviceDataPtr);
-**         SetVal - void BitIoLdd4_SetVal(LDD_TDeviceData *DeviceDataPtr);
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -103,23 +99,19 @@ extern "C" {
 
 
 /*! Peripheral base address of a device allocated by the component. This constant can be used directly in PDD macros. */
-#define BitIoLdd4_PRPH_BASE_ADDRESS  0x400FF040U
+#define BitIoLdd4_PRPH_BASE_ADDRESS  0x400FF080U
   
 /*! Device data structure pointer used when auto initialization property is enabled. This constant can be passed as a first parameter to all component's methods. */
 #define BitIoLdd4_DeviceData  ((LDD_TDeviceData *)PE_LDD_GetDeviceStructure(PE_LDD_COMPONENT_BitIoLdd4_ID))
 
 /* Methods configuration constants - generated for all enabled component's methods */
 #define BitIoLdd4_Init_METHOD_ENABLED  /*!< Init method of the component BitIoLdd4 is enabled (generated) */
-#define BitIoLdd4_SetDir_METHOD_ENABLED /*!< SetDir method of the component BitIoLdd4 is enabled (generated) */
 #define BitIoLdd4_GetVal_METHOD_ENABLED /*!< GetVal method of the component BitIoLdd4 is enabled (generated) */
-#define BitIoLdd4_PutVal_METHOD_ENABLED /*!< PutVal method of the component BitIoLdd4 is enabled (generated) */
-#define BitIoLdd4_ClrVal_METHOD_ENABLED /*!< ClrVal method of the component BitIoLdd4 is enabled (generated) */
-#define BitIoLdd4_SetVal_METHOD_ENABLED /*!< SetVal method of the component BitIoLdd4 is enabled (generated) */
 
 /* Definition of implementation constants */
-#define BitIoLdd4_MODULE_BASE_ADDRESS PTB_BASE_PTR /*!< Name of macro used as the base address */
-#define BitIoLdd4_PORTCONTROL_BASE_ADDRESS PORTB_BASE_PTR /*!< Name of macro used as the base address */
-#define BitIoLdd4_PORT_MASK 0x00020000U /*!< Mask of the allocated pin from the port */
+#define BitIoLdd4_MODULE_BASE_ADDRESS PTC_BASE_PTR /*!< Name of macro used as the base address */
+#define BitIoLdd4_PORTCONTROL_BASE_ADDRESS PORTC_BASE_PTR /*!< Name of macro used as the base address */
+#define BitIoLdd4_PORT_MASK 0x20U      /*!< Mask of the allocated pin from the port */
 
 
 
@@ -149,25 +141,6 @@ LDD_TDeviceData* BitIoLdd4_Init(LDD_TUserData *UserDataPtr);
 
 /*
 ** ===================================================================
-**     Method      :  BitIoLdd4_SetDir (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Sets a pin direction (available only if the direction =
-**         _[input/output]_).
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-**     @param
-**         Dir             - Direction to set. Possible values:
-**                           <false> - Input
-**                           <true> - Output
-*/
-/* ===================================================================*/
-void BitIoLdd4_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
-
-/*
-** ===================================================================
 **     Method      :  BitIoLdd4_GetVal (component BitIO_LDD)
 */
 /*!
@@ -187,64 +160,6 @@ void BitIoLdd4_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
 */
 /* ===================================================================*/
 bool BitIoLdd4_GetVal(LDD_TDeviceData *DeviceDataPtr);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd4_PutVal (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         The specified output value is set. If the direction is <b>
-**         input</b>, the component saves the value to a memory or a
-**         register and this value will be written to the pin after
-**         switching to the output mode (using <tt>SetDir(TRUE)</tt>;
-**         see <a href="BitIOProperties.html#SafeMode">Safe mode</a>
-**         property for limitations). If the direction is <b>output</b>,
-**         it writes the value to the pin. (Method is available only if
-**         the direction = <u><tt>output</tt></u> or <u><tt>
-**         input/output</tt></u>).
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-**     @param
-**         Val             - Output value. Possible values:
-**                           <false> - logical "0" (Low level)
-**                           <true> - logical "1" (High level)
-*/
-/* ===================================================================*/
-void BitIoLdd4_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd4_ClrVal (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Clears (set to zero) the output value. It is equivalent to
-**         the [PutVal(FALSE)]. This method is available only if the
-**         direction = _[output]_ or _[input/output]_.
-**     @param
-**         DeviceDataPtr   - Pointer to device data
-**                           structure returned by <Init> method.
-*/
-/* ===================================================================*/
-void BitIoLdd4_ClrVal(LDD_TDeviceData *DeviceDataPtr);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd4_SetVal (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Sets (to one) the output value. It is equivalent to the
-**         [PutVal(TRUE)]. This method is available only if the
-**         direction = _[output]_ or _[input/output]_.
-**     @param
-**         DeviceDataPtr   - Pointer to device data
-**                           structure returned by <Init> method.
-*/
-/* ===================================================================*/
-void BitIoLdd4_SetVal(LDD_TDeviceData *DeviceDataPtr);
 
 /* END BitIoLdd4. */
 

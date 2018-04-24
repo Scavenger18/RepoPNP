@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 12:59, # CodeGen: 7
+**     Date/Time   : 2018-04-23, 18:53, # CodeGen: 29
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,9 +17,9 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd6
-**          Pin for I/O                                    : ADC0_SE8/TSI0_CH0/PTB0/LLWU_P5/I2C0_SCL/FTM1_CH0/FTM1_QD_PHA
+**          Pin for I/O                                    : TSI0_CH9/PTB16/UART0_RX/EWM_IN
 **          Pin signal                                     : 
-**          Direction                                      : Input/Output
+**          Direction                                      : Output
 **          Initialization                                 : 
 **            Init. direction                              : Output
 **            Init. value                                  : 0
@@ -27,7 +27,6 @@
 **          Safe mode                                      : no
 **     Contents    :
 **         Init   - LDD_TDeviceData* BitIoLdd6_Init(LDD_TUserData *UserDataPtr);
-**         SetDir - void BitIoLdd6_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
 **         GetVal - bool BitIoLdd6_GetVal(LDD_TDeviceData *DeviceDataPtr);
 **         PutVal - void BitIoLdd6_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
 **         ClrVal - void BitIoLdd6_ClrVal(LDD_TDeviceData *DeviceDataPtr);
@@ -128,52 +127,23 @@ LDD_TDeviceData* BitIoLdd6_Init(LDD_TUserData *UserDataPtr)
   DeviceDataPrv = &DeviceDataPrv__DEFAULT_RTOS_ALLOC;
   DeviceDataPrv->UserDataPtr = UserDataPtr; /* Store the RTOS device structure */
   /* Configure pin as output */
-  /* GPIOB_PDDR: PDD|=1 */
-  GPIOB_PDDR |= GPIO_PDDR_PDD(0x01);
+  /* GPIOB_PDDR: PDD|=0x00010000 */
+  GPIOB_PDDR |= GPIO_PDDR_PDD(0x00010000);
   /* Set initialization value */
-  /* GPIOB_PDOR: PDO&=~1 */
-  GPIOB_PDOR &= (uint32_t)~(uint32_t)(GPIO_PDOR_PDO(0x01));
+  /* GPIOB_PDOR: PDO&=~0x00010000 */
+  GPIOB_PDOR &= (uint32_t)~(uint32_t)(GPIO_PDOR_PDO(0x00010000));
   /* Initialization of Port Control register */
-  /* PORTB_PCR0: ISF=0,MUX=1 */
-  PORTB_PCR0 = (uint32_t)((PORTB_PCR0 & (uint32_t)~(uint32_t)(
-                PORT_PCR_ISF_MASK |
-                PORT_PCR_MUX(0x06)
-               )) | (uint32_t)(
-                PORT_PCR_MUX(0x01)
-               ));
+  /* PORTB_PCR16: ISF=0,MUX=1 */
+  PORTB_PCR16 = (uint32_t)((PORTB_PCR16 & (uint32_t)~(uint32_t)(
+                 PORT_PCR_ISF_MASK |
+                 PORT_PCR_MUX(0x06)
+                )) | (uint32_t)(
+                 PORT_PCR_MUX(0x01)
+                ));
   /* Registration of the device structure */
   PE_LDD_RegisterDeviceStructure(PE_LDD_COMPONENT_BitIoLdd6_ID,DeviceDataPrv);
   return ((LDD_TDeviceData *)DeviceDataPrv);
 }
-/*
-** ===================================================================
-**     Method      :  BitIoLdd6_SetDir (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Sets a pin direction (available only if the direction =
-**         _[input/output]_).
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-**     @param
-**         Dir             - Direction to set. Possible values:
-**                           <false> - Input
-**                           <true> - Output
-*/
-/* ===================================================================*/
-void BitIoLdd6_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir)
-{
-  (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
-  if (Dir) {
-    /* Output */
-    GPIO_PDD_SetPortOutputDirectionMask(BitIoLdd6_MODULE_BASE_ADDRESS, BitIoLdd6_PORT_MASK);
-  } else {
-    /* Input */
-    GPIO_PDD_SetPortInputDirectionMask(BitIoLdd6_MODULE_BASE_ADDRESS, BitIoLdd6_PORT_MASK);
-  }
-}
-
 /*
 ** ===================================================================
 **     Method      :  BitIoLdd6_GetVal (component BitIO_LDD)
@@ -199,13 +169,7 @@ bool BitIoLdd6_GetVal(LDD_TDeviceData *DeviceDataPtr)
   uint32_t PortData;                   /* Port data masked according to the bit used */
 
   (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
-  if ((GPIO_PDD_GetPortDirection(BitIoLdd6_MODULE_BASE_ADDRESS) & BitIoLdd6_PORT_MASK) == 0U) {
-    /* Port is configured as input */
-    PortData = GPIO_PDD_GetPortDataInput(BitIoLdd6_MODULE_BASE_ADDRESS) & BitIoLdd6_PORT_MASK;
-  } else {
-    /* Port is configured as output */
-    PortData = GPIO_PDD_GetPortDataOutput(BitIoLdd6_MODULE_BASE_ADDRESS) & BitIoLdd6_PORT_MASK;
-  }
+  PortData = GPIO_PDD_GetPortDataOutput(BitIoLdd6_MODULE_BASE_ADDRESS) & BitIoLdd6_PORT_MASK;
   return (PortData != 0U) ? (bool)TRUE : (bool)FALSE;
 }
 

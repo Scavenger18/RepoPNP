@@ -203,11 +203,10 @@ static void RunFeeder(void){
 		RunFeeder();
 		Peeler();
 		BUT_Process();
-	    //LED2_Neg();
 	    //(void)CLS1_ReadAndParseWithCommandTable(buffer, sizeof(buffer), CLS1_GetStdio(), cmdTable);
 //	    error_res = COMM_ReadAndParse(buffer, sizeof(buffer), CLS1_GetStdio());
-	    APP_ErrorHandler();
-	    vTaskDelay(pdMS_TO_TICKS(20));
+//	    APP_ErrorHandler();
+	    vTaskDelay(pdMS_TO_TICKS(30));
 
 	} /* for */
 }
@@ -231,7 +230,8 @@ static void RunFeeder(void){
     (void)param;
     for(;;) {
 
-     error_res = COMM_ReadAndParse(buffer, sizeof(buffer), CLS1_GetStdio());
+     //error_res = COMM_ReadAndParse(buffer, sizeof(buffer), CLS1_GetStdio());
+    (void)COMM_ReadAndParse(buffer, sizeof(buffer), CLS1_GetStdio());
      vTaskDelay(pdMS_TO_TICKS(100));
     } /* for */
   }
@@ -240,6 +240,7 @@ static void RunFeeder(void){
 void APP_Init(void){
 	error_res = ERR_OK;		// set ErrorFlag to OK
 	APP_Counter = 0;		// set start to 0 (no inc/dec of tape needed)
+	BUT_Init();
 	buffer[0] = '\0';
 	for(int i = 0; i < sizeof(drivebuffer); i++){
 		drivebuffer[i] = MOT_NULL;

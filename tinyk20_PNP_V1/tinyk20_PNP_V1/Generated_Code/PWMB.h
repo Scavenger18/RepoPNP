@@ -7,20 +7,20 @@
 **     Version     : Component 02.241, Driver 01.01, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 11:17, # CodeGen: 3
+**     Date/Time   : 2018-04-23, 17:57, # CodeGen: 27
 **     Abstract    :
 **         This component implements a pulse-width modulation generator
 **         that generates signal with variable duty and fixed cycle. 
 **     Settings    :
 **          Component name                                 : PWMB
-**          PWM or PPG device                              : FTM0_C6V
+**          PWM or PPG device                              : FTM0_C2V
 **          Duty compare                                   : 
-**          Output pin                                     : TSI0_CH2/PTA1/UART0_RX/FTM0_CH6/JTAG_TDI/EZP_DI
+**          Output pin                                     : CMP1_IN1/PTC3/LLWU_P7/SPI0_PCS1/UART1_RX/FTM0_CH2/CLKOUTa/I2S0_TX_BCLK
 **          Output pin signal                              : 
 **          Counter                                        : FTM0_CNT
 **          Interrupt service/event                        : Disabled
 **          Period                                         : 1 ms
-**          Starting pulse width                           : 0 ms
+**          Starting pulse width                           : 0.5 ms
 **          Initial polarity                               : low
 **          Same period in modes                           : no
 **          Component uses entire timer                    : no

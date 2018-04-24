@@ -7,7 +7,7 @@
 **     Version     : Component 01.014, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 11:17, # CodeGen: 3
+**     Date/Time   : 2018-04-23, 17:57, # CodeGen: 27
 **     Abstract    :
 **          This component implements a pulse-width modulation generator
 **          that generates signal with variable duty and fixed cycle.
@@ -16,14 +16,14 @@
 **          component.
 **     Settings    :
 **          Component name                                 : PwmLdd1
-**          Period device                                  : FTM1_MOD
-**          Duty device                                    : FTM1_C1V
-**          Output pin                                     : ADC0_SE9/TSI0_CH6/PTB1/I2C0_SDA/FTM1_CH1/FTM1_QD_PHB
+**          Period device                                  : FTM0_MOD
+**          Duty device                                    : FTM0_C0V
+**          Output pin                                     : ADC0_SE15/TSI0_CH14/PTC1/LLWU_P6/SPI0_PCS3/UART1_RTS_b/FTM0_CH0/I2S0_TXD0
 **          Output pin signal                              : 
-**          Counter                                        : FTM1_CNT
+**          Counter                                        : FTM0_CNT
 **          Interrupt service/event                        : Disabled
 **          Period                                         : 1 ms
-**          Starting pulse width                           : 0 ms
+**          Starting pulse width                           : 0.5 ms
 **          Initial polarity                               : low
 **          Initialization                                 : 
 **            Enabled in init. code                        : yes
@@ -118,7 +118,7 @@ extern "C" {
 #define PwmLdd1_PERIOD_VALUE_0 0x61A8UL /* Period value in ticks of the timer in clock configuration 0. */
 
 /*! Peripheral base address of a device allocated by the component. This constant can be used directly in PDD macros. */
-#define PwmLdd1_PRPH_BASE_ADDRESS  0x40039000U
+#define PwmLdd1_PRPH_BASE_ADDRESS  0x40038000U
   
 /*! Device data structure pointer used when auto initialization property is enabled. This constant can be passed as a first parameter to all component's methods. */
 #define PwmLdd1_DeviceData  ((LDD_TDeviceData *)PE_LDD_GetDeviceStructure(PE_LDD_COMPONENT_PwmLdd1_ID))

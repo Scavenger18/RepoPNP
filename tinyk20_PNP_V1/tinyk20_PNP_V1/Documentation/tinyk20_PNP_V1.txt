@@ -18,60 +18,24 @@ Module "LED1"      (component LED)
 Module "MCUC1"     (component McuLibConfig)
 
 Module "SW_FWD"    (component BitIO)
-   - SW_FWD_SetDir -Sets a pin direction (available only if the direction = _[input/output]_).
    - SW_FWD_GetVal -Returns the input/output value. If the direction is [input] then the input value of the pin is read and 
                 returned. If the direction is [output] then the last written value is returned (see <Safe mode> property for 
                 limitations). This method cannot be disabled if direction is [input].
-   - SW_FWD_PutVal -The specified output value is set. If the direction is [input], the component saves the value to a memory 
-                or a register and this value will be written to the pin after switching to the output mode (using 
-                [SetDir(TRUE)]; see <Safe mode> property for limitations). If the direction is [output], it writes the value to 
-                the pin. (Method is available only if the direction = _[output]_ or _[input/output]_).
-   - SW_FWD_ClrVal -Clears (set to zero) the output value. It is equivalent to the [PutVal(FALSE)]. This method is available 
-                only if the direction = _[output]_ or _[input/output]_.
-   - SW_FWD_SetVal -Sets (to one) the output value. It is equivalent to the [PutVal(TRUE)]. This method is available only if 
-                the direction = _[output]_ or _[input/output]_.
 
 Module "SW_REV"    (component BitIO)
-   - SW_REV_SetDir -Sets a pin direction (available only if the direction = _[input/output]_).
    - SW_REV_GetVal -Returns the input/output value. If the direction is [input] then the input value of the pin is read and 
                 returned. If the direction is [output] then the last written value is returned (see <Safe mode> property for 
                 limitations). This method cannot be disabled if direction is [input].
-   - SW_REV_PutVal -The specified output value is set. If the direction is [input], the component saves the value to a memory 
-                or a register and this value will be written to the pin after switching to the output mode (using 
-                [SetDir(TRUE)]; see <Safe mode> property for limitations). If the direction is [output], it writes the value to 
-                the pin. (Method is available only if the direction = _[output]_ or _[input/output]_).
-   - SW_REV_ClrVal -Clears (set to zero) the output value. It is equivalent to the [PutVal(FALSE)]. This method is available 
-                only if the direction = _[output]_ or _[input/output]_.
-   - SW_REV_SetVal -Sets (to one) the output value. It is equivalent to the [PutVal(TRUE)]. This method is available only if 
-                the direction = _[output]_ or _[input/output]_.
 
 Module "SW_MSW"    (component BitIO)
-   - SW_MSW_SetDir -Sets a pin direction (available only if the direction = _[input/output]_).
    - SW_MSW_GetVal -Returns the input/output value. If the direction is [input] then the input value of the pin is read and 
                 returned. If the direction is [output] then the last written value is returned (see <Safe mode> property for 
                 limitations). This method cannot be disabled if direction is [input].
-   - SW_MSW_PutVal -The specified output value is set. If the direction is [input], the component saves the value to a memory 
-                or a register and this value will be written to the pin after switching to the output mode (using 
-                [SetDir(TRUE)]; see <Safe mode> property for limitations). If the direction is [output], it writes the value to 
-                the pin. (Method is available only if the direction = _[output]_ or _[input/output]_).
-   - SW_MSW_ClrVal -Clears (set to zero) the output value. It is equivalent to the [PutVal(FALSE)]. This method is available 
-                only if the direction = _[output]_ or _[input/output]_.
-   - SW_MSW_SetVal -Sets (to one) the output value. It is equivalent to the [PutVal(TRUE)]. This method is available only if 
-                the direction = _[output]_ or _[input/output]_.
 
 Module "ENC1"      (component BitIO)
-   - ENC1_SetDir -Sets a pin direction (available only if the direction = _[input/output]_).
    - ENC1_GetVal -Returns the input/output value. If the direction is [input] then the input value of the pin is read and 
                 returned. If the direction is [output] then the last written value is returned (see <Safe mode> property for 
                 limitations). This method cannot be disabled if direction is [input].
-   - ENC1_PutVal -The specified output value is set. If the direction is [input], the component saves the value to a memory or 
-                a register and this value will be written to the pin after switching to the output mode (using [SetDir(TRUE)]; 
-                see <Safe mode> property for limitations). If the direction is [output], it writes the value to the pin. 
-                (Method is available only if the direction = _[output]_ or _[input/output]_).
-   - ENC1_ClrVal -Clears (set to zero) the output value. It is equivalent to the [PutVal(FALSE)]. This method is available only 
-                if the direction = _[output]_ or _[input/output]_.
-   - ENC1_SetVal -Sets (to one) the output value. It is equivalent to the [PutVal(TRUE)]. This method is available only if the 
-                direction = _[output]_ or _[input/output]_.
 
 Module "PWMA"      (component PWM)
    - PWMA_SetRatio16 -This method sets a new duty-cycle ratio. Ratio is expressed as a 16-bit unsigned integer number. 0 - FFFF 
@@ -103,7 +67,6 @@ Module "TU1"       (component TimerUnit_LDD)
                 available when at least one channel is configured.
 
 Module "DIRA"      (component BitIO)
-   - DIRA_SetDir -Sets a pin direction (available only if the direction = _[input/output]_).
    - DIRA_GetVal -Returns the input/output value. If the direction is [input] then the input value of the pin is read and 
                 returned. If the direction is [output] then the last written value is returned (see <Safe mode> property for 
                 limitations). This method cannot be disabled if direction is [input].
@@ -117,7 +80,6 @@ Module "DIRA"      (component BitIO)
                 direction = _[output]_ or _[input/output]_.
 
 Module "DIRB"      (component BitIO)
-   - DIRB_SetDir -Sets a pin direction (available only if the direction = _[input/output]_).
    - DIRB_GetVal -Returns the input/output value. If the direction is [input] then the input value of the pin is read and 
                 returned. If the direction is [output] then the last written value is returned (see <Safe mode> property for 
                 limitations). This method cannot be disabled if direction is [input].
@@ -142,25 +104,7 @@ Module "PWMB"      (component PWM)
                 16-bit unsigned integer number. The method is available only if it is not selected list of predefined values in 
                 <Starting pulse width> property.
 
-Module "TU2"       (component TimerUnit_LDD)
-   - TU2_Init -Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets 
-                interrupt priority, sets pin routing, sets timing, etc. If the property <"Enable in init. code"> is set to 
-                "yes" value then the device is also enabled (see the description of the <Enable> method). In this case the 
-                <Enable> method is not necessary and needn't to be generated. This method can be called only once. Before the 
-                second call of Init the <Deinit> must be called first.
-   - TU2_GetPeriodTicks -Returns the number of counter ticks before re-initialization. See also method <SetPeriodTicks>. This 
-                method is available only if the property <"Counter restart"> is switched to 'on-match' value.
-   - TU2_GetCounterValue -Returns the content of counter register. This method can be used both if counter is enabled and if 
-                counter is disabled. The method is not available if HW doesn't allow reading of the counter.
-   - TU2_SetOffsetTicks -Sets the new offset value to channel specified by the parameter ChannelIdx. It is user responsibility 
-                to use value below selected period. This method is available when at least one channel is configured.
-   - TU2_GetOffsetTicks -Returns the number of counter ticks to compare match channel specified by the parameter ChannelIdx. 
-                See also method <SetOffsetTicks>. This method is available when at least one channel is configured.
-   - TU2_SelectOutputAction -Sets the type of compare match and counter overflow action on channel output. This method is 
-                available when at least one channel is configured.
-
 Module "HMODE"     (component BitIO)
-   - HMODE_SetDir -Sets a pin direction (available only if the direction = _[input/output]_).
    - HMODE_GetVal -Returns the input/output value. If the direction is [input] then the input value of the pin is read and 
                 returned. If the direction is [output] then the last written value is returned (see <Safe mode> property for 
                 limitations). This method cannot be disabled if direction is [input].

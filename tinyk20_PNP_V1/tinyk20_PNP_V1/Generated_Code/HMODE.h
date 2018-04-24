@@ -7,25 +7,25 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 12:59, # CodeGen: 7
+**     Date/Time   : 2018-04-23, 18:53, # CodeGen: 29
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
+**         Note: This component is set to work in Output direction only.
 **         Methods of this component are mostly implemented as a macros
 **         (if supported by target language and compiler).
 **     Settings    :
 **          Component name                                 : HMODE
-**          Pin for I/O                                    : TSI0_CH3/PTA2/UART0_TX/FTM0_CH7/JTAG_TDO/TRACE_SWO/EZP_DO
+**          Pin for I/O                                    : ADC0_SE13/TSI0_CH8/PTB3/I2C0_SDA/UART0_CTS_b/UART0_COL_b/FTM0_FLT0
 **          Pin signal                                     : 
 **          BitIO_LDD                                      : BitIO_LDD
-**          Direction                                      : Input/Output
+**          Direction                                      : Output
 **          Initialization                                 : 
 **            Init. direction                              : Output
 **            Init. value                                  : 0
 **          Safe mode                                      : no
 **          Optimization for                               : speed
 **     Contents    :
-**         SetDir - void HMODE_SetDir(bool Dir);
 **         GetVal - bool HMODE_GetVal(void);
 **         PutVal - void HMODE_PutVal(bool Val);
 **         ClrVal - void HMODE_ClrVal(void);
@@ -68,6 +68,7 @@
 ** @brief
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
+**         Note: This component is set to work in Output direction only.
 **         Methods of this component are mostly implemented as a macros
 **         (if supported by target language and compiler).
 */         
@@ -100,26 +101,13 @@ extern "C" {
 
 /*
 ** ===================================================================
-**     Method      :  HMODE_SetDir (component BitIO)
-**     Description :
-**         This method sets direction of the component.
-**     Parameters  :
-**         NAME       - DESCRIPTION
-**         Dir        - Direction to set (FALSE or TRUE)
-**                      FALSE = Input, TRUE = Output
-**     Returns     : Nothing
-** ===================================================================
-*/
-#define HMODE_SetDir(Dir) (BitIoLdd8_SetDir(BitIoLdd8_DeviceData, (Dir)))
-
-/*
-** ===================================================================
 **     Method      :  HMODE_GetVal (component BitIO)
 **     Description :
 **         This method returns an input value.
 **           a) direction = Input  : reads the input value from the
 **                                   pin and returns it
 **           b) direction = Output : returns the last written value
+**         Note: This component is set to work in Output direction only.
 **     Parameters  : None
 **     Returns     :
 **         ---             - Input value. Possible values:
@@ -135,8 +123,6 @@ extern "C" {
 **     Method      :  HMODE_PutVal (component BitIO)
 **     Description :
 **         This method writes the new output value.
-**         Note: If direction is set to input the method code may not
-**               work properly.
 **     Parameters  :
 **         NAME       - DESCRIPTION
 **         Val             - Output value. Possible values:
@@ -152,8 +138,6 @@ extern "C" {
 **     Method      :  HMODE_ClrVal (component BitIO)
 **     Description :
 **         This method clears (sets to zero) the output value.
-**         Note: If direction is set to input the method code may not
-**               work properly.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================
@@ -165,8 +149,6 @@ extern "C" {
 **     Method      :  HMODE_SetVal (component BitIO)
 **     Description :
 **         This method sets (sets to one) the output value.
-**         Note: If direction is set to input the method code may not
-**               work properly.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================

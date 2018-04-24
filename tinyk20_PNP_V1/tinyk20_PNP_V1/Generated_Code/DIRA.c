@@ -7,25 +7,25 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 12:59, # CodeGen: 7
+**     Date/Time   : 2018-04-23, 18:53, # CodeGen: 29
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
+**         Note: This component is set to work in Output direction only.
 **         Methods of this component are mostly implemented as a macros
 **         (if supported by target language and compiler).
 **     Settings    :
 **          Component name                                 : DIRA
-**          Pin for I/O                                    : ADC0_SE8/TSI0_CH0/PTB0/LLWU_P5/I2C0_SCL/FTM1_CH0/FTM1_QD_PHA
+**          Pin for I/O                                    : TSI0_CH9/PTB16/UART0_RX/EWM_IN
 **          Pin signal                                     : 
 **          BitIO_LDD                                      : BitIO_LDD
-**          Direction                                      : Input/Output
+**          Direction                                      : Output
 **          Initialization                                 : 
 **            Init. direction                              : Output
 **            Init. value                                  : 0
 **          Safe mode                                      : no
 **          Optimization for                               : speed
 **     Contents    :
-**         SetDir - void DIRA_SetDir(bool Dir);
 **         GetVal - bool DIRA_GetVal(void);
 **         PutVal - void DIRA_PutVal(bool Val);
 **         ClrVal - void DIRA_ClrVal(void);
@@ -68,6 +68,7 @@
 ** @brief
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
+**         Note: This component is set to work in Output direction only.
 **         Methods of this component are mostly implemented as a macros
 **         (if supported by target language and compiler).
 */         
@@ -86,30 +87,13 @@ extern "C" {
 
 /*
 ** ===================================================================
-**     Method      :  DIRA_SetDir (component BitIO)
-**     Description :
-**         This method sets direction of the component.
-**     Parameters  :
-**         NAME       - DESCRIPTION
-**         Dir        - Direction to set (FALSE or TRUE)
-**                      FALSE = Input, TRUE = Output
-**     Returns     : Nothing
-** ===================================================================
-*/
-/*
-void DIRA_SetDir(bool Dir)
-
-**  This method is implemented as a macro. See DIRA.h file.  **
-*/
-
-/*
-** ===================================================================
 **     Method      :  DIRA_GetVal (component BitIO)
 **     Description :
 **         This method returns an input value.
 **           a) direction = Input  : reads the input value from the
 **                                   pin and returns it
 **           b) direction = Output : returns the last written value
+**         Note: This component is set to work in Output direction only.
 **     Parameters  : None
 **     Returns     :
 **         ---             - Input value. Possible values:
@@ -129,8 +113,6 @@ bool DIRA_GetVal(void)
 **     Method      :  DIRA_PutVal (component BitIO)
 **     Description :
 **         This method writes the new output value.
-**         Note: If direction is set to input the method code may not
-**               work properly.
 **     Parameters  :
 **         NAME       - DESCRIPTION
 **         Val             - Output value. Possible values:
@@ -150,8 +132,6 @@ void DIRA_PutVal(bool Val)
 **     Method      :  DIRA_ClrVal (component BitIO)
 **     Description :
 **         This method clears (sets to zero) the output value.
-**         Note: If direction is set to input the method code may not
-**               work properly.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================
@@ -167,8 +147,6 @@ void DIRA_ClrVal(void)
 **     Method      :  DIRA_SetVal (component BitIO)
 **     Description :
 **         This method sets (sets to one) the output value.
-**         Note: If direction is set to input the method code may not
-**               work properly.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================

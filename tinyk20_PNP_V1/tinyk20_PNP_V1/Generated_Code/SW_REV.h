@@ -7,29 +7,26 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 12:59, # CodeGen: 7
+**     Date/Time   : 2018-04-23, 18:53, # CodeGen: 29
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
+**         Note: This component is set to work in Input direction only.
 **         Methods of this component are mostly implemented as a macros
 **         (if supported by target language and compiler).
 **     Settings    :
 **          Component name                                 : SW_REV
-**          Pin for I/O                                    : ADC0_SE15/TSI0_CH14/PTC1/LLWU_P6/SPI0_PCS3/UART1_RTS_b/FTM0_CH0/I2S0_TXD0
+**          Pin for I/O                                    : CMP0_IN1/PTC7/SPI0_SIN/USB_SOF_OUT/I2S0_RX_FS
 **          Pin signal                                     : 
 **          BitIO_LDD                                      : BitIO_LDD
-**          Direction                                      : Input/Output
+**          Direction                                      : Input
 **          Initialization                                 : 
-**            Init. direction                              : Output
+**            Init. direction                              : Input
 **            Init. value                                  : 0
 **          Safe mode                                      : no
 **          Optimization for                               : speed
 **     Contents    :
-**         SetDir - void SW_REV_SetDir(bool Dir);
 **         GetVal - bool SW_REV_GetVal(void);
-**         PutVal - void SW_REV_PutVal(bool Val);
-**         ClrVal - void SW_REV_ClrVal(void);
-**         SetVal - void SW_REV_SetVal(void);
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -68,6 +65,7 @@
 ** @brief
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
+**         Note: This component is set to work in Input direction only.
 **         Methods of this component are mostly implemented as a macros
 **         (if supported by target language and compiler).
 */         
@@ -100,26 +98,13 @@ extern "C" {
 
 /*
 ** ===================================================================
-**     Method      :  SW_REV_SetDir (component BitIO)
-**     Description :
-**         This method sets direction of the component.
-**     Parameters  :
-**         NAME       - DESCRIPTION
-**         Dir        - Direction to set (FALSE or TRUE)
-**                      FALSE = Input, TRUE = Output
-**     Returns     : Nothing
-** ===================================================================
-*/
-#define SW_REV_SetDir(Dir) (BitIoLdd3_SetDir(BitIoLdd3_DeviceData, (Dir)))
-
-/*
-** ===================================================================
 **     Method      :  SW_REV_GetVal (component BitIO)
 **     Description :
 **         This method returns an input value.
 **           a) direction = Input  : reads the input value from the
 **                                   pin and returns it
 **           b) direction = Output : returns the last written value
+**         Note: This component is set to work in Input direction only.
 **     Parameters  : None
 **     Returns     :
 **         ---             - Input value. Possible values:
@@ -129,49 +114,6 @@ extern "C" {
 ** ===================================================================
 */
 #define SW_REV_GetVal() (BitIoLdd3_GetVal(BitIoLdd3_DeviceData))
-
-/*
-** ===================================================================
-**     Method      :  SW_REV_PutVal (component BitIO)
-**     Description :
-**         This method writes the new output value.
-**         Note: If direction is set to input the method code may not
-**               work properly.
-**     Parameters  :
-**         NAME       - DESCRIPTION
-**         Val             - Output value. Possible values:
-**                           FALSE - logical "0" (Low level)
-**                           TRUE - logical "1" (High level)
-**     Returns     : Nothing
-** ===================================================================
-*/
-#define SW_REV_PutVal(Val) (BitIoLdd3_PutVal(BitIoLdd3_DeviceData, (Val)))
-
-/*
-** ===================================================================
-**     Method      :  SW_REV_ClrVal (component BitIO)
-**     Description :
-**         This method clears (sets to zero) the output value.
-**         Note: If direction is set to input the method code may not
-**               work properly.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-#define SW_REV_ClrVal() (BitIoLdd3_ClrVal(BitIoLdd3_DeviceData))
-
-/*
-** ===================================================================
-**     Method      :  SW_REV_SetVal (component BitIO)
-**     Description :
-**         This method sets (sets to one) the output value.
-**         Note: If direction is set to input the method code may not
-**               work properly.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-#define SW_REV_SetVal() (BitIoLdd3_SetVal(BitIoLdd3_DeviceData))
 
 /* END SW_REV. */
 

@@ -7,15 +7,17 @@
 #include "buttons.h"
 #include "Application.h"
 #include "CS1.h"
-
+#include "LED2.h"
 #include "SW_FWD.h"
 #include "SW_REV.h"
 #if PL_TAPE_EN
 #include "SW_MSW.h"
 #endif
 
-uint32_t REV_Counter;
-uint8_t  REV_Flag;
+volatile int REV_Counter;
+volatile uint8_t  REV_Flag;
+volatile uint8_t  FWD_Flag;
+
 
 
 void BUT_SetFWD(){
@@ -37,7 +39,7 @@ void BUT_SetREV(){
 
 BUT_State BUT_GetState(BUT_Device button){
 
-	BUT_State but_state;// = BUT_IDLE;
+	BUT_State but_state = BUT_IDLE;// = BUT_IDLE;
 
 	uint8_t state = 0;
 
@@ -59,8 +61,12 @@ BUT_State BUT_GetState(BUT_Device button){
 				}
 			}
 
-			if (but_state == BUT_PRESS){
+			if ((but_state == BUT_PRESS)&&(FWD_Flag == 0)){
 				BUT_SetFWD();
+				FWD_Flag = 1;
+			    LED2_Neg();
+			} else if ((but_state == BUT_IDLE)&&(FWD_Flag == 1)){
+				FWD_Flag = 0;
 			}
 			break;
 		}
@@ -83,13 +89,21 @@ BUT_State BUT_GetState(BUT_Device button){
 
 			if (but_state == BUT_IDLE){
 				REV_Flag = 0;
+				REV_Counter = 0;
+				//break;
 			}else if ((but_state == BUT_PRESS)&&(REV_Flag == 0)){
 				REV_Flag = 1;
 				REV_Counter = 0;
-			} else if ((REV_Counter == LPRESS_CNT)&&(but_state == BUT_PRESS)){
-				REV_Counter = 0;
-				but_state = BUT_LPRESS;
-				BUT_SetREV();
+			}  else if (but_state == BUT_PRESS){
+				REV_Counter++;
+				if (REV_Counter == LPRESS_CNT){
+					//REV_Counter = 0;
+					but_state = BUT_LPRESS;
+					BUT_SetREV();
+				} else if (REV_Counter >= LPRESS_CNT){
+					but_state = BUT_LPRESS;
+
+				}
 			}
 
 			break;
@@ -134,13 +148,16 @@ void BUT_Count(void){
 }
 
 void BUT_Process(void){
-	//(void) BUT_GetState(BUT_MSW);
-	//(void) BUT_GetState(BUT_REV);
-	//(void) BUT_GetState(BUT_FWD);
+	(void) BUT_GetState(BUT_MSW);
+	(void) BUT_GetState(BUT_REV);
+	(void) BUT_GetState(BUT_FWD);
 }
 
 void BUT_Init(void){
 //	PORT_PDD_SetPinPullSelect(PORTC_BASE_PTR, 10, PORT_PDD_PULL_UP);
 //	PORT_PDD_SetPinPullEnable(PORTC_BASE_PTR, 10, PORT_PDD_PULL_ENABLE);
+	FWD_Flag = 0;
+	REV_Flag = 0;
+	REV_Counter = 0;
 	return;
 }

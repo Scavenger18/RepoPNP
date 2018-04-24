@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 12:59, # CodeGen: 7
+**     Date/Time   : 2018-04-23, 18:53, # CodeGen: 29
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,9 +17,9 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd8
-**          Pin for I/O                                    : TSI0_CH3/PTA2/UART0_TX/FTM0_CH7/JTAG_TDO/TRACE_SWO/EZP_DO
+**          Pin for I/O                                    : ADC0_SE13/TSI0_CH8/PTB3/I2C0_SDA/UART0_CTS_b/UART0_COL_b/FTM0_FLT0
 **          Pin signal                                     : 
-**          Direction                                      : Input/Output
+**          Direction                                      : Output
 **          Initialization                                 : 
 **            Init. direction                              : Output
 **            Init. value                                  : 0
@@ -27,7 +27,6 @@
 **          Safe mode                                      : no
 **     Contents    :
 **         Init   - LDD_TDeviceData* BitIoLdd8_Init(LDD_TUserData *UserDataPtr);
-**         SetDir - void BitIoLdd8_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
 **         GetVal - bool BitIoLdd8_GetVal(LDD_TDeviceData *DeviceDataPtr);
 **         PutVal - void BitIoLdd8_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
 **         ClrVal - void BitIoLdd8_ClrVal(LDD_TDeviceData *DeviceDataPtr);
@@ -128,14 +127,14 @@ LDD_TDeviceData* BitIoLdd8_Init(LDD_TUserData *UserDataPtr)
   DeviceDataPrv = &DeviceDataPrv__DEFAULT_RTOS_ALLOC;
   DeviceDataPrv->UserDataPtr = UserDataPtr; /* Store the RTOS device structure */
   /* Configure pin as output */
-  /* GPIOA_PDDR: PDD|=4 */
-  GPIOA_PDDR |= GPIO_PDDR_PDD(0x04);
+  /* GPIOB_PDDR: PDD|=8 */
+  GPIOB_PDDR |= GPIO_PDDR_PDD(0x08);
   /* Set initialization value */
-  /* GPIOA_PDOR: PDO&=~4 */
-  GPIOA_PDOR &= (uint32_t)~(uint32_t)(GPIO_PDOR_PDO(0x04));
+  /* GPIOB_PDOR: PDO&=~8 */
+  GPIOB_PDOR &= (uint32_t)~(uint32_t)(GPIO_PDOR_PDO(0x08));
   /* Initialization of Port Control register */
-  /* PORTA_PCR2: ISF=0,MUX=1 */
-  PORTA_PCR2 = (uint32_t)((PORTA_PCR2 & (uint32_t)~(uint32_t)(
+  /* PORTB_PCR3: ISF=0,MUX=1 */
+  PORTB_PCR3 = (uint32_t)((PORTB_PCR3 & (uint32_t)~(uint32_t)(
                 PORT_PCR_ISF_MASK |
                 PORT_PCR_MUX(0x06)
                )) | (uint32_t)(
@@ -145,35 +144,6 @@ LDD_TDeviceData* BitIoLdd8_Init(LDD_TUserData *UserDataPtr)
   PE_LDD_RegisterDeviceStructure(PE_LDD_COMPONENT_BitIoLdd8_ID,DeviceDataPrv);
   return ((LDD_TDeviceData *)DeviceDataPrv);
 }
-/*
-** ===================================================================
-**     Method      :  BitIoLdd8_SetDir (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Sets a pin direction (available only if the direction =
-**         _[input/output]_).
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-**     @param
-**         Dir             - Direction to set. Possible values:
-**                           <false> - Input
-**                           <true> - Output
-*/
-/* ===================================================================*/
-void BitIoLdd8_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir)
-{
-  (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
-  if (Dir) {
-    /* Output */
-    GPIO_PDD_SetPortOutputDirectionMask(BitIoLdd8_MODULE_BASE_ADDRESS, BitIoLdd8_PORT_MASK);
-  } else {
-    /* Input */
-    GPIO_PDD_SetPortInputDirectionMask(BitIoLdd8_MODULE_BASE_ADDRESS, BitIoLdd8_PORT_MASK);
-  }
-}
-
 /*
 ** ===================================================================
 **     Method      :  BitIoLdd8_GetVal (component BitIO_LDD)
@@ -199,13 +169,7 @@ bool BitIoLdd8_GetVal(LDD_TDeviceData *DeviceDataPtr)
   uint32_t PortData;                   /* Port data masked according to the bit used */
 
   (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
-  if ((GPIO_PDD_GetPortDirection(BitIoLdd8_MODULE_BASE_ADDRESS) & BitIoLdd8_PORT_MASK) == 0U) {
-    /* Port is configured as input */
-    PortData = GPIO_PDD_GetPortDataInput(BitIoLdd8_MODULE_BASE_ADDRESS) & BitIoLdd8_PORT_MASK;
-  } else {
-    /* Port is configured as output */
-    PortData = GPIO_PDD_GetPortDataOutput(BitIoLdd8_MODULE_BASE_ADDRESS) & BitIoLdd8_PORT_MASK;
-  }
+  PortData = GPIO_PDD_GetPortDataOutput(BitIoLdd8_MODULE_BASE_ADDRESS) & BitIoLdd8_PORT_MASK;
   return (PortData != 0U) ? (bool)TRUE : (bool)FALSE;
 }
 

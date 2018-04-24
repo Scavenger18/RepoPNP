@@ -35,7 +35,6 @@
 - \subpage PwmLdd1
 - \subpage BitIoLdd6
 - \subpage BitIoLdd7
-- \subpage TU2
 - \subpage PwmLdd2
 - \subpage BitIoLdd8
 - \subpage ASerialLdd1
