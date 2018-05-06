@@ -14,6 +14,8 @@
 #define PL_TAPE_EN			(1)		// Configruation uses Tape Puller
 #define PL_COMM_EN			(1)		// Configruation uses UART Communication
 
+
+
 void PL_Init();
 
 #endif /* SOURCES_PLATFORM_H_ */

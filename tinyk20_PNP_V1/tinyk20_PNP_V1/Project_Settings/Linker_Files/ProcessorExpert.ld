@@ -10,7 +10,7 @@
 /*##                                   */
 /*##     Compiler  : GNU C Compiler    */
 /*##                                   */
-/*##     Date/Time : 2018-04-16, 10:46, # CodeGen: 2 */
+/*##     Date/Time : 2018-04-24, 16:41, # CodeGen: 33 */
 /*##                                   */
 /*##     Abstract  :                   */
 /*##                                   */
@@ -47,7 +47,7 @@ MEMORY {
 /* Define output sections */
 SECTIONS
 {
-  /* The startup code goes first into INTERNAL_RAM */
+  /* The startup code goes first into INTERNAL_FLASH */
   .interrupts :
   {
     __vector_table = .;
@@ -63,7 +63,7 @@ SECTIONS
 	. = ALIGN(4);
   } > m_cfmprotrom
   
-  /* The program code and other data goes into INTERNAL_RAM */
+  /* The program code and other data goes into INTERNAL_FLASH */
   .text :
   {
     . = ALIGN(4);
@@ -146,7 +146,7 @@ SECTIONS
 	___ROM_AT = .;
   } > m_text
   /* Initialized data sections goes into RAM, load LMA copy after code */
-  .data :
+  .data : AT(___ROM_AT)
   {
     . = ALIGN(4);
     _sdata = .;        /* create a global symbol at data start */
@@ -189,10 +189,23 @@ SECTIONS
  	  PROVIDE ( __bss_end__ = __END_BSS );
   } > m_data
 
-  __S_romp = 0;
+  _romp_at = ___ROM_AT + SIZEOF(.data) +SIZEOF(.m_data_20000000);
+  .romp : AT(_romp_at)
+  {
+    __S_romp = _romp_at;
+    LONG(___ROM_AT);
+    LONG(_sdata);
+    LONG(___data_size);
+    LONG(___m_data_20000000_ROMStart);
+    LONG(___m_data_20000000_RAMStart);
+    LONG(___m_data_20000000_ROMSize);
+    LONG(0);
+    LONG(0);
+    LONG(0);
+  } > m_data
   
   text_end = ORIGIN(m_text) + LENGTH(m_text);
-  data_init_end = ___m_data_20000000_ROMStart + SIZEOF(.m_data_20000000);
+  data_init_end = ___m_data_20000000_ROMStart + SIZEOF(.m_data_20000000) + SIZEOF(.romp);
   ASSERT( data_init_end <= text_end, "region m_text overflowed with text and data")
   
   /* User_heap_stack section, used to check that there is enough RAM left */

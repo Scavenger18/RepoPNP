@@ -38,6 +38,8 @@ Generated_Code/Vectors.o: ../Generated_Code/Vectors.c \
  ../Generated_Code/SEGGER_RTT_Conf.h ../Generated_Code/SEGGER_SYSVIEW.h \
  ../Generated_Code/LED2.h ../Generated_Code/LED2config.h \
  ../Generated_Code/LEDpin2.h ../Generated_Code/BitIoLdd9.h \
+ ../Generated_Code/TGT_SWD_OE.h ../Generated_Code/BitIoLdd10.h \
+ ../Generated_Code/HF1.h ../Generated_Code/HF1config.h \
  C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources/Events.h \
  C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/PE_Types.h \
  C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/PE_Error.h \
@@ -78,7 +80,10 @@ Generated_Code/Vectors.o: ../Generated_Code/Vectors.c \
  C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/LEDpin2.h \
  C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/BitIoLdd9.h \
  C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/AS1.h \
- C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/ASerialLdd1.h
+ C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/ASerialLdd1.h \
+ C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TGT_SWD_OE.h \
+ C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/BitIoLdd10.h \
+ C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1.h
 
 ../Generated_Code/Cpu.h:
 
@@ -224,6 +229,14 @@ C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/S
 
 ../Generated_Code/BitIoLdd9.h:
 
+../Generated_Code/TGT_SWD_OE.h:
+
+../Generated_Code/BitIoLdd10.h:
+
+../Generated_Code/HF1.h:
+
+../Generated_Code/HF1config.h:
+
 C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources/Events.h:
 
 C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/PE_Types.h:
@@ -305,3 +318,9 @@ C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/G
 C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/AS1.h:
 
 C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/ASerialLdd1.h:
+
+C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TGT_SWD_OE.h:
+
+C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/BitIoLdd10.h:
+
+C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1.h:

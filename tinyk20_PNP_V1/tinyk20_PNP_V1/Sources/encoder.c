@@ -12,23 +12,22 @@
 #include "enc1.h"
 #include "CS1.h"
 #include "LED1.h"
+#include "LED2.h"
+#include "FRTOS1.h"
+
+#include "motor.h"
 
 #if PL_MOTOR_EN
 //#include "motor.h"
 #endif
 
-volatile bool enc_state = 0;
+static volatile bool enc_state = 0;
+static volatile unsigned int enc_cnt = 0;
+static volatile unsigned int enc_step;
+static volatile unsigned int enc_trigger;
 
 // change if step is defined through other software part
 
-void ENC_IntNew(void){
-
-	if (enc_cnt==enc_step){
-		enc_cnt = 0;
-		ENC_SetTrigger(1);
-	}
-	enc_cnt++;
-}
 
 
 void ENC_SetTrigger(unsigned int tmp){
@@ -51,51 +50,64 @@ unsigned int ENC_GetTrigger(void){
 unsigned int ENC_GetVal(void){
 
 	bool tmp = ENC1_GetVal();
+
     //WAIT1_Waitus(100); /* burn some time */
 	if (enc_state != tmp){
-		LED1_Neg();
 		enc_state = tmp;
 		enc_cnt++;
+		LED1_Neg();
 	}
 
 
-//    if(ENC1_GetVal()==ENC_INV){
-//    	if(enc_flag == 0){
-//    		//LED1_Neg();
-//    		enc_cnt++;
-//    		enc_flag = 1;
-//    	}
-//    }else{
-//    	enc_flag = 0;
-//    }
-
-    if(enc_cnt == enc_step){
+    if(enc_cnt == (enc_step)){
     	/* motor off*/
- //   	MOT_Speed(MOT_SPROC,0,MOT_FWD);	// -> moved to application
- //   	LED2_Neg();
+    	//MOT_Speed(MOT_SPROC,0,MOT_FWD);
     	ENC_SetTrigger(1);
+    	//LED1_Neg();
     	enc_cnt = 0;				// reset counter
-//    	enc_flag = 0;
     	return 1;
+    } else{
+    	return 0;
     }
-    return 0;
+    //return 0;
+}
+
+unsigned int ENC_GetHole(void){
+	return ENC1_GetVal();
 }
 
 
 
+void ENC_ResetCnt(void){
+	CS1_CriticalVariable();
 
-void ENC_ResetFlag(){
-	enc_flag = 0;
-}
-
-void ENC_ResetCnt(){
+	CS1_EnterCritical();
 	enc_cnt = 0;
+	CS1_ExitCritical();
+
 }
 
 void ENC_SetStep(unsigned int stepSize){
 	enc_step = stepSize;
 }
 
+static void ENC_task(void *param) {
+	unsigned int enc_val = 0;
+	(void)param;
+	for(;;) {
+		// if Encoder counter is done turn off sprocket motor
+		enc_val = ENC_GetVal();
+		if(enc_val==1){
+			MOT_Speed(MOT_SPROC,0,MOT_FWD);
+		}
+		vTaskDelay(pdMS_TO_TICKS(1));
+	} /* for */
+}
 
+void ENC_Init(void){
+	if (xTaskCreate(ENC_task, "ENC", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, NULL) != pdPASS) {
+		for(;;){} /* error! probably out of memory */
+	}
+}
 
 #endif

@@ -14,6 +14,7 @@ typedef enum{
 	FSM_FWD,
 	FSM_REV,
 	FSM_RUN,
+	FSM_STOP,
 	FSM_ERROR
 }FSM_State;
 

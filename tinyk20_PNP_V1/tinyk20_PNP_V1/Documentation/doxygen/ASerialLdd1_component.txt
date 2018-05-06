@@ -19,38 +19,38 @@ by the component.
 <tr><td colspan="4" class="ttitle1">ASerialLdd1 Initialization</td></tr>
 <tr><td class="ttitle2">Address</td><td class="ttitle2">Register</td><td class="ttitle2">Register Value</td><td class="ttitle2">Register Description</td></tr>
 <tr><td>0x40048034</td><td>SIM_SCGC4</td>
-<td class="regNotResetVal">0xF0101030</td>
+<td class="regNotResetVal">0xF0100430</td>
  <td>SIM_SCGC4 register, peripheral ASerialLdd1.</td></tr>
-<tr><td>0x4004C008</td><td>PORTD_PCR2</td>
+<tr><td>0x4004C018</td><td>PORTD_PCR6</td>
 <td class="regNotResetVal">0x00000300</td>
- <td>PORTD_PCR2 register, peripheral ASerialLdd1.</td></tr>
-<tr><td>0x4004C00C</td><td>PORTD_PCR3</td>
+ <td>PORTD_PCR6 register, peripheral ASerialLdd1.</td></tr>
+<tr><td>0x4004C01C</td><td>PORTD_PCR7</td>
 <td class="regNotResetVal">0x00000300</td>
- <td>PORTD_PCR3 register, peripheral ASerialLdd1.</td></tr>
-<tr><td>0xE000E414</td><td>NVICIP20</td>
+ <td>PORTD_PCR7 register, peripheral ASerialLdd1.</td></tr>
+<tr><td>0xE000E410</td><td>NVICIP16</td>
 <td class="regNotResetVal">0x00000080</td>
- <td>NVICIP20 register, peripheral ASerialLdd1.</td></tr>
+ <td>NVICIP16 register, peripheral ASerialLdd1.</td></tr>
 <tr><td>0xE000E100</td><td>NVICISER0</td>
-<td class="regNotResetVal">0x00300000</td>
+<td class="regNotResetVal">0x00030000</td>
  <td>NVICISER0 register, peripheral ASerialLdd1.</td></tr>
-<tr><td>0xE000E415</td><td>NVICIP21</td>
+<tr><td>0xE000E411</td><td>NVICIP17</td>
 <td class="regNotResetVal">0x00000080</td>
- <td>NVICIP21 register, peripheral ASerialLdd1.</td></tr>
-<tr><td>0x4006C002</td><td>UART2_C1</td>
+ <td>NVICIP17 register, peripheral ASerialLdd1.</td></tr>
+<tr><td>0x4006A002</td><td>UART0_C1</td>
 <td class="regResetVal">0x00000000</td>
- <td>UART2_C1 register, peripheral ASerialLdd1.</td></tr>
-<tr><td>0x4006C006</td><td>UART2_C3</td>
+ <td>UART0_C1 register, peripheral ASerialLdd1.</td></tr>
+<tr><td>0x4006A006</td><td>UART0_C3</td>
 <td class="regResetVal">0x00000000</td>
- <td>UART2_C3 register, peripheral ASerialLdd1.</td></tr>
-<tr><td>0x4006C00A</td><td>UART2_C4</td>
+ <td>UART0_C3 register, peripheral ASerialLdd1.</td></tr>
+<tr><td>0x4006A00A</td><td>UART0_C4</td>
 <td class="regResetVal">0x00000000</td>
- <td>UART2_C4 register, peripheral ASerialLdd1.</td></tr>
-<tr><td>0x4006C005</td><td>UART2_S2</td>
+ <td>UART0_C4 register, peripheral ASerialLdd1.</td></tr>
+<tr><td>0x4006A005</td><td>UART0_S2</td>
 <td class="regResetVal">0x00000000</td>
- <td>UART2_S2 register, peripheral ASerialLdd1.</td></tr>
-<tr><td>0x4006C00D</td><td>UART2_MODEM</td>
+ <td>UART0_S2 register, peripheral ASerialLdd1.</td></tr>
+<tr><td>0x4006A00D</td><td>UART0_MODEM</td>
 <td class="regResetVal">0x00000000</td>
- <td>UART2_MODEM register, peripheral ASerialLdd1.</td></tr>
+ <td>UART0_MODEM register, peripheral ASerialLdd1.</td></tr>
 </table>
 Color Denotes Reset Value
 <br/>
@@ -105,20 +105,20 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x40048034</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0xF0101030</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0xF0100430</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0xF0100030</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
 <tr><td>20</td><td>VREF</td><td>0x01</td><td>VREF Clock Gate Control</td>
 <tr><td>19</td><td>CMP</td><td>0x00</td><td>Comparator Clock Gate Control</td>
 <tr><td>18</td><td>USBOTG</td><td>0x00</td><td>USB Clock Gate Control</td>
-<tr><td>12</td><td>UART2</td><td>0x01</td><td>UART2 Clock Gate Control</td>
+<tr><td>12</td><td>UART2</td><td>0x00</td><td>UART2 Clock Gate Control</td>
 <tr><td>11</td><td>UART1</td><td>0x00</td><td>UART1 Clock Gate Control</td>
-<tr><td>10</td><td>UART0</td><td>0x00</td><td>UART0 Clock Gate Control</td>
+<tr><td>10</td><td>UART0</td><td>0x01</td><td>UART0 Clock Gate Control</td>
 <tr><td>6</td><td>I2C0</td><td>0x00</td><td>I2C0 Clock Gate Control</td>
 <tr><td>2</td><td>CMT</td><td>0x00</td><td>CMT Clock Gate Control</td>
 <tr><td>1</td><td>EWM</td><td>0x00</td><td>EWM Clock Gate Control</td>
 </tr></table>
-<div class="reghdr1">PORTD_PCR2</div>
+<div class="reghdr1">PORTD_PCR6</div>
 <div class="regdiag">
 <table class="regtbl">
 <tr class="trd1r">
@@ -162,7 +162,7 @@ registers of the peripheral(s) configured by the component.
 </table>
         
 </div>
-<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4004C008</td></tr>
+<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4004C018</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000300</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
@@ -177,7 +177,7 @@ registers of the peripheral(s) configured by the component.
 <tr><td>1</td><td>PE</td><td>0x00</td><td>Pull Enable</td>
 <tr><td>0</td><td>PS</td><td>0x00</td><td>Pull Select</td>
 </tr></table>
-<div class="reghdr1">PORTD_PCR3</div>
+<div class="reghdr1">PORTD_PCR7</div>
 <div class="regdiag">
 <table class="regtbl">
 <tr class="trd1r">
@@ -221,7 +221,7 @@ registers of the peripheral(s) configured by the component.
 </table>
         
 </div>
-<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4004C00C</td></tr>
+<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4004C01C</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000300</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
@@ -236,14 +236,14 @@ registers of the peripheral(s) configured by the component.
 <tr><td>1</td><td>PE</td><td>0x00</td><td>Pull Enable</td>
 <tr><td>0</td><td>PS</td><td>0x00</td><td>Pull Select</td>
 </tr></table>
-<div class="reghdr1">NVICIP20</div>
+<div class="reghdr1">NVICIP16</div>
 <div class="regdiag">
 <table class="regtbl">
 <tr class="trd1r">
 <td class="trd1c">Bit</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
 </tr>
 <tr>
-<td class="trd1c">R</td><td colspan="8" rowspan="2">PRI20</td>
+<td class="trd1c">R</td><td colspan="8" rowspan="2">PRI16</td>
 </tr>
 <tr>
 <td class="trd1c">W</td>
@@ -254,11 +254,11 @@ registers of the peripheral(s) configured by the component.
 </table>
         
 </div>
-<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0xE000E414</td></tr>
+<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0xE000E410</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000080</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
-<tr><td>0 - 7</td><td>PRI20</td><td>0x80</td><td>Priority of interrupt 20</td>
+<tr><td>0 - 7</td><td>PRI16</td><td>0x80</td><td>Priority of interrupt 16</td>
 </tr></table>
 <div class="reghdr1">NVICISER0</div>
 <div class="regdiag">
@@ -297,19 +297,19 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0xE000E100</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00300000</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00030000</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
 <tr><td>0 - 31</td><td>SETENA</td><td>0x00</td><td>Interrupt set enable bits</td>
 </tr></table>
-<div class="reghdr1">NVICIP21</div>
+<div class="reghdr1">NVICIP17</div>
 <div class="regdiag">
 <table class="regtbl">
 <tr class="trd1r">
 <td class="trd1c">Bit</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
 </tr>
 <tr>
-<td class="trd1c">R</td><td colspan="8" rowspan="2">PRI21</td>
+<td class="trd1c">R</td><td colspan="8" rowspan="2">PRI17</td>
 </tr>
 <tr>
 <td class="trd1c">W</td>
@@ -320,13 +320,13 @@ registers of the peripheral(s) configured by the component.
 </table>
         
 </div>
-<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0xE000E415</td></tr>
+<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0xE000E411</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000080</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
-<tr><td>0 - 7</td><td>PRI21</td><td>0x80</td><td>Priority of interrupt 21</td>
+<tr><td>0 - 7</td><td>PRI17</td><td>0x80</td><td>Priority of interrupt 17</td>
 </tr></table>
-<div class="reghdr1">UART2_C1</div>
+<div class="reghdr1">UART0_C1</div>
 <div class="regdiag">
 <table class="regtbl">
 <tr class="trd1r">
@@ -346,7 +346,7 @@ registers of the peripheral(s) configured by the component.
 </table>
         
 </div>
-<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006C002</td></tr>
+<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006A002</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000000</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
@@ -359,7 +359,7 @@ registers of the peripheral(s) configured by the component.
 <tr><td>1</td><td>PE</td><td>0x00</td><td>Parity Enable</td>
 <tr><td>0</td><td>PT</td><td>0x00</td><td>Parity Type</td>
 </tr></table>
-<div class="reghdr1">UART2_C3</div>
+<div class="reghdr1">UART0_C3</div>
 <div class="regdiag">
 <table class="regtbl">
 <tr class="trd1r">
@@ -380,7 +380,7 @@ registers of the peripheral(s) configured by the component.
 </table>
         
 </div>
-<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006C006</td></tr>
+<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006A006</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000000</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
@@ -393,7 +393,7 @@ registers of the peripheral(s) configured by the component.
 <tr><td>1</td><td>FEIE</td><td>0x00</td><td>Framing Error Interrupt Enable</td>
 <tr><td>0</td><td>PEIE</td><td>0x00</td><td>Parity Error Interrupt Enable</td>
 </tr></table>
-<div class="reghdr1">UART2_C4</div>
+<div class="reghdr1">UART0_C4</div>
 <div class="regdiag">
 <table class="regtbl">
 <tr class="trd1r">
@@ -412,7 +412,7 @@ registers of the peripheral(s) configured by the component.
 </table>
         
 </div>
-<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006C00A</td></tr>
+<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006A00A</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000000</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
@@ -421,7 +421,7 @@ registers of the peripheral(s) configured by the component.
 <tr><td>5</td><td>M10</td><td>0x00</td><td>10-bit Mode select</td>
 <tr><td>0 - 4</td><td>BRFA</td><td>0x00</td><td>Baud Rate Fine Adjust</td>
 </tr></table>
-<div class="reghdr1">UART2_S2</div>
+<div class="reghdr1">UART0_S2</div>
 <div class="regdiag">
 <table class="regtbl">
 <tr class="trd1r">
@@ -442,7 +442,7 @@ registers of the peripheral(s) configured by the component.
 </table>
         
 </div>
-<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006C005</td></tr>
+<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006A005</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000000</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
@@ -455,7 +455,7 @@ registers of the peripheral(s) configured by the component.
 <tr><td>1</td><td>LBKDE</td><td>0x00</td><td>LIN Break Detection Enable</td>
 <tr><td>0</td><td>RAF</td><td>0x00</td><td>Receiver Active Flag</td>
 </tr></table>
-<div class="reghdr1">UART2_MODEM</div>
+<div class="reghdr1">UART0_MODEM</div>
 <div class="regdiag">
 <table class="regtbl">
 <tr class="trd1r">
@@ -475,7 +475,7 @@ registers of the peripheral(s) configured by the component.
 </table>
         
 </div>
-<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006C00D</td></tr>
+<table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4006A00D</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000000</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
@@ -489,13 +489,13 @@ registers of the peripheral(s) configured by the component.
 \page ASerialLdd1_settings Component Settings
 \code
 **          Component name                                 : ASerialLdd1
-**          Device                                         : UART2
+**          Device                                         : UART0
 **          Interrupt service/event                        : Enabled
-**            Interrupt RxD                                : INT_UART2_RX_TX
+**            Interrupt RxD                                : INT_UART0_RX_TX
 **            Interrupt RxD priority                       : medium priority
-**            Interrupt TxD                                : INT_UART2_RX_TX
+**            Interrupt TxD                                : INT_UART0_RX_TX
 **            Interrupt TxD priority                       : medium priority
-**            Interrupt Error                              : INT_UART2_ERR
+**            Interrupt Error                              : INT_UART0_ERR
 **            Interrupt Error priority                     : medium priority
 **          Settings                                       : 
 **            Data width                                   : 8 bits
@@ -510,10 +510,10 @@ registers of the peripheral(s) configured by the component.
 **            Receiver input                               : Not inverted
 **            Break generation length                      : 10/11 bits
 **            Receiver                                     : Enabled
-**              RxD                                        : PTD2/LLWU_P13/SPI0_SOUT/UART2_RX
+**              RxD                                        : ADC0_SE7b/PTD6/LLWU_P15/SPI0_PCS3/UART0_RX/FTM0_CH6/FTM0_FLT0
 **              RxD pin signal                             : 
 **            Transmitter                                  : Enabled
-**              TxD                                        : PTD3/SPI0_SIN/UART2_TX
+**              TxD                                        : PTD7/CMT_IRO/UART0_TX/FTM0_CH7/FTM0_FLT1
 **              TxD pin signal                             : 
 **            Flow control                                 : None
 **          Initialization                                 : 

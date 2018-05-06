@@ -7,7 +7,7 @@
 **     Version     : Component 02.611, Driver 01.01, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-16, 17:14, # CodeGen: 21
+**     Date/Time   : 2018-04-30, 23:31, # CodeGen: 44
 **     Abstract    :
 **         This component "AsynchroSerial" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -17,13 +17,13 @@
 **         The component requires one on-chip asynchronous serial channel.
 **     Settings    :
 **          Component name                                 : AS1
-**          Channel                                        : UART2
+**          Channel                                        : UART0
 **          Interrupt service/event                        : Enabled
-**            Interrupt RxD                                : INT_UART2_RX_TX
+**            Interrupt RxD                                : INT_UART0_RX_TX
 **            Interrupt RxD priority                       : medium priority
-**            Interrupt TxD                                : INT_UART2_RX_TX
+**            Interrupt TxD                                : INT_UART0_RX_TX
 **            Interrupt TxD priority                       : medium priority
-**            Interrupt Error                              : INT_UART2_ERR
+**            Interrupt Error                              : INT_UART0_ERR
 **            Interrupt Error priority                     : medium priority
 **            Input buffer size                            : 64
 **            Output buffer size                           : 64
@@ -35,10 +35,10 @@
 **            Width                                        : 8 bits
 **            Stop bit                                     : 1
 **            Receiver                                     : Enabled
-**              RxD                                        : PTD2/LLWU_P13/SPI0_SOUT/UART2_RX
+**              RxD                                        : ADC0_SE7b/PTD6/LLWU_P15/SPI0_PCS3/UART0_RX/FTM0_CH6/FTM0_FLT0
 **              RxD pin signal                             : 
 **            Transmitter                                  : Enabled
-**              TxD                                        : PTD3/SPI0_SIN/UART2_TX
+**              TxD                                        : PTD7/CMT_IRO/UART0_TX/FTM0_CH7/FTM0_FLT1
 **              TxD pin signal                             : 
 **            Baud rate                                    : 38400 baud
 **            Break signal                                 : Disabled

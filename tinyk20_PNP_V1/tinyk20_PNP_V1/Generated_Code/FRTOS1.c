@@ -7,7 +7,7 @@
 **     Version     : Component 01.552, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-17, 13:06, # CodeGen: 25
+**     Date/Time   : 2018-04-25, 22:50, # CodeGen: 38
 **     Abstract    :
 **          This component implements the FreeRTOS Realtime Operating System
 **     Settings    :
@@ -34,7 +34,10 @@
 **            Record Stack High Address                    : yes
 **          Segger System Viewer Trace                     : Disabled
 **          Percepio Trace                                 : Disabled
-**          Generate Runtime Statistics                    : Disabled
+**          Generate Runtime Statistics                    : Enabled
+**            Use Tick Counter                             : yes
+**            LDD                                          : Disabled
+**            non-LDD                                      : Disabled
 **          Scheduler                                      : Settings for the scheduler
 **            ColdFire V1                                  : Disabled
 **            ColdFire V2                                  : Disabled
@@ -63,7 +66,7 @@
 **            TaskExitError Handler                        : no
 **          Ticks                                          : Settings for the periodic tick timer
 **            Tickless Idle Mode                           : Disabled
-**            Tick Rate (Hz)                               : 100
+**            Tick Rate (Hz)                               : 1000
 **            Use 16bit ticks                              : no
 **            non-LDD Tick                                 : Disabled
 **            LDD Tick                                     : Disabled
@@ -81,7 +84,7 @@
 **              Linker Heap Base Symbol                    : __HeapBase
 **              Linker Heap Limit Symbol                   : __HeapLimit
 **              Linker Heap Size Symbol                    : __heap_size
-**              Memory Allocation Scheme                   : Scheme 4: merge free blocks
+**              Memory Allocation Scheme                   : Scheme 1: alloc only
 **            Static Allocation                            : Disabled
 **            User Memory Section                          : Disabled
 **          RTOS Adaptor                                   : Configures the RTOS adapter settings
@@ -142,6 +145,7 @@
 **         vTaskList                            - void FRTOS1_vTaskList(signed portCHAR *pcWriteBuffer, size_t bufSize);
 **         uxTaskGetStackHighWaterMark          - unsigned_portBASE_TYPE FRTOS1_uxTaskGetStackHighWaterMark(xTaskHandle xTask);
 **         uxTaskGetNumberOfTasks               - unsigned_portBASE_TYPE FRTOS1_uxTaskGetNumberOfTasks(void);
+**         vTaskGetRunTimeStats                 - void FRTOS1_vTaskGetRunTimeStats(portCHAR *pcWriteBuffer, size_t bufSize);
 **         uxQueueMessagesWaiting               - unsigned_portBASE_TYPE FRTOS1_uxQueueMessagesWaiting(xQueueHandle xQueue);
 **         uxQueueMessagesWaitingfromISR        - unsigned_portBASE_TYPE FRTOS1_uxQueueMessagesWaitingfromISR(xQueueHandle...
 **         xQueueCreate                         - xQueueHandle FRTOS1_xQueueCreate(unsigned_portBASE_TYPE uxQueueLength,...
@@ -1232,6 +1236,48 @@ unsigned_portBASE_TYPE FRTOS1_uxTaskGetStackHighWaterMark(xTaskHandle xTask)
 */
 /*
 unsigned_portBASE_TYPE FRTOS1_uxTaskGetNumberOfTasks(void)
+{
+  *** Implemented as macro in the header file FRTOS1.h
+}
+*/
+
+/*
+** ===================================================================
+**     Method      :  FRTOS1_vTaskGetRunTimeStats (component FreeRTOS)
+**     Description :
+**         configGENERATE_RUN_TIME_STATS must be defined as 1 for this
+**         function to be available. The application must also then
+**         provide definitions for
+**         portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() and
+**         portGET_RUN_TIME_COUNTER_VALUE to configure a peripheral
+**         timer/counter and return the timers current count value
+**         respectively. The counter should be at least 10 times the
+**         frequency of the tick count.
+**         NOTE: This function will disable interrupts for its duration.
+**         It is not intended for normal application runtime use but as
+**         a debug aid.
+**         Setting configGENERATE_RUN_TIME_STATS to 1 will result in a
+**         total accumulated execution time being stored for each task.
+**         The resolution of the accumulated time value depends on the
+**         frequency of the timer configured by the
+**         portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() macro. Calling
+**         vTaskGetRunTimeStats() writes the total execution time of
+**         each task into a buffer, both as an absolute count value and
+**         as a percentage of the total system execution time. 
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         pcWriteBuffer   - A buffer into which
+**                           the execution times will be written, in
+**                           ascii form. This buffer is assumed to be
+**                           large enough to contain the generated
+**                           report. Approximately 40 bytes per task
+**                           should be sufficient. 
+**         bufSize         - size of buffer
+**     Returns     : Nothing
+** ===================================================================
+*/
+/*
+void FRTOS1_vTaskGetRunTimeStats(portCHAR *pcWriteBuffer, size_t bufSize)
 {
   *** Implemented as macro in the header file FRTOS1.h
 }

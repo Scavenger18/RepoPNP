@@ -12,12 +12,25 @@
 #include "CLS1.h"
 #include "UTIL1.h"
 #include "CS1.h"
+#include "FRTOS1.h"
 
 #include "Application.h"
 
 #if PL_ENCODER_EN
 #include "encoder.h"
 #endif
+
+static unsigned char buffer[64];
+
+//static const CLS1_ConstParseCommandCallback cmdTable[] =
+//{
+////    CLS1_ParseCommand,
+//COMM_ParseCommand,
+////    LED2_ParseCommand,
+////    LED3_ParseCommand,
+////    MMA1_ParseCommand,
+//NULL/* sentinel */
+//};
 
 
 void COMM_SetFWD(){
@@ -132,6 +145,10 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 					ENC_SetStep(value);
 				#endif
 				return ERR_OK;
+			} else {
+				// catch false/ unknown command
+				COMM_SendError("unknown command");
+				return ERR_VALUE;
 			}
 			return ERR_OK;
 
@@ -287,6 +304,21 @@ uint8_t COMM_ReadAndParse(uint8_t *cmdBuf, size_t cmdBufSize, CLS1_ConstStdIOTyp
 
 
 
+static void COMM_task(void *param) {
+   (void)param;
+   for(;;) {
+		 //error_res = COMM_ReadAndParse(buffer, sizeof(buffer), CLS1_GetStdio());
+		(void)COMM_ReadAndParse(buffer, sizeof(buffer), CLS1_GetStdio());
+		vTaskDelay(pdMS_TO_TICKS(100));
+	} /* for */
+ }
 
+void COMM_Init(void){
+	buffer[0] = '\0';
+
+	if (xTaskCreate(COMM_task, "UART", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
+		for(;;){} /* error! probably out of memory */
+	}
+}
 
 #endif

@@ -69,6 +69,9 @@
 #include "BitIoLdd9.h"
 #include "AS1.h"
 #include "ASerialLdd1.h"
+#include "TGT_SWD_OE.h"
+#include "BitIoLdd10.h"
+#include "HF1.h"
 
 #ifdef __cplusplus
 extern "C" {

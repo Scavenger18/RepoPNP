@@ -346,6 +346,16 @@ Module "FRTOS1"    (component FreeRTOS)
                 to the task since the task started executing - that is the amount of stack that remained unused when the task 
                 stack was at its greatest (deepest) value. This is what is referred to as the stack 'high water mark'.
    - FRTOS1_uxTaskGetNumberOfTasks -Returns the number of tasks
+   - FRTOS1_vTaskGetRunTimeStats -configGENERATE_RUN_TIME_STATS must be defined as 1 for this function to be available. The 
+                application must also then provide definitions for portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() and 
+                portGET_RUN_TIME_COUNTER_VALUE to configure a peripheral timer/counter and return the timers current count 
+                value respectively. The counter should be at least 10 times the frequency of the tick count.   NOTE: This 
+                function will disable interrupts for its duration. It is not intended for normal application runtime use but as 
+                a debug aid.   Setting configGENERATE_RUN_TIME_STATS to 1 will result in a total accumulated execution time 
+                being stored for each task. The resolution of the accumulated time value depends on the frequency of the timer 
+                configured by the portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() macro. Calling vTaskGetRunTimeStats() writes the 
+                total execution time of each task into a buffer, both as an absolute count value and as a percentage of the 
+                total system execution time.
    - FRTOS1_uxQueueMessagesWaiting -Queries the number of items that are currently held within a queue.
    - FRTOS1_uxQueueMessagesWaitingfromISR -A version of uxQueueMessagesWaiting() that can be used from inside an interrupt 
                 service routine.
@@ -825,6 +835,24 @@ Module "AS1"       (component AsynchroSerial)
                 property is enabled.
    - AS1_GetCharsInTxBuf -Returns the number of characters in the output buffer. This method is available only if the 
                 transmitter property is enabled.
+
+Module "TGT_SWD_OE" (component BitIO)
+   - TGT_SWD_OE_GetVal -Returns the input/output value. If the direction is [input] then the input value of the pin is read and 
+                returned. If the direction is [output] then the last written value is returned (see <Safe mode> property for 
+                limitations). This method cannot be disabled if direction is [input].
+   - TGT_SWD_OE_PutVal -The specified output value is set. If the direction is [input], the component saves the value to a 
+                memory or a register and this value will be written to the pin after switching to the output mode (using 
+                [SetDir(TRUE)]; see <Safe mode> property for limitations). If the direction is [output], it writes the value to 
+                the pin. (Method is available only if the direction = _[output]_ or _[input/output]_).
+   - TGT_SWD_OE_ClrVal -Clears (set to zero) the output value. It is equivalent to the [PutVal(FALSE)]. This method is 
+                available only if the direction = _[output]_ or _[input/output]_.
+   - TGT_SWD_OE_SetVal -Sets (to one) the output value. It is equivalent to the [PutVal(TRUE)]. This method is available only 
+                if the direction = _[output]_ or _[input/output]_.
+
+Module "HF1"       (component HardFault)
+   - HF1_HardFaultHandler -Hard Fault Handler
+   - HF1_Deinit -Deinitializes the driver
+   - HF1_Init -Initializes the driver
 
 Module "Cpu"       (component MK20DX128FT5)
 

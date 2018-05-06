@@ -53,6 +53,7 @@
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\AS1.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\ASerialLdd1.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd1.c</PathName>
+      <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd10.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd2.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd3.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd4.c</PathName>
@@ -68,6 +69,7 @@
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\DIRB.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\ENC1.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\FRTOS1.c</PathName>
+      <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\HF1.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\HMODE.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\LED1.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\LED2.c</PathName>
@@ -90,6 +92,7 @@
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\SW_MSW.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\SW_REV.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\SYS1.c</PathName>
+      <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\TGT_SWD_OE.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\TU1.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\UTIL1.c</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\Vectors.c</PathName>
@@ -124,6 +127,7 @@
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\AS1.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\ASerialLdd1.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd1.h</PathName>
+      <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd10.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd2.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd3.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\BitIoLdd4.h</PathName>
@@ -144,6 +148,8 @@
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\FRTOS1config.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\FreeRTOS.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\FreeRTOSConfig.h</PathName>
+      <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\HF1.h</PathName>
+      <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\HF1config.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\HMODE.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\IO_Map.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\LED1.h</PathName>
@@ -176,6 +182,7 @@
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\SW_REV.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\SYS1.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\SYS1config.h</PathName>
+      <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\TGT_SWD_OE.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\TU1.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\UTIL1.h</PathName>
       <PathName>C:\Users\Simon\Documents\HSLU\FS18\PAIND\RepoPNP\tinyk20_PNP_V1\tinyk20_PNP_V1\Generated_Code\UTIL1config.h</PathName>

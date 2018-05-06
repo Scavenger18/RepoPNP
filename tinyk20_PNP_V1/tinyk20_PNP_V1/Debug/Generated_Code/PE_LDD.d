@@ -37,7 +37,9 @@ Generated_Code/PE_LDD.o: ../Generated_Code/PE_LDD.c \
  ../Generated_Code/CS1config.h ../Generated_Code/SEGGER_RTT.h \
  ../Generated_Code/SEGGER_RTT_Conf.h ../Generated_Code/SEGGER_SYSVIEW.h \
  ../Generated_Code/LED2.h ../Generated_Code/LED2config.h \
- ../Generated_Code/LEDpin2.h ../Generated_Code/BitIoLdd9.h
+ ../Generated_Code/LEDpin2.h ../Generated_Code/BitIoLdd9.h \
+ ../Generated_Code/TGT_SWD_OE.h ../Generated_Code/BitIoLdd10.h \
+ ../Generated_Code/HF1.h ../Generated_Code/HF1config.h
 
 ../Generated_Code/FreeRTOS.h:
 
@@ -184,3 +186,11 @@ C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/S
 ../Generated_Code/LEDpin2.h:
 
 ../Generated_Code/BitIoLdd9.h:
+
+../Generated_Code/TGT_SWD_OE.h:
+
+../Generated_Code/BitIoLdd10.h:
+
+../Generated_Code/HF1.h:
+
+../Generated_Code/HF1config.h:

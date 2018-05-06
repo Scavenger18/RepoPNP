@@ -21,6 +21,7 @@
 #include "DIRB.h"
 #include "PWMA.h"
 #include "PWMB.h"
+#include "HMODE.h"
 
 
 uint8_t MOT_Speed(MOT_Device motor, uint8_t speedPercent, MOT_Direction dir){
@@ -68,8 +69,11 @@ uint8_t MOT_Speed(MOT_Device motor, uint8_t speedPercent, MOT_Direction dir){
 
 
 void MOT_Init(){
+
 	MOT_Speed(MOT_SPROC,0,MOT_FWD);
 	MOT_Speed(MOT_TAPE,0,MOT_FWD);
+
+	HMODE_SetVal();
 }
 
 

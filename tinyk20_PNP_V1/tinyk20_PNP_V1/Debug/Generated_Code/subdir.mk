@@ -7,6 +7,7 @@ C_SRCS += \
 ../Generated_Code/AS1.c \
 ../Generated_Code/ASerialLdd1.c \
 ../Generated_Code/BitIoLdd1.c \
+../Generated_Code/BitIoLdd10.c \
 ../Generated_Code/BitIoLdd2.c \
 ../Generated_Code/BitIoLdd3.c \
 ../Generated_Code/BitIoLdd4.c \
@@ -22,6 +23,7 @@ C_SRCS += \
 ../Generated_Code/DIRB.c \
 ../Generated_Code/ENC1.c \
 ../Generated_Code/FRTOS1.c \
+../Generated_Code/HF1.c \
 ../Generated_Code/HMODE.c \
 ../Generated_Code/LED1.c \
 ../Generated_Code/LED2.c \
@@ -44,6 +46,7 @@ C_SRCS += \
 ../Generated_Code/SW_MSW.c \
 ../Generated_Code/SW_REV.c \
 ../Generated_Code/SYS1.c \
+../Generated_Code/TGT_SWD_OE.c \
 ../Generated_Code/TU1.c \
 ../Generated_Code/UTIL1.c \
 ../Generated_Code/Vectors.c \
@@ -69,6 +72,7 @@ OBJS += \
 ./Generated_Code/AS1.o \
 ./Generated_Code/ASerialLdd1.o \
 ./Generated_Code/BitIoLdd1.o \
+./Generated_Code/BitIoLdd10.o \
 ./Generated_Code/BitIoLdd2.o \
 ./Generated_Code/BitIoLdd3.o \
 ./Generated_Code/BitIoLdd4.o \
@@ -84,6 +88,7 @@ OBJS += \
 ./Generated_Code/DIRB.o \
 ./Generated_Code/ENC1.o \
 ./Generated_Code/FRTOS1.o \
+./Generated_Code/HF1.o \
 ./Generated_Code/HMODE.o \
 ./Generated_Code/LED1.o \
 ./Generated_Code/LED2.o \
@@ -106,6 +111,7 @@ OBJS += \
 ./Generated_Code/SW_MSW.o \
 ./Generated_Code/SW_REV.o \
 ./Generated_Code/SYS1.o \
+./Generated_Code/TGT_SWD_OE.o \
 ./Generated_Code/TU1.o \
 ./Generated_Code/UTIL1.o \
 ./Generated_Code/Vectors.o \
@@ -131,6 +137,7 @@ C_DEPS += \
 ./Generated_Code/AS1.d \
 ./Generated_Code/ASerialLdd1.d \
 ./Generated_Code/BitIoLdd1.d \
+./Generated_Code/BitIoLdd10.d \
 ./Generated_Code/BitIoLdd2.d \
 ./Generated_Code/BitIoLdd3.d \
 ./Generated_Code/BitIoLdd4.d \
@@ -146,6 +153,7 @@ C_DEPS += \
 ./Generated_Code/DIRB.d \
 ./Generated_Code/ENC1.d \
 ./Generated_Code/FRTOS1.d \
+./Generated_Code/HF1.d \
 ./Generated_Code/HMODE.d \
 ./Generated_Code/LED1.d \
 ./Generated_Code/LED2.d \
@@ -168,6 +176,7 @@ C_DEPS += \
 ./Generated_Code/SW_MSW.d \
 ./Generated_Code/SW_REV.d \
 ./Generated_Code/SYS1.d \
+./Generated_Code/TGT_SWD_OE.d \
 ./Generated_Code/TU1.d \
 ./Generated_Code/UTIL1.d \
 ./Generated_Code/Vectors.d \

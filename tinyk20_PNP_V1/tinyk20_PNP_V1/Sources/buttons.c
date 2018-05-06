@@ -20,7 +20,7 @@ volatile uint8_t  FWD_Flag;
 
 
 
-void BUT_SetFWD(){
+void BUT_SetFWD(void){
 	CS1_CriticalVariable();
 
 	CS1_EnterCritical();
@@ -28,7 +28,7 @@ void BUT_SetFWD(){
 	CS1_ExitCritical();
 }
 
-void BUT_SetREV(){
+void BUT_SetREV(void){
 	CS1_CriticalVariable();
 
 	CS1_EnterCritical();
@@ -45,7 +45,7 @@ BUT_State BUT_GetState(BUT_Device button){
 
 	switch (button){
 		case BUT_FWD:
-		{
+
 			state = SW_FWD_GetVal();
 			if (FWD_INVERT) {
 				if (state == 1){
@@ -64,14 +64,13 @@ BUT_State BUT_GetState(BUT_Device button){
 			if ((but_state == BUT_PRESS)&&(FWD_Flag == 0)){
 				BUT_SetFWD();
 				FWD_Flag = 1;
-			    LED2_Neg();
 			} else if ((but_state == BUT_IDLE)&&(FWD_Flag == 1)){
 				FWD_Flag = 0;
 			}
-			break;
-		}
+		break;
+
 		case BUT_REV:
-		{
+
 			state = SW_REV_GetVal();
 			if (REV_INVERT) {
 				if (state == 1){
@@ -106,11 +105,11 @@ BUT_State BUT_GetState(BUT_Device button){
 				}
 			}
 
-			break;
-		}
+		break;
+
 #if PL_TAPE_EN
 		case BUT_MSW:
-		{
+
 			state = SW_MSW_GetVal();
 			if (MSW_INVERT) {
 				if (state == 1){
@@ -125,8 +124,8 @@ BUT_State BUT_GetState(BUT_Device button){
 					but_state = BUT_IDLE;
 				}
 			}
-			break;
-		}
+
+		break;
 #endif
 
 

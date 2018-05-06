@@ -6,7 +6,7 @@
 **     Version     : Component 01.001, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-23, 17:57, # CodeGen: 27
+**     Date/Time   : 2018-04-24, 18:23, # CodeGen: 34
 **     Abstract    :
 **
 **     Settings    :
@@ -97,6 +97,9 @@
 #include "BitIoLdd9.h"
 #include "AS1.h"
 #include "ASerialLdd1.h"
+#include "TGT_SWD_OE.h"
+#include "BitIoLdd10.h"
+#include "HF1.h"
 
 
 /*
