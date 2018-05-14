@@ -21,10 +21,14 @@
 //#include "motor.h"
 #endif
 
+#define ENC_TICK_CNT (3)
+
 static volatile bool enc_state = 0;
-static volatile unsigned int enc_cnt = 0;
-static volatile unsigned int enc_step;
-static volatile unsigned int enc_trigger;
+static volatile unsigned int enc_cnt = 0; // step count
+static volatile unsigned int enc_tick = 0; // tick count
+
+static volatile unsigned int enc_step = 0;
+static volatile unsigned int enc_trigger = 0;
 
 // change if step is defined through other software part
 
@@ -54,8 +58,13 @@ unsigned int ENC_GetVal(void){
     //WAIT1_Waitus(100); /* burn some time */
 	if (enc_state != tmp){
 		enc_state = tmp;
-		enc_cnt++;
+		enc_tick = 0;
 		LED1_Neg();
+	} else {
+		if (enc_tick == ENC_TICK_CNT){
+			enc_cnt++;
+		}
+		enc_tick++;
 	}
 
 

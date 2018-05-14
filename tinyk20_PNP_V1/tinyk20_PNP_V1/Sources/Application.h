@@ -18,7 +18,15 @@ typedef enum{
 	FSM_ERROR
 }FSM_State;
 
+typedef enum{
+	PEEL_OFF,
+	PEEL_FWD,
+	PEEL_REV,
+	PEEL_DONE
+}PEEL_State;
+
 FSM_State taskState;
+PEEL_State peelState;
 
 signed int APP_Counter;
 

@@ -1613,13 +1613,13 @@ PE_DEBUGHALT();
     <Enabled v="Y" />
     <Properties>
       <Component_name v="AS1" />
-      <Channel v="UART2" />
+      <Channel v="UART0" />
       <boolgroup name="Interrupt service/event" v="Enabled">
-        <Interrupt_RxD v="INT_UART2_RX_TX" />
+        <Interrupt_RxD v="INT_UART0_RX_TX" />
         <Interrupt_RxD_priority v="medium priority" />
-        <Interrupt_TxD v="INT_UART2_RX_TX" />
+        <Interrupt_TxD v="INT_UART0_RX_TX" />
         <Interrupt_TxD_priority v="medium priority" />
-        <Interrupt_Error v="INT_UART2_ERR" />
+        <Interrupt_Error v="INT_UART0_ERR" />
         <Interrupt_Error_priority v="medium priority" />
         <Input_buffer_size v="64" />
         <Output_buffer_size v="64" />
@@ -1633,10 +1633,10 @@ PE_DEBUGHALT();
         <Width v="8 bits" />
         <Stop_bit v="1" />
         <boolgroup name="Receiver" v="Enabled">
-          <RxD v="PTD2/LLWU_P13/SPI0_SOUT/UART2_RX" />
+          <RxD v="ADC0_SE7b/PTD6/LLWU_P15/SPI0_PCS3/UART0_RX/FTM0_CH6/FTM0_FLT0" />
         </boolgroup>
         <boolgroup name="Transmitter" v="Enabled">
-          <TxD v="PTD3/SPI0_SIN/UART2_TX" />
+          <TxD v="PTD7/CMT_IRO/UART0_TX/FTM0_CH7/FTM0_FLT1" />
         </boolgroup>
         <Baud_rate v="38400 baud" />
         <Break_signal v="Disabled" />
@@ -1661,13 +1661,13 @@ PE_DEBUGHALT();
           <Enabled v="Y" />
           <Properties>
             <Component_name v="ASerialLdd1" />
-            <Device v="UART2" />
+            <Device v="UART0" />
             <boolgroup name="Interrupt service/event" v="Enabled">
-              <Interrupt_RxD v="INT_UART2_RX_TX" />
+              <Interrupt_RxD v="INT_UART0_RX_TX" />
               <Interrupt_RxD_priority v="medium priority" />
-              <Interrupt_TxD v="INT_UART2_RX_TX" />
+              <Interrupt_TxD v="INT_UART0_RX_TX" />
               <Interrupt_TxD_priority v="medium priority" />
-              <Interrupt_Error v="INT_UART2_ERR" />
+              <Interrupt_Error v="INT_UART0_ERR" />
               <Interrupt_Error_priority v="medium priority" />
             </boolgroup>
             <group name="Settings">
@@ -1683,10 +1683,10 @@ PE_DEBUGHALT();
               <Receiver_input v="Not inverted" />
               <Break_generation_length v="10/11 bits" />
               <boolgroup name="Receiver" v="Enabled">
-                <RxD v="PTD2/LLWU_P13/SPI0_SOUT/UART2_RX" />
+                <RxD v="ADC0_SE7b/PTD6/LLWU_P15/SPI0_PCS3/UART0_RX/FTM0_CH6/FTM0_FLT0" />
               </boolgroup>
               <boolgroup name="Transmitter" v="Enabled">
-                <TxD v="PTD3/SPI0_SIN/UART2_TX" />
+                <TxD v="PTD7/CMT_IRO/UART0_TX/FTM0_CH7/FTM0_FLT1" />
               </boolgroup>
               <enumgroup name="Flow control" v="None">
                 <EmptySection_DummyValue />

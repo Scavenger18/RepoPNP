@@ -33,7 +33,8 @@ typedef enum{
 typedef enum{
 	BUT_IDLE,	//off state	- > do not change
 	BUT_PRESS,		// on state - > do not change
-	BUT_LPRESS
+	BUT_LPRESS,
+	BUT_RELEASE
 }BUT_State;
 
 

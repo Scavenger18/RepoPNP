@@ -654,7 +654,7 @@
     </GenFiles>
     <SignalListFile>Documentation\tinyk20_PNP_V1_SIGNALS.txt</SignalListFile>
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>34</ProjectModificationStamp>
+    <ProjectModificationStamp>35</ProjectModificationStamp>
   </Options>
   <CpuID_5>
     <Generated>true</Generated>
@@ -1387,8 +1387,8 @@
     <GenComponentVersion>02.086</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1285071683</HeaderAge>
-    <CodeAge>1285071683</CodeAge>
+    <HeaderAge>1286303107</HeaderAge>
+    <CodeAge>1286303107</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>11</GenNumMethods>
     <GetDir>false</GetDir>
@@ -1428,8 +1428,8 @@
       <GenComponentVersion>01.033</GenComponentVersion>
       <GenDriverVersion>01.03</GenDriverVersion>
       <GenEventModule />
-      <HeaderAge>1285071683</HeaderAge>
-      <CodeAge>1285071683</CodeAge>
+      <HeaderAge>1286303107</HeaderAge>
+      <CodeAge>1286303107</CodeAge>
       <AsemblAge>-1</AsemblAge>
       <GenNumMethods>13</GenNumMethods>
       <Init>true</Init>

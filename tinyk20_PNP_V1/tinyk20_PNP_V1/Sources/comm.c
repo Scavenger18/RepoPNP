@@ -54,8 +54,8 @@ void COMM_SendError(const unsigned char *cmd){
 	unsigned char tmpCMD[maxBuf];
 	unsigned char* ptr;
 
-	UTIL1_strcpy(tmpCMD, maxBuf, "CMD -1 err");
-	ptr = tmpCMD+sizeof("CMD -1 err")-1;
+	UTIL1_strcpy(tmpCMD, maxBuf, "CMD -1 err ");
+	ptr = tmpCMD+sizeof("CMD -1 err ")-1;
 	UTIL1_strcpy(ptr, maxBuf, cmd);
 
 	CLS1_SendStr((unsigned char*)tmpCMD, CLS1_GetStdio()->stdOut);
@@ -91,6 +91,7 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 {
     int8_t value;	//signed since address decrementing falls below 0
     uint8_t res;
+    const unsigned char *p;
 	const unsigned char *tmpCMD;
 
     // Check if it is command
@@ -106,19 +107,51 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 		if(value == 0){
 			tmpCMD = cmd+sizeof("CMD 0 ")-1;
 
-			if (UTIL1_strcmp((char*)tmpCMD, "FWD")==0) {
-				COMM_SendStatus("FWD ok");
+				// CMD 0 FWD 4
+			//if (UTIL1_strcmp((char*)tmpCMD, "FWD")==0) {
+			if (UTIL1_strncmp((char*)tmpCMD, "FWD", sizeof("FWD")-1)==0){
+				p = tmpCMD+sizeof("FWD")-1;
+				res = UTIL1_ScanDecimal8uNumber(&p, &value);
 				*handled = TRUE;
-				COMM_SetFWD();
-				return ERR_OK;
+				if((value >= 2)&&(value%2 == 0)){	// number of steps (in mm)
+					//ENC_SetStep(value);
+					while (value > 0){
+						COMM_SetFWD();
+						value = value-2;
+					}
+					COMM_SendStatus("FWD ok");
+					return ERR_OK;
+				}else {
+					// wrong step size
+					COMM_SendError("invalid step size");
+					return ERR_VALUE;
+				}
 
-			} else if (UTIL1_strcmp((char*)tmpCMD, "REV")==0) {
-				COMM_SendStatus("REV ok");
+
+			} else if (UTIL1_strncmp((char*)tmpCMD, "REV", sizeof("REV")-1)==0){ //(UTIL1_strcmp((char*)tmpCMD, "REV")==0) {
+//				COMM_SendStatus("REV ok");
+//				*handled = TRUE;
+//				COMM_SetREV();
+//				return ERR_OK;
+
+				p = tmpCMD+sizeof("REV")-1;
+				res = UTIL1_ScanDecimal8uNumber(&p, &value);
 				*handled = TRUE;
-				COMM_SetREV();
-				return ERR_OK;
+				if((value >= 2)&&(value%2 == 0)){	// number of steps (in mm)
+					//ENC_SetStep(value);
+					while (value > 0){
+						COMM_SetREV();
+						value = value-2;
+					}
+					COMM_SendStatus("REV ok");
+					return ERR_OK;
+				}else {
+					// wrong step size
+					COMM_SendError("invalid step size");
+					return ERR_VALUE;
+				}
 
-			} else if (UTIL1_strncmp((char*)tmpCMD, "SET STEP", sizeof("SET STEP")-1)==0) {
+				/*  } else if (UTIL1_strncmp((char*)tmpCMD, "SET STEP", sizeof("SET STEP")-1)==0) {
 				uint8_t value;
 				uint8_t res;
 				const unsigned char *p;
@@ -126,7 +159,7 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 				p = tmpCMD+sizeof("SET STEP")-1;
 				res = UTIL1_ScanDecimal8uNumber(&p, &value);
 
-				if (*p=='m' ) { /* millimeter value && (*p-1)=='m' */
+				if (*p=='m' ) { // millimeter value && (*p-1)=='m'
 					value = (uint8_t) value;
 
 					if(value == 1){
@@ -145,6 +178,7 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 					ENC_SetStep(value);
 				#endif
 				return ERR_OK;
+*/
 			} else {
 				// catch false/ unknown command
 				COMM_SendError("unknown command");

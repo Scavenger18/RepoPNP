@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-24, 20:25, # CodeGen: 35
+**     Date/Time   : 2018-05-11, 13:43, # CodeGen: 45
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,7 +17,7 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd5
-**          Pin for I/O                                    : ADC0_SE5b/PTD1/SPI0_SCK/UART2_CTS_b
+**          Pin for I/O                                    : PTC4/LLWU_P8/SPI0_PCS0/UART1_TX/FTM0_CH3/CMP1_OUT
 **          Pin signal                                     : 
 **          Direction                                      : Input
 **          Initialization                                 : 
@@ -124,11 +124,11 @@ LDD_TDeviceData* BitIoLdd5_Init(LDD_TUserData *UserDataPtr)
   DeviceDataPrv = &DeviceDataPrv__DEFAULT_RTOS_ALLOC;
   DeviceDataPrv->UserDataPtr = UserDataPtr; /* Store the RTOS device structure */
   /* Configure pin as input */
-  /* GPIOD_PDDR: PDD&=~2 */
-  GPIOD_PDDR &= (uint32_t)~(uint32_t)(GPIO_PDDR_PDD(0x02));
+  /* GPIOC_PDDR: PDD&=~0x10 */
+  GPIOC_PDDR &= (uint32_t)~(uint32_t)(GPIO_PDDR_PDD(0x10));
   /* Initialization of Port Control register */
-  /* PORTD_PCR1: ISF=0,MUX=1 */
-  PORTD_PCR1 = (uint32_t)((PORTD_PCR1 & (uint32_t)~(uint32_t)(
+  /* PORTC_PCR4: ISF=0,MUX=1 */
+  PORTC_PCR4 = (uint32_t)((PORTC_PCR4 & (uint32_t)~(uint32_t)(
                 PORT_PCR_ISF_MASK |
                 PORT_PCR_MUX(0x06)
                )) | (uint32_t)(

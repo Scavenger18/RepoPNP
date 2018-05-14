@@ -3,7 +3,7 @@
   <Header>
     <Name>tinyk20_PNP_V1</Name>
     <SavedBy>Simon</SavedBy>
-    <ModificationStamp>34</ModificationStamp>
+    <ModificationStamp>35</ModificationStamp>
     <Date>2018-04-16</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.2.RT7_b1550-0615</PEversion>
@@ -8038,7 +8038,7 @@
         <ItemSymbol>_Pin</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>ADC0_SE5b/PTD1/SPI0_SCK/UART2_CTS_b</Value>
+        <Value>PTC4/LLWU_P8/SPI0_PCS0/UART1_TX/FTM0_CH3/CMP1_OUT</Value>
         <SharedPrphMode>false</SharedPrphMode>
       </ItemState>
       <ItemState>
@@ -8084,7 +8084,7 @@
               <ItemSymbol>_Pin</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>ADC0_SE5b/PTD1/SPI0_SCK/UART2_CTS_b</Value>
+              <Value>PTC4/LLWU_P8/SPI0_PCS0/UART1_TX/FTM0_CH3/CMP1_OUT</Value>
               <SharedPrphMode>false</SharedPrphMode>
             </ItemState>
             <ItemState>
@@ -21526,7 +21526,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>SpecInt</ItemSymbol>
-        <Value>INT_UART2_ERR</Value>
+        <Value>INT_UART0_ERR</Value>
         <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
       </ItemState>
       <ItemState>

@@ -15,7 +15,7 @@
 #endif
 
 volatile int REV_Counter;
-volatile uint8_t  REV_Flag;
+volatile uint8_t  REV_Flag, REV_Flag_LPress;
 volatile uint8_t  FWD_Flag;
 
 
@@ -88,6 +88,7 @@ BUT_State BUT_GetState(BUT_Device button){
 
 			if (but_state == BUT_IDLE){
 				REV_Flag = 0;
+				REV_Flag_LPress = 0;
 				REV_Counter = 0;
 				//break;
 			}else if ((but_state == BUT_PRESS)&&(REV_Flag == 0)){
@@ -95,13 +96,13 @@ BUT_State BUT_GetState(BUT_Device button){
 				REV_Counter = 0;
 			}  else if (but_state == BUT_PRESS){
 				REV_Counter++;
-				if (REV_Counter == LPRESS_CNT){
+				if (REV_Counter >= LPRESS_CNT){
 					//REV_Counter = 0;
 					but_state = BUT_LPRESS;
-					BUT_SetREV();
-				} else if (REV_Counter >= LPRESS_CNT){
-					but_state = BUT_LPRESS;
-
+					if(REV_Flag_LPress == 0){
+						BUT_SetREV();
+					}
+					REV_Flag_LPress = 1;
 				}
 			}
 
