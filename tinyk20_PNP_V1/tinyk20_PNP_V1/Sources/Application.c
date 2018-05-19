@@ -39,23 +39,31 @@ static void RunPeeler(void){
 		case PEEL_FWD:
 		{
 			if(BUT_GetState(BUT_MSW)==0){
-				MOT_Speed(MOT_TAPE,80,MOT_FWD);
+				MOT_Speed(MOT_TAPE,100,MOT_FWD);
 			}
 
 			break;
 		}
 		case PEEL_REV:
 		{
-			MOT_Speed(MOT_TAPE,80,MOT_REV);
+			MOT_Speed(MOT_TAPE,100,MOT_REV);
 			break;
 		}
-		case PEEL_DONE:
+		case PEEL_FWD_DONE:
 		{
 			if(BUT_GetState(BUT_MSW)==1){	// should change for rev
 				peelState = PEEL_OFF;
 			}
 			break;
 		}
+		case PEEL_REV_DONE:
+		{
+			if(BUT_GetState(BUT_MSW)==0){	// should change for rev
+				peelState = PEEL_OFF;
+			}
+			break;
+		}
+
 		default:
 		{
 			peelState = PEEL_OFF;
@@ -121,12 +129,13 @@ static void RunFeeder(void){
 				APP_Counter--;
 				break;
 			}else if(APP_Counter < 0){
-				taskState = FSM_REV;
+				taskState = FSM_REV_PEEL;
 				APP_Counter++;
 				break;
 			} //else 0 -> Stay in IDLE
 			if(BUT_GetState(BUT_REV)==BUT_PRESS){
 				taskState = FSM_STOP;
+				peelState = PEEL_OFF;
 				break;
 			}
 		}
@@ -139,11 +148,22 @@ static void RunFeeder(void){
 			peelState = PEEL_FWD;
 		}
 		break;
-		case FSM_REV:
+		case FSM_REV_PEEL:
 		{
+			// First turn peeler back
+			peelState = PEEL_REV;
+			taskState = FSM_REV_SPROC;
+		}
+		break;
+		case FSM_REV_SPROC:
+		{
+			// wait for a certain time (time calculated)
+			WAIT1_WaitOSms(1500);
+			// then change case to reverse sprocket
 			MOT_Speed(MOT_SPROC,100,MOT_REV);
 			taskState = FSM_RUN;
-			peelState = PEEL_REV;
+			peelState = PEEL_REV_DONE;
+
 		}
 		break;
 		case FSM_RUN:
@@ -152,7 +172,7 @@ static void RunFeeder(void){
 			if(ENC_GetTrigger() == 1){
 				ENC_SetTrigger(0);
 				taskState  = FSM_IDLE;
-				peelState = PEEL_DONE;
+				peelState = PEEL_FWD_DONE;
 			}
 
 			// use button REV to stop

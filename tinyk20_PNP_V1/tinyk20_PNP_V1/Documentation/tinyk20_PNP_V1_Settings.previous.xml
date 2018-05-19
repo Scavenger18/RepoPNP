@@ -418,13 +418,13 @@ PE_DEBUGHALT();
     <Enabled v="Y" />
     <Properties>
       <Component_name v="ENC1" />
-      <Pin_for_I_O v="ADC0_SE5b/PTD1/SPI0_SCK/UART2_CTS_b" />
+      <Pin_for_I_O v="PTC4/LLWU_P8/SPI0_PCS0/UART1_TX/FTM0_CH3/CMP1_OUT" />
       <inhrbean type="BitIO_LDD">
         <Enabled v="Y" />
         <Template v="BitIO_LDD" />
         <Properties>
           <Component_name v="BitIoLdd5" />
-          <Pin_for_I_O v="ADC0_SE5b/PTD1/SPI0_SCK/UART2_CTS_b" />
+          <Pin_for_I_O v="PTC4/LLWU_P8/SPI0_PCS0/UART1_TX/FTM0_CH3/CMP1_OUT" />
           <Direction v="Input" />
           <group name="Initialization">
             <Init__direction v="Input" />

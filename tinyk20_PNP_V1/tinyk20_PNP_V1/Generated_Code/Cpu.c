@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K20P48M50SF0RM Rev. 1, Oct 2011
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-30, 23:31, # CodeGen: 44
+**     Date/Time   : 2018-05-18, 21:37, # CodeGen: 47
 **     Abstract    :
 **
 **     Settings    :
@@ -235,8 +235,6 @@
 #include "BitIoLdd8.h"
 #include "FRTOS1.h"
 #include "UTIL1.h"
-#include "SYS1.h"
-#include "RTT1.h"
 #include "WAIT1.h"
 #include "CLS1.h"
 #include "XF1.h"
@@ -1284,10 +1282,6 @@ void PE_low_level_init(void)
   AS1_Init();
   /* ### Shell "CLS1" init code ... */
   CLS1_Init(); /* initialize shell */
-  /* ### SeggerRTT "RTT1" init code ... */
-  RTT1_Init();
-  /* ### SeggerSystemView "SYS1" init code ... */
-  SYS1_Init();
   /* ### BitIO_LDD "BitIoLdd9" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd9_Init(NULL);
   /* ### LED "LED2" init code ... */

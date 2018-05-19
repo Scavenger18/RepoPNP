@@ -95,7 +95,9 @@ void ENC_ResetCnt(void){
 	CS1_ExitCritical();
 
 }
-
+unsigned int ENC_GetStep(){
+	return enc_step;
+}
 void ENC_SetStep(unsigned int stepSize){
 	enc_step = stepSize;
 }
@@ -114,6 +116,12 @@ static void ENC_task(void *param) {
 }
 
 void ENC_Init(void){
+	enc_state = 1;
+	enc_cnt = 0;
+	enc_tick = 0;
+	enc_step = 4;
+	enc_trigger = 0;
+
 	if (xTaskCreate(ENC_task, "ENC", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, NULL) != pdPASS) {
 		for(;;){} /* error! probably out of memory */
 	}

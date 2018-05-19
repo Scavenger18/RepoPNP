@@ -44,6 +44,9 @@ endif
 -include ../makefile.defs
 
 # Add inputs and outputs from these tool invocations to the build variables 
+SECONDARY_SIZE += \
+tinyk20_PNP_V1.siz \
+
 
 # All Target
 all: tinyk20_PNP_V1.elf secondary-outputs
@@ -52,16 +55,22 @@ all: tinyk20_PNP_V1.elf secondary-outputs
 tinyk20_PNP_V1.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Project_Settings/Linker_Files" -Wl,-Map,"tinyk20_PNP_V1.map" -specs=nano.specs -specs=nosys.specs -o "tinyk20_PNP_V1.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Project_Settings/Linker_Files" -Wl,-Map,"tinyk20_PNP_V1.map" -specs=nano.specs -specs=nosys.specs -o "tinyk20_PNP_V1.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
+	@echo ' '
+
+tinyk20_PNP_V1.siz: tinyk20_PNP_V1.elf
+	@echo 'Invoking: Cross ARM GNU Print Size'
+	arm-none-eabi-size --format=berkeley "tinyk20_PNP_V1.elf"
+	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(C++_DEPS)$(OBJS)$(C_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS)$(S_UPPER_DEPS) tinyk20_PNP_V1.elf
+	-$(RM) $(SECONDARY_SIZE)$(C++_DEPS)$(OBJS)$(C_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS)$(S_UPPER_DEPS) tinyk20_PNP_V1.elf
 	-@echo ' '
 
-secondary-outputs:
+secondary-outputs: $(SECONDARY_SIZE)
 
 .PHONY: all clean dependents
 .SECONDARY:

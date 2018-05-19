@@ -38,7 +38,7 @@ C_DEPS += \
 Sources/%.o: ../Sources/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/PDD" -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/IO_Map" -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources" -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/PDD" -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/IO_Map" -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources" -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

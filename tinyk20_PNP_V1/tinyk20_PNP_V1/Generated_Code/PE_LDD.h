@@ -6,7 +6,7 @@
 **     Version     : Component 01.001, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-04-24, 18:23, # CodeGen: 34
+**     Date/Time   : 2018-05-18, 21:37, # CodeGen: 47
 **     Abstract    :
 **
 **     Settings    :
@@ -86,8 +86,6 @@
 #include "BitIoLdd8.h"
 #include "FRTOS1.h"
 #include "UTIL1.h"
-#include "SYS1.h"
-#include "RTT1.h"
 #include "WAIT1.h"
 #include "CLS1.h"
 #include "XF1.h"

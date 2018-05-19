@@ -29,6 +29,8 @@ void ENC_ResetFlag(void);
 void ENC_ResetCnt(void);
 //uint8_t ENC_GetCnt(void);
 
+unsigned int ENC_GetStep(void);
+
 void ENC_SetStep(unsigned int stepSize);
 //uint8_t ENC_GetStep(void);
 

@@ -13,6 +13,9 @@
 
 #if PL_MOTOR_EN
 
+#define MOT_SPROC_INV (0)
+#define MOT_TAPE_INV (0)
+
 typedef enum{
 	MOT_NULL,	// 0 is not driving
 	MOT_FWD,
@@ -25,11 +28,6 @@ typedef enum{
 }MOT_Device;
 
 uint8_t MOT_Speed(MOT_Device motor, uint8_t speedPercent, MOT_Direction dir);
-
-//void MOT_Brake(MOT_Device motor);
-
-//void MOT_SpeedSlow(MOT_Device motor);
-//void MOT_SpeedFast(MOT_Device motor);
 
 void MOT_Init(void);
 

@@ -35,17 +35,9 @@ C_SRCS += \
 ../Generated_Code/PWMB.c \
 ../Generated_Code/PwmLdd1.c \
 ../Generated_Code/PwmLdd2.c \
-../Generated_Code/RTT1.c \
-../Generated_Code/RTT_Syscalls_GCC.c \
-../Generated_Code/SEGGER_RTT.c \
-../Generated_Code/SEGGER_RTT_printf.c \
-../Generated_Code/SEGGER_SYSVIEW.c \
-../Generated_Code/SEGGER_SYSVIEW_Config.c \
-../Generated_Code/SEGGER_SYSVIEW_FreeRTOS.c \
 ../Generated_Code/SW_FWD.c \
 ../Generated_Code/SW_MSW.c \
 ../Generated_Code/SW_REV.c \
-../Generated_Code/SYS1.c \
 ../Generated_Code/TGT_SWD_OE.c \
 ../Generated_Code/TU1.c \
 ../Generated_Code/UTIL1.c \
@@ -100,17 +92,9 @@ OBJS += \
 ./Generated_Code/PWMB.o \
 ./Generated_Code/PwmLdd1.o \
 ./Generated_Code/PwmLdd2.o \
-./Generated_Code/RTT1.o \
-./Generated_Code/RTT_Syscalls_GCC.o \
-./Generated_Code/SEGGER_RTT.o \
-./Generated_Code/SEGGER_RTT_printf.o \
-./Generated_Code/SEGGER_SYSVIEW.o \
-./Generated_Code/SEGGER_SYSVIEW_Config.o \
-./Generated_Code/SEGGER_SYSVIEW_FreeRTOS.o \
 ./Generated_Code/SW_FWD.o \
 ./Generated_Code/SW_MSW.o \
 ./Generated_Code/SW_REV.o \
-./Generated_Code/SYS1.o \
 ./Generated_Code/TGT_SWD_OE.o \
 ./Generated_Code/TU1.o \
 ./Generated_Code/UTIL1.o \
@@ -165,17 +149,9 @@ C_DEPS += \
 ./Generated_Code/PWMB.d \
 ./Generated_Code/PwmLdd1.d \
 ./Generated_Code/PwmLdd2.d \
-./Generated_Code/RTT1.d \
-./Generated_Code/RTT_Syscalls_GCC.d \
-./Generated_Code/SEGGER_RTT.d \
-./Generated_Code/SEGGER_RTT_printf.d \
-./Generated_Code/SEGGER_SYSVIEW.d \
-./Generated_Code/SEGGER_SYSVIEW_Config.d \
-./Generated_Code/SEGGER_SYSVIEW_FreeRTOS.d \
 ./Generated_Code/SW_FWD.d \
 ./Generated_Code/SW_MSW.d \
 ./Generated_Code/SW_REV.d \
-./Generated_Code/SYS1.d \
 ./Generated_Code/TGT_SWD_OE.d \
 ./Generated_Code/TU1.d \
 ./Generated_Code/UTIL1.d \
@@ -203,7 +179,7 @@ C_DEPS += \
 Generated_Code/%.o: ../Generated_Code/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/PDD" -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/IO_Map" -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources" -I"C:/Users/Simon/Documents/HSLU/FS18/PAIND/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/PDD" -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/IO_Map" -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources" -I"D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

@@ -24,46 +24,58 @@
 #include "HMODE.h"
 
 
+static void MOT_Dir_Sproc(MOT_Direction dir){
+bool tmp = TRUE;
+	if (dir == MOT_FWD){
+		tmp = TRUE;
+	}else if (dir == MOT_REV){
+		tmp = FALSE;
+	}
+
+	if(MOT_SPROC_INV){
+		tmp = !tmp;
+	}
+
+	DIRA_PutVal(tmp);
+}
+
+static void MOT_Dir_Tape(MOT_Direction dir){
+bool tmp = TRUE;
+	if (dir == MOT_FWD){
+		tmp = TRUE;
+	}else if (dir == MOT_REV){
+		tmp = FALSE;
+	}
+
+	if(MOT_TAPE_INV){
+		tmp = !tmp;
+	}
+	DIRB_PutVal(tmp);
+
+}
+
 uint8_t MOT_Speed(MOT_Device motor, uint8_t speedPercent, MOT_Direction dir){
 	uint32_t pwmVal;
 
 	if (speedPercent > 100){
 		speedPercent = 100;
 	}
-	pwmVal = (((100-speedPercent)*0xFFFF)/100);
+	pwmVal = (((100-speedPercent)*0xFFFF)/100);	// 0 is 100%
 
-	if (dir == MOT_FWD){
-		if(motor == MOT_SPROC){
-			DIRA_ClrVal();				// sets H-Bridge direction forward
-			PWMA_SetRatio16(pwmVal);	// sets H-Bridge speed
-			return 1;
+	if(motor == MOT_SPROC){
+		MOT_Dir_Sproc(dir);
+		PWMA_SetRatio16(pwmVal);	// sets H-Bridge speed
+		return 1;
 
-		}else if (motor == MOT_TAPE){
-			DIRB_ClrVal();				// sets H-Bridge direction forward
-			PWMB_SetRatio16(pwmVal);	// sets H-Bridge speed
-			return 1;
-		} // else error?
-		else{
-			return 0;
-		}
-
-
-	}else if (dir == MOT_REV){
-		if(motor == MOT_SPROC){
-			DIRA_SetVal();				// sets H-Bridge direction forward
-			PWMA_SetRatio16(pwmVal);	// sets H-Bridge speed
-			return 1;
-
-		}else if (motor == MOT_TAPE){
-			DIRA_SetVal();				// sets H-Bridge direction forward
-			PWMA_SetRatio16(pwmVal);	// sets H-Bridge speed
-			return 1;
-
-		} // else error?
-		else{
-			return 0;
-		}
+	}else if (motor == MOT_TAPE){
+		MOT_Dir_Tape(dir);
+		PWMB_SetRatio16(pwmVal);	// sets H-Bridge speed
+		return 1;
+	} // else error?
+	else{
+		return 0;
 	}
+
 }
 
 

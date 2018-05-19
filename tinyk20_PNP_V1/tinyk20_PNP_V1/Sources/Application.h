@@ -12,7 +12,8 @@ typedef enum{
 	FSM_INIT,
 	FSM_IDLE,
 	FSM_FWD,
-	FSM_REV,
+	FSM_REV_PEEL,
+	FSM_REV_SPROC,
 	FSM_RUN,
 	FSM_STOP,
 	FSM_ERROR
@@ -22,7 +23,8 @@ typedef enum{
 	PEEL_OFF,
 	PEEL_FWD,
 	PEEL_REV,
-	PEEL_DONE
+	PEEL_FWD_DONE,
+	PEEL_REV_DONE
 }PEEL_State;
 
 FSM_State taskState;
