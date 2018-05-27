@@ -13,11 +13,13 @@
 
 #if PL_MOTOR_EN
 
-#define MOT_SPROC_INV (0)
+#define MOT_SPROC_INV (1)
 #define MOT_TAPE_INV (0)
 
+#define MAX_SPEED (100)
+
 typedef enum{
-	MOT_NULL,	// 0 is not driving
+	// MOT_NULL,	// 0 is not driving
 	MOT_FWD,
 	MOT_REV
 }MOT_Direction;

@@ -89,7 +89,9 @@ int main(void)
 
   /* Write your code here */
   /* For example: for(;;) { } */
-  TGT_SWD_OE_SetVal();
+#if 0
+  TGT_SWD_OE_SetVal();	// if built on a tinyK20
+#endif
   PL_Init();
   APP_Init();
   APP_Run();

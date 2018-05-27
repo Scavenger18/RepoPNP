@@ -54,8 +54,8 @@ void COMM_SendError(const unsigned char *cmd){
 	unsigned char tmpCMD[maxBuf];
 	unsigned char* ptr;
 
-	UTIL1_strcpy(tmpCMD, maxBuf, "CMD -1 err ");
-	ptr = tmpCMD+sizeof("CMD -1 err ")-1;
+	UTIL1_strcpy(tmpCMD, maxBuf, "CMD -1 ERR ");
+	ptr = tmpCMD+sizeof("CMD -1 ERR ")-1;
 	UTIL1_strcpy(ptr, maxBuf, cmd);
 
 	CLS1_SendStr((unsigned char*)tmpCMD, CLS1_GetStdio()->stdOut);
@@ -97,9 +97,7 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
     // Check if it is command
     if (UTIL1_strncmp((char*)cmd, "CMD", sizeof("CMD")-1)==0){
 
-
     	tmpCMD = cmd+sizeof("CMD")-1;
-
 
 		res = UTIL1_ScanDecimal8sNumber(&tmpCMD, &value);
 
@@ -107,8 +105,6 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 		if(value == 0){
 			tmpCMD = cmd+sizeof("CMD 0 ")-1;
 
-				// CMD 0 FWD 4
-			//if (UTIL1_strcmp((char*)tmpCMD, "FWD")==0) {
 			if (UTIL1_strncmp((char*)tmpCMD, "FWD", sizeof("FWD")-1)==0){
 				p = tmpCMD+sizeof("FWD")-1;
 				res = UTIL1_ScanDecimal8uNumber(&p, &value);
@@ -129,10 +125,6 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 
 
 			} else if (UTIL1_strncmp((char*)tmpCMD, "REV", sizeof("REV")-1)==0){ //(UTIL1_strcmp((char*)tmpCMD, "REV")==0) {
-//				COMM_SendStatus("REV ok");
-//				*handled = TRUE;
-//				COMM_SetREV();
-//				return ERR_OK;
 
 				p = tmpCMD+sizeof("REV")-1;
 				res = UTIL1_ScanDecimal8uNumber(&p, &value);
@@ -150,36 +142,7 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 					COMM_SendError("invalid step size");
 					return ERR_VALUE;
 				}
-
-				/*  } else if (UTIL1_strncmp((char*)tmpCMD, "SET STEP", sizeof("SET STEP")-1)==0) {
-				uint8_t value;
-				uint8_t res;
-				const unsigned char *p;
-
-				p = tmpCMD+sizeof("SET STEP")-1;
-				res = UTIL1_ScanDecimal8uNumber(&p, &value);
-
-				if (*p=='m' ) { // millimeter value && (*p-1)=='m'
-					value = (uint8_t) value;
-
-					if(value == 1){
-						COMM_SendError("minimal step is 2mm");
-						value = 2;
-						return ERR_VALUE;
-					}
-					COMM_SendStatus("SET STEP ok");
-				}else{
-					COMM_SendError("invalid number format");
-					return ERR_VALUE;
-
-				}
-				*handled = TRUE;
-				#if PL_ENCODER_EN
-					ENC_SetStep(value);
-				#endif
-				return ERR_OK;
-*/
-			} else {
+			}else {
 				// catch false/ unknown command
 				COMM_SendError("unknown command");
 				return ERR_VALUE;
@@ -216,77 +179,8 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 
 			*handled = TRUE;
 			return ERR_OK;
-
-/*		// ALL NONE-ZERO ADRESSES ARE DECREMENTED, see above
-  		}else {
-		// negative address -> just dekrement
-			COMM_SendError("Negative CMD Address");
-			*handled = TRUE;
-			return ERR_FAILED;
-*/
 		}
-	// else if it is an error to be passed on
-/*  // ALL COMMUNICATION RUNS WITH <CMD> HEADER
-    }else if (UTIL1_strncmp((char*)cmd, "ERR", sizeof("ERR")-1)==0){
-
-		unsigned char tmpStr[sizeof("99")-1];
-		unsigned char *p;
-		unsigned char *newAddress;
-
-    	tmpCMD = cmd+sizeof("ERR")-1;
-		res = UTIL1_ScanDecimal8sNumber(&tmpCMD, &value);
-		value--;
-
-		uint8_t ind = strlen(cmd);
-		UTIL1_Num8sToStr(tmpStr, ind, value);
-
-		ind += strlen(tmpStr);
-		ind += strlen("ERR ");
-
-		unsigned char newCMD[ind];
-
-		UTIL1_strcpy(newCMD, ind, "ERR ");
-		p = newCMD+sizeof("ERR ")-1;
-		UTIL1_strcpy(p, ind, tmpStr);
-		p = p+strlen(tmpStr)-1;
-		UTIL1_strcat(p, ind, tmpCMD);
-
-		CLS1_SendStr((unsigned char*)newCMD, io->stdOut);
-		*handled = TRUE;
-		return ERR_OK;
-
-	// else if status?
-	}else if (UTIL1_strncmp((char*)cmd, "STS", sizeof("STS")-1)==0){
-
-		unsigned char tmpStr[sizeof("99")-1];
-		unsigned char *p;
-		unsigned char *newAddress;
-
-    	tmpCMD = cmd+sizeof("STS")-1;
-		res = UTIL1_ScanDecimal8sNumber(&tmpCMD, &value);
-		value--;
-
-		uint8_t ind = strlen(cmd);
-		UTIL1_Num8sToStr(tmpStr, ind, value);
-
-		ind += strlen(tmpStr);
-		ind += strlen("STS ");
-
-		unsigned char newCMD[ind];
-
-		UTIL1_strcpy(newCMD, ind, "STS ");
-		p = newCMD+sizeof("STS ")-1;
-		UTIL1_strcpy(p, ind, tmpStr);
-		p = p+strlen(tmpStr)-1;
-		UTIL1_strcat(p, ind, tmpCMD);
-
-		CLS1_SendStr((unsigned char*)newCMD, io->stdOut);
-		*handled = TRUE;
-		return ERR_OK;
-
 	// else generate unknown command error
-	 *
-	 */
 	}else{
 		COMM_SendError("unknown message");
 		*handled = TRUE;

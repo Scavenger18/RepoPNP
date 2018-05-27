@@ -57,8 +57,8 @@ bool tmp = TRUE;
 uint8_t MOT_Speed(MOT_Device motor, uint8_t speedPercent, MOT_Direction dir){
 	uint32_t pwmVal;
 
-	if (speedPercent > 100){
-		speedPercent = 100;
+	if (speedPercent > MAX_SPEED){
+		speedPercent = MAX_SPEED;
 	}
 	pwmVal = (((100-speedPercent)*0xFFFF)/100);	// 0 is 100%
 
@@ -81,11 +81,12 @@ uint8_t MOT_Speed(MOT_Device motor, uint8_t speedPercent, MOT_Direction dir){
 
 
 void MOT_Init(){
+	HMODE_SetVal();
 
 	MOT_Speed(MOT_SPROC,0,MOT_FWD);
 	MOT_Speed(MOT_TAPE,0,MOT_FWD);
 
-	HMODE_SetVal();
+
 }
 
 

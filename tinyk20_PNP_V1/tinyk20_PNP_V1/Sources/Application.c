@@ -152,13 +152,14 @@ static void RunFeeder(void){
 		{
 			// First turn peeler back
 			peelState = PEEL_REV;
+			// let Peeler Run for a certain time (time calculated)
+			WAIT1_WaitOSms(700);
 			taskState = FSM_REV_SPROC;
 		}
 		break;
 		case FSM_REV_SPROC:
 		{
-			// wait for a certain time (time calculated)
-			WAIT1_WaitOSms(1500);
+
 			// then change case to reverse sprocket
 			MOT_Speed(MOT_SPROC,100,MOT_REV);
 			taskState = FSM_RUN;
@@ -194,11 +195,12 @@ static void RunFeeder(void){
 			LED2_Neg();
 		}
 		default:
-		taskState = FSM_ERROR;
+			// should not get here.
+			taskState = FSM_ERROR;
 	}
 }
 
- static void FSM_task(void *param) {
+ static void APP_task(void *param) {
 
 	(void)param;
 	for(;;) {
@@ -217,16 +219,17 @@ void APP_Init(void){
 	taskState = FSM_INIT;
 	MOT_Init();
 	BUT_Init();
+	COMM_Init();
+	ENC_Init();
+
 }
 
 void APP_Run(void) {
 
 	// start communication (UART)
-	COMM_Init();
 	// start encoder polling
-	ENC_Init();
 
-	if (xTaskCreate(FSM_task, "FSM", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
+	if (xTaskCreate(APP_task, "FSM", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
 		for(;;){} /* error! probably out of memory */
 	}
 
