@@ -31,7 +31,9 @@ static volatile unsigned int enc_trigger = 0;
 // change if step is defined through other software part
 
 
-
+/*
+ * Sets/Resets Trigger/Event that step count is reached
+ */
 void ENC_SetTrigger(unsigned int tmp){
 	CS1_CriticalVariable();
 
@@ -40,6 +42,9 @@ void ENC_SetTrigger(unsigned int tmp){
 	CS1_ExitCritical();
 }
 
+/*
+ * Returns Trigger/Event if step count is reached
+ */
 unsigned int ENC_GetTrigger(void){
 	CS1_CriticalVariable();
 	unsigned int tmp;
@@ -49,11 +54,16 @@ unsigned int ENC_GetTrigger(void){
 	return tmp;
 }
 
+/*
+ * Reads Encoder (Lichtschranke) and sets state/ step counter accordingly
+ * Returns 1/0 to turn off motors
+ *
+ * Negates LED each time state changes
+ */
 unsigned int ENC_GetVal(void){
 
 	bool tmp = ENC1_GetVal();
 
-    //WAIT1_Waitus(100); /* burn some time */
 	if (enc_state != tmp){
 		enc_state = tmp;
 		enc_tick = 0;
@@ -70,21 +80,16 @@ unsigned int ENC_GetVal(void){
     	/* motor off*/
     	//MOT_Speed(MOT_SPROC,0,MOT_FWD);
     	ENC_SetTrigger(1);
-    	//LED1_Neg();
     	enc_cnt = 0;				// reset counter
     	return 1;
     } else{
     	return 0;
     }
-    //return 0;
 }
 
-unsigned int ENC_GetHole(void){
-	return ENC1_GetVal();
-}
-
-
-
+/*
+ * resets step counter
+ */
 void ENC_ResetCnt(void){
 	CS1_CriticalVariable();
 
@@ -93,13 +98,27 @@ void ENC_ResetCnt(void){
 	CS1_ExitCritical();
 
 }
-unsigned int ENC_GetStep(){
-	return enc_step;
-}
+
+
+
+/*
+ * sets encoder step size
+ */
 void ENC_SetStep(unsigned int stepSize){
 	enc_step = stepSize;
 }
 
+/*
+ * returns encoder step size
+ */
+unsigned int ENC_GetStep(){
+	return enc_step;
+}
+
+/*
+ * calls status check of encoder
+ * turns off sprocket motor accordingly
+ */
 static void ENC_task(void *param) {
 	unsigned int enc_val = 0;
 	(void)param;
@@ -113,6 +132,10 @@ static void ENC_task(void *param) {
 	} /* for */
 }
 
+/*
+ * Initializes counters and flags
+ * creates ENC Task
+ */
 void ENC_Init(void){
 	enc_state = 1;
 	enc_cnt = 0;

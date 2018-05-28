@@ -7,13 +7,25 @@
 
 #include "comm.h"
 
+/*
+ * CMD AND ERROR DECLARATION
+ *
+ * Each Message String begins with either CMD or ERR
+ * This defines if the address is to be evaluated as command or
+ * incremented and passed on for error evaluation in OpenPnP
+ *
+ * The address follows the CMD/ERR header. Then followed by the command/message
+ * which is evaluated in a second step.
+ *
+ * CMD 0 FWD xx | CMD 0 REV xx
+ * ERR 0 Unknown command | ERR 0 Incorrect Step Format | ERR 0 Software Error |
+ */
 
 #if PL_COMM_EN
 #include "CLS1.h"
 #include "UTIL1.h"
 #include "CS1.h"
 #include "FRTOS1.h"
-
 #include "Application.h"
 
 #if PL_ENCODER_EN
@@ -23,17 +35,9 @@
 #define MAX_BUFF (64)
 static unsigned char buffer[MAX_BUFF];
 
-//static const CLS1_ConstParseCommandCallback cmdTable[] =
-//{
-////    CLS1_ParseCommand,
-//COMM_ParseCommand,
-////    LED2_ParseCommand,
-////    LED3_ParseCommand,
-////    MMA1_ParseCommand,
-//NULL/* sentinel */
-//};
-
-
+/*
+ * Add forward step to APP_Counter
+ */
 void COMM_SetFWD(){
 	CS1_CriticalVariable();
 
@@ -42,6 +46,9 @@ void COMM_SetFWD(){
 	CS1_ExitCritical();
 }
 
+/*
+ * Add reverse step to APP_Counter
+ */
 void COMM_SetREV(){
 	CS1_CriticalVariable();
 
@@ -50,6 +57,9 @@ void COMM_SetREV(){
 	CS1_ExitCritical();
 }
 
+/*
+ * Send Error-Style message to Master
+ */
 void COMM_SendError(const unsigned char *cmd){
 	uint8_t maxBuf = MAX_BUFF;
 	unsigned char tmpCMD[maxBuf];
@@ -62,6 +72,9 @@ void COMM_SendError(const unsigned char *cmd){
 	CLS1_SendStr((unsigned char*)tmpCMD, CLS1_GetStdio()->stdOut);
 }
 
+/*
+ * Send Status-Style message to Master
+ */
 void COMM_SendStatus(const unsigned char *cmd){
 	uint8_t maxBuf = MAX_BUFF;
 	unsigned char tmpCMD[maxBuf];
@@ -73,21 +86,17 @@ void COMM_SendStatus(const unsigned char *cmd){
 
 	CLS1_SendStr((unsigned char*)tmpCMD, CLS1_GetStdio()->stdOut);
 }
+
+
 /*
- * CMD AND ERROR DECLARATION
+ * Parse through recieved messages
+ * Messages with address 0 processed
+ * otherwise decremented and sent on
  *
- * Each Message String begins with either CMD or ERR
- * This defines if the address is to be evaluated as command or
- * incremented and passed on for error evaluation in OpenPnP
+ * changed from CLS1_ParseCommand()
  *
- * The address follows the CMD/ERR header. Then followed by the command/message
- * which is evaluated in a second step.
- *
- * CMD 0 FWD | CMD 0 REV | CMD 0 STEP xxmm |
- * ERR 0 Unknown command | ERR 0 Incorrect Step Format | ERR 0 Software Error |
+ * \todo improve to send back errors for handling
  */
-
-
 uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io)
 {
     int8_t value;	//signed since address decrementing falls below 0
@@ -189,7 +198,10 @@ uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
 	}
 }
 
-
+/*
+ * Iterate through recieved characters
+ * changed from CLS1_ReadAndParse()
+ */
 uint8_t COMM_ReadAndParse(uint8_t *cmdBuf, size_t cmdBufSize, CLS1_ConstStdIOType *io)
 {
   /* IMPORTANT NOTE: this function *appends* to the buffer, so the buffer needs to be initialized first! */
@@ -232,7 +244,10 @@ uint8_t COMM_ReadAndParse(uint8_t *cmdBuf, size_t cmdBufSize, CLS1_ConstStdIOTyp
 }
 
 
-
+/*
+ * Communication-task
+ *
+ */
 static void COMM_task(void *param) {
    (void)param;
    for(;;) {
@@ -242,6 +257,9 @@ static void COMM_task(void *param) {
 	} /* for */
  }
 
+/*
+ * Initialize Buffer and start task
+ */
 void COMM_Init(void){
 	buffer[0] = '\0';
 

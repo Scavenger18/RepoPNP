@@ -93,10 +93,13 @@ int main(void)
 #if 0
   TGT_SWD_OE_SetVal();	// if built on a tinyK20
 #endif
-  PL_Init();
+
+  PL_Init();	// Comm and Enc Tasks
   APP_Init();
-  APP_Run();
-  /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
+  APP_Run();	// APP Task
+
+
+  /*** Don't write any code past this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
   #ifdef PEX_RTOS_START
     PEX_RTOS_START();                  /* Startup of the selected RTOS. Macro is defined by the RTOS component. */

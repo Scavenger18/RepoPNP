@@ -20,15 +20,17 @@
 	#include "comm.h"
 #endif
 
+/*
+ * starts Communication and Encoder tasks
+ */
 void PL_Init(){
-#if PL_BUTTON_EN
-	//BUT_Init();
+#if PL_COMM_EN
+	COMM_Init();
 #endif
 #if PL_ENCODER_EN
-	// init
+	ENC_Init();
 #endif
 #if PL_MOTOR_EN
-	// init
 	MOT_Init();
 #endif
 }

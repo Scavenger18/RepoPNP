@@ -38,7 +38,52 @@ static TU2_TValueType timerVal;
 
 uint8_t	error_res;
 
+/*
+ * Error Handling for feeder
+ *
+ * \todo implementing other errors and codes
+ */
+static void APP_ErrorHandler(){
+#if APP_TIMEOUT
+	timerVal = TU2_GetCounterValue(timerHandle);
+	if(timerVal >= 0xA000){
+		//timeout
+		error_res = ERR_OVERFLOW;
+	}
+#endif
+	switch(error_res){
+	case ERR_FAILED:
+	{
+		//to be implemented
+		break;
+	}
+	case ERR_VALUE:
+	{
+		//to be implemented
+		// ERR_VALUE could be used in Communication of Step Size
+		break;
+	}
+	case ERR_OVERFLOW:
+	{
+		COMM_SendError(" OVERFLOW/TIMEOUT");
+		taskState = FSM_ERROR;
+		break;
+	}
+	case ERR_OK:
+	{
+		//to be implemented
+		//everything alright
+		break;
+	}
+	}
+}
 
+/*
+ * iterates through peeler states
+ * functionality split from RunFeeder
+ *
+ * peelState may be changed in RunFeeder
+ */
 static void RunPeeler(void){
 	switch (peelState){
 		case PEEL_OFF:
@@ -81,48 +126,13 @@ static void RunPeeler(void){
 	}
 }
 
-static void APP_ErrorHandler(){
-#if APP_TIMEOUT
-	timerVal = TU2_GetCounterValue(timerHandle);
-	if(timerVal >= 0xA000){
-		//timeout
-		error_res = ERR_OVERFLOW;
-	}
-#endif
-	switch(error_res){
-	case ERR_FAILED:
-	{
-		//--> Fall through to last Error
-		//LED2_Neg();
-		//error_res = COMM_SendError("ERR_FAILED");
-		//break;
-	}
-	case ERR_VALUE:
-	{
-		//--> Fall through to last Error
-		//LED2_Neg();
-		//error_res = COMM_SendError("ERR_FAILED");
-		//break;
-	}
-	case ERR_OVERFLOW:
-	{
-		COMM_SendError(" OVERFLOW/TIMEOUT");
-		//error_res = COMM_SendError("ERR_FAILED");
-		taskState = FSM_ERROR;
-		break;
-	}
-	case ERR_OK:
-	{
-		LED2_On();
-		//error_res = COMM_SendError("ERR_FAILED");
-		break;
-	}
-	}
-}
 
+/*
+ * Main FSM for Feeder
+ *
+ * reacts to changes in APP_Counter, for running forward/backwards.
+ */
 static void RunFeeder(void){
-
-
 	switch (taskState){
 		case FSM_INIT:
 		{
@@ -227,6 +237,11 @@ static void RunFeeder(void){
 	}
 }
 
+/*
+ * Application Task
+ *
+ * Contains Feeder FSMs, Button processing and error handler
+ */
  static void APP_task(void *param) {
 
 	(void)param;
@@ -240,23 +255,21 @@ static void RunFeeder(void){
 	} /* for */
 }
 
+ /*
+  * Initializes all components belonging to app
+  */
 void APP_Init(void){
 	error_res = ERR_OK;		// set ErrorFlag to OK
 	APP_Counter = 0;		// set start to 0 (no inc/dec of tape needed)
 	taskState = FSM_INIT;
 	timerHandle = TU2_Init(NULL);
-
-	MOT_Init();
 	BUT_Init();
-	COMM_Init();
-	ENC_Init();
-
 }
 
+/*
+ * creates APP Task
+ */
 void APP_Run(void) {
-
-	// start communication (UART)
-	// start encoder polling
 
 	if (xTaskCreate(APP_task, "FSM", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
 		for(;;){} /* error! probably out of memory */

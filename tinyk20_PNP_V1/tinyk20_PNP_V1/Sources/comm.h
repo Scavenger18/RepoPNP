@@ -13,12 +13,19 @@
 
 #define ADD_NEWLINE (1)
 
-
+/*
+ * Initialise Communication Buffer
+ * Start COMM Task
+ */
 void COMM_Init(void);
 
+
+/*
+ * Send Error Messages
+ * \todo Improve to implement queueing of messages
+ */
 void COMM_SendError(const unsigned char *cmd);
-//
-//uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
-//uint8_t COMM_ReadAndParse(uint8_t *cmdBuf, size_t cmdBufSize, CLS1_ConstStdIOType *io);
+
+
 
 #endif /* SOURCES_COMM_H_ */

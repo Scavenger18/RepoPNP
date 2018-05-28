@@ -32,7 +32,15 @@ PEEL_State peelState;
 
 signed int APP_Counter;
 
+/*
+ * Initializes APP_Counter and TimeOut
+ *
+ */
 void APP_Init(void);
+
+/*
+ * creates APP Task
+ */
 void APP_Run(void);
 
 

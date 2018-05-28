@@ -9,11 +9,12 @@
 /*	Motor Drivers
  *
  * 	Using DRV8835 H-Bridge IC for motor control.
- *	MODE = 1 (is set high through circuit design (J??)
+ *	MODE = 1 (is set high in Init
  *	xEnable (0 = Brake, 1 = FWD/REV)
  *	xPhase 	(X = Brake, 0 = FWD, 1 = REV)
  *
  *	//Special care for when motor is connected backwards.
+ *	Use Invert in header file
  */
 
 #if PL_MOTOR_EN
@@ -23,7 +24,10 @@
 #include "PWMB.h"
 #include "HMODE.h"
 
-
+/*
+ * sets direction of sprocket motor
+ * checks for inverted mount
+ */
 static void MOT_Dir_Sproc(MOT_Direction dir){
 bool tmp = TRUE;
 	if (dir == MOT_FWD){
@@ -39,6 +43,10 @@ bool tmp = TRUE;
 	DIRA_PutVal(tmp);
 }
 
+/*
+ * sets direction of tape peeler motor
+ * checks for inverted mount
+ */
 static void MOT_Dir_Tape(MOT_Direction dir){
 bool tmp = TRUE;
 	if (dir == MOT_FWD){
@@ -54,6 +62,9 @@ bool tmp = TRUE;
 
 }
 
+/*
+ * sets motor speed and direction
+ */
 uint8_t MOT_Speed(MOT_Device motor, uint8_t speedPercent, MOT_Direction dir){
 	uint32_t pwmVal;
 
@@ -79,14 +90,15 @@ uint8_t MOT_Speed(MOT_Device motor, uint8_t speedPercent, MOT_Direction dir){
 }
 
 
-
+/*
+ * initializes motor to 0 speed (Stop)
+ * sets H-Bridge Mode
+ */
 void MOT_Init(){
 	HMODE_SetVal();
 
 	MOT_Speed(MOT_SPROC,0,MOT_FWD);
 	MOT_Speed(MOT_TAPE,0,MOT_FWD);
-
-
 }
 
 

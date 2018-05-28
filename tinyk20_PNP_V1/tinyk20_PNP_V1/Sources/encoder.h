@@ -15,25 +15,35 @@
 
 
 
-void ENC_IntNew(void);
+/*
+ * Sets/Resets Trigger/Event state that step count is reached
+ */
 void ENC_SetTrigger(unsigned int tmp);
+
+/*
+* Returns Trigger/Event state that step count is reached
+*/
 unsigned int ENC_GetTrigger(void);
 
-
-unsigned int ENC_GetVal(void);
-unsigned int ENC_GetHole(void);
-
-void ENC_ResetFlag(void);
-//uint8_t ENC_GetFlag(void);
-
+/*
+ * resets step counter
+ */
 void ENC_ResetCnt(void);
-//uint8_t ENC_GetCnt(void);
 
+/*
+ * returns step size
+ */
 unsigned int ENC_GetStep(void);
 
+/*
+ * sets step size to value of parameter stepSize
+ */
 void ENC_SetStep(unsigned int stepSize);
-//uint8_t ENC_GetStep(void);
 
+/*
+ * initialises counters and flags
+ * starts ENC Task
+ */
 void ENC_Init(void);
 
 #endif /* SOURCES_HARDWARE_ENCODER_H_ */

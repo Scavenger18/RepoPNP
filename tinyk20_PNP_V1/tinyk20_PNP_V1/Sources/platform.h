@@ -10,8 +10,8 @@
 
 #define PL_BUTTON_EN		(1)		// Configuration uses Buttons (FW/RV)
 #define PL_ENCODER_EN		(1)		// Configuration uses Optical Encoder
-#define PL_MOTOR_EN			(1)		// Configuration uses Sprocket and/or TapePull Motor
-#define PL_TAPE_EN			(1)		// Configruation uses Tape Puller
+#define PL_MOTOR_EN			(1)		// Configuration uses Sprocket and/or Tape Peeler Motor
+#define PL_TAPE_EN			(1)		// Configruation uses Tape Peeler
 #define PL_COMM_EN			(1)		// Configruation uses UART Communication
 
 

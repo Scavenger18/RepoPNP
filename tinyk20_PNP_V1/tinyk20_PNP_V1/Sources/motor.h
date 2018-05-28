@@ -29,8 +29,18 @@ typedef enum{
 	MOT_TAPE
 }MOT_Device;
 
+/*
+ * sets motor speed and direction
+ * parametes: Motor device, speed (0-100), direction (FWD/REV)
+ *
+ * see typedefs for direction parameters
+ */
 uint8_t MOT_Speed(MOT_Device motor, uint8_t speedPercent, MOT_Direction dir);
 
+/*
+ * initialises motor to 0 speed (Stop)
+ * sets H-Bridge Mode
+ */
 void MOT_Init(void);
 
 #endif

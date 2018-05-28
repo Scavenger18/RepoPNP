@@ -14,12 +14,16 @@
 #include "SW_MSW.h"
 #endif
 
+#define LPRESS_CNT (200)		// change to react to task time delay
+
 volatile int REV_Counter;
 volatile uint8_t  REV_Flag, REV_Flag_LPress;
 volatile uint8_t  FWD_Flag;
 
 
-
+/*
+ * Add forward step to APP_Counter
+ */
 void BUT_SetFWD(void){
 	CS1_CriticalVariable();
 
@@ -28,6 +32,9 @@ void BUT_SetFWD(void){
 	CS1_ExitCritical();
 }
 
+/*
+ * Add reverse step to APP_Counter
+ */
 void BUT_SetREV(void){
 	CS1_CriticalVariable();
 
@@ -36,16 +43,20 @@ void BUT_SetREV(void){
 	CS1_ExitCritical();
 }
 
-
+/*
+ * Iterate through button state
+ * Switch case for each button type
+ *
+ * \todo improve using button-type-struct with state data
+ *
+ */
 BUT_State BUT_GetState(BUT_Device button){
 
 	BUT_State but_state = BUT_IDLE;// = BUT_IDLE;
-
 	uint8_t state = 0;
 
 	switch (button){
 		case BUT_FWD:
-
 			state = SW_FWD_GetVal();
 			if (FWD_INVERT) {
 				if (state == 1){
@@ -70,7 +81,6 @@ BUT_State BUT_GetState(BUT_Device button){
 		break;
 
 		case BUT_REV:
-
 			state = SW_REV_GetVal();
 			if (REV_INVERT) {
 				if (state == 1){
@@ -110,7 +120,6 @@ BUT_State BUT_GetState(BUT_Device button){
 
 #if PL_TAPE_EN
 		case BUT_MSW:
-
 			state = SW_MSW_GetVal();
 			if (MSW_INVERT) {
 				if (state == 1){
@@ -125,7 +134,6 @@ BUT_State BUT_GetState(BUT_Device button){
 					but_state = BUT_IDLE;
 				}
 			}
-
 		break;
 #endif
 
@@ -139,6 +147,10 @@ BUT_State BUT_GetState(BUT_Device button){
 	return but_state;
 }
 
+/*
+ * Counts Ticks when REV Button pressed
+ *
+ */
 void BUT_Count(void){
 
 	CS1_CriticalVariable();
@@ -147,15 +159,19 @@ void BUT_Count(void){
 	CS1_ExitCritical();
 }
 
+/*
+ * iterates through all buttons to set their states
+ */
 void BUT_Process(void){
 	(void) BUT_GetState(BUT_MSW);
 	(void) BUT_GetState(BUT_REV);
 	(void) BUT_GetState(BUT_FWD);
 }
 
+/*
+ * Initializes button relevant flags and counters
+ */
 void BUT_Init(void){
-//	PORT_PDD_SetPinPullSelect(PORTC_BASE_PTR, 10, PORT_PDD_PULL_UP);
-//	PORT_PDD_SetPinPullEnable(PORTC_BASE_PTR, 10, PORT_PDD_PULL_ENABLE);
 	FWD_Flag = 0;
 	REV_Flag = 0;
 	REV_Counter = 0;
