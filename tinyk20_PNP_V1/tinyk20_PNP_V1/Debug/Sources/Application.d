@@ -62,7 +62,8 @@ Sources/Application.o: ../Sources/Application.c ../Sources/Application.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/CS1.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/CS1config.h \
  ../Sources/platform.h ../Sources/buttons.h ../Sources/encoder.h \
- ../Sources/motor.h ../Sources/comm.h
+ ../Sources/motor.h ../Sources/comm.h \
+ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TU2.h
 
 ../Sources/Application.h:
 
@@ -199,3 +200,5 @@ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Cod
 ../Sources/motor.h:
 
 ../Sources/comm.h:
+
+D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TU2.h:

@@ -40,6 +40,7 @@
 - \subpage ASerialLdd1
 - \subpage BitIoLdd9
 - \subpage BitIoLdd10
+- \subpage TU2
 
 */
 

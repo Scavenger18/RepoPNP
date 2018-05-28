@@ -1283,108 +1283,6 @@ PE_DEBUGHALT();
       <EmptySection_DummyValue />
     </Events>
   </Bean>
-  <Bean name="SYS1" type="SeggerSystemView">
-    <Enabled v="Y" />
-    <Properties>
-      <Component_name v="SYS1" />
-      <Version v="V2.52a" />
-      <Application_Name v="&amp;quot;Demo Application&amp;quot;" />
-      <Device_Name v="&amp;quot;Cortex&amp;quot;" />
-      <RAM_Base v="536870912" />
-      <ID_Base v="268435456" />
-      <ID_Shift v="2" />
-      <Number_of_tasks v="8" />
-      <Static_Buffer v="yes" />
-      <Post_Mortem v="no" />
-      <Implicit_Format_for_printf__ v="no" />
-      <group name="RTT Channel">
-        <Segger_RTT v="RTT1" />
-        <Name v="&amp;quot;SysView&amp;quot;" />
-        <Channel_Index v="1" />
-        <Up_Buffer_size v="1024" />
-      </group>
-      <SDK v="MCUC1" />
-      <group name="Source Folders">
-        <Source_Folder v="" />
-        <Config_Folder v="" />
-      </group>
-    </Properties>
-    <Methods>
-      <OnUserStart v="generate code" />
-      <OnUserStop v="generate code" />
-      <RecordEnterISR v="generate code" />
-      <RecordExitISR v="generate code" />
-      <Print v="generate code" />
-      <PrintfHost v="generate code" />
-      <PrintfTarget v="generate code" />
-      <Warn v="generate code" />
-      <WarnfHost v="generate code" />
-      <WarnfTarget v="generate code" />
-      <Error v="generate code" />
-      <ErrorfHost v="generate code" />
-      <ErrorfTarget v="generate code" />
-      <EnableEvents v="generate code" />
-      <DisableEvents v="generate code" />
-      <Init v="generate code" />
-    </Methods>
-    <Events>
-      <EmptySection_DummyValue />
-    </Events>
-  </Bean>
-  <Bean name="RTT1" type="SeggerRTT">
-    <Enabled v="Y" />
-    <Properties>
-      <Component_name v="RTT1" />
-      <Version v="V6.22c" />
-      <Number_of_Up_Channels v="3" />
-      <Number_of_Down_Channels v="3" />
-      <Max_Blocked_Interrupt_Level v="3" />
-      <boolgroup name="Channel 0" v="Enabled">
-        <Name v="&amp;quot;Terminal&amp;quot;" />
-        <Up_Buffer_Size__Tx_ v="512" />
-        <Down_Buffer_Size__Rx_ v="64" />
-        <Up_Buffer_Mode v="Skip (Default)" />
-        <Down_Buffer_Mode v="Skip (Default)" />
-        <boolgroup name="Blocking Send" v="Enabled">
-          <Timeout__ms_ v="10" />
-          <Wait v="WAIT1" />
-          <Wait_Time__ms_ v="1" />
-        </boolgroup>
-        <Printf_Buffer_Size v="64" />
-      </boolgroup>
-      <SDK v="MCUC1" />
-      <Shell v="CLS1" />
-      <group name="Source Folders">
-        <Source_Folder v="" />
-        <Config_Folder v="" />
-      </group>
-    </Properties>
-    <Methods>
-      <Read v="generate code" />
-      <Write v="generate code" />
-      <WriteString v="generate code" />
-      <printf v="generate code" />
-      <GetKey v="generate code" />
-      <WaitKey v="generate code" />
-      <HasKey v="generate code" />
-      <SetTerminal v="generate code" />
-      <TerminalOut v="generate code" />
-      <ConfigUpBuffer v="generate code" />
-      <ConfigDownBuffer v="generate code" />
-      <RecvChar v="generate code" />
-      <SendChar v="generate code" />
-      <GetCharsInRxBuf v="generate code" />
-      <StdIOKeyPressed v="generate code" />
-      <StdIOReadChar v="generate code" />
-      <StdIOSendChar v="generate code" />
-      <GetStdio v="generate code" />
-      <Deinit v="generate code" />
-      <Init v="generate code" />
-    </Methods>
-    <Events>
-      <EmptySection_DummyValue />
-    </Events>
-  </Bean>
   <Bean name="WAIT1" type="Wait">
     <Enabled v="Y" />
     <Properties>
@@ -1892,6 +1790,77 @@ PE_DEBUGHALT();
     </Methods>
     <Events>
       <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="TU2" type="TimerUnit_LDD">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="TU2" />
+      <Module_name v="FTM1" />
+      <Counter v="FTM1_CNT" />
+      <Counter_direction v="Up" />
+      <Counter_width v="16 bits" />
+      <Value_type v="Optimal" />
+      <enumgroup name="Input clock source" v="Internal">
+        <Counter_frequency v="7.8125 kHz" />
+      </enumgroup>
+      <enumgroup name="Counter restart" v="On-overrun">
+        <Overrun_period v="Auto select" />
+        <boolgroup name="Interrupt" v="Disabled" />
+      </enumgroup>
+      <list name="Channel list" v="0">
+        <EmptySection_DummyValue />
+      </list>
+      <group name="Initialization">
+        <Enabled_in_init__code v="yes" />
+        <group name="Event mask">
+          <OnCounterRestart v="Disabled" />
+          <OnChannel0 v="Disabled" />
+          <OnChannel1 v="Disabled" />
+          <OnChannel2 v="Disabled" />
+          <OnChannel3 v="Disabled" />
+          <OnChannel4 v="Disabled" />
+          <OnChannel5 v="Disabled" />
+          <OnChannel6 v="Disabled" />
+          <OnChannel7 v="Disabled" />
+        </group>
+      </group>
+    </Properties>
+    <Methods>
+      <Init v="generate code" />
+      <Deinit v="don&amp;apos;t generate code" />
+      <Enable v="don&amp;apos;t generate code" />
+      <Disable v="don&amp;apos;t generate code" />
+      <SetEventMask v="don&amp;apos;t generate code" />
+      <GetEventMask v="don&amp;apos;t generate code" />
+      <GetEventStatus v="don&amp;apos;t generate code" />
+      <SelectInputFrequency v="don&amp;apos;t generate code" />
+      <GetInputFrequencyReal v="don&amp;apos;t generate code" />
+      <GetInputFrequency v="don&amp;apos;t generate code" />
+      <SetPeriodTicks v="don&amp;apos;t generate code" />
+      <GetPeriodTicks v="don&amp;apos;t generate code" />
+      <ResetCounter v="don&amp;apos;t generate code" />
+      <GetCounterValue v="don&amp;apos;t generate code" />
+      <SetOffsetTicks v="don&amp;apos;t generate code" />
+      <GetOffsetTicks v="don&amp;apos;t generate code" />
+      <GetCaptureValue v="don&amp;apos;t generate code" />
+      <SelectOutputAction v="don&amp;apos;t generate code" />
+      <SelectCaptureEdge v="don&amp;apos;t generate code" />
+      <ConnectPin v="don&amp;apos;t generate code" />
+      <SetOperationMode v="don&amp;apos;t generate code" />
+      <GetDriverState v="don&amp;apos;t generate code" />
+    </Methods>
+    <Events>
+      <Event_module_name v="Events" />
+      <event name="OnCounterRestart" v="don&amp;apos;t generate code" />
+      <event name="OnChannel0" v="don&amp;apos;t generate code" />
+      <event name="OnChannel1" v="don&amp;apos;t generate code" />
+      <event name="OnChannel2" v="don&amp;apos;t generate code" />
+      <event name="OnChannel3" v="don&amp;apos;t generate code" />
+      <event name="OnChannel4" v="don&amp;apos;t generate code" />
+      <event name="OnChannel5" v="don&amp;apos;t generate code" />
+      <event name="OnChannel6" v="don&amp;apos;t generate code" />
+      <event name="OnChannel7" v="don&amp;apos;t generate code" />
     </Events>
   </Bean>
 </PE_PROJECT_SETTINGS_DOCUMENTATION>

@@ -814,6 +814,18 @@ Module "HF1"       (component HardFault)
    - HF1_Deinit -Deinitializes the driver
    - HF1_Init -Initializes the driver
 
+Module "TU2"       (component TimerUnit_LDD)
+   - TU2_Init -Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets 
+                interrupt priority, sets pin routing, sets timing, etc. If the property <"Enable in init. code"> is set to 
+                "yes" value then the device is also enabled (see the description of the <Enable> method). In this case the 
+                <Enable> method is not necessary and needn't to be generated. This method can be called only once. Before the 
+                second call of Init the <Deinit> must be called first.
+   - TU2_ResetCounter -Resets counter. If counter is counting up then it is set to zero. If counter is counting down then 
+                counter is updated to the reload value.   The method is not available if HW doesn't allow resetting of the 
+                counter.
+   - TU2_GetCounterValue -Returns the content of counter register. This method can be used both if counter is enabled and if 
+                counter is disabled. The method is not available if HW doesn't allow reading of the counter.
+
 Module "Cpu"       (component MK20DX128FT5)
 
 ===================================================================================

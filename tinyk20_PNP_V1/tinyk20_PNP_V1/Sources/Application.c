@@ -26,6 +26,16 @@
 #include "motor.h"
 #include "comm.h"
 
+
+#define APP_TIMEOUT (1)
+
+#if APP_TIMEOUT
+#include "TU2.h"
+
+static LDD_TDeviceData *timerHandle;
+static TU2_TValueType timerVal;
+#endif
+
 uint8_t	error_res;
 
 
@@ -72,6 +82,13 @@ static void RunPeeler(void){
 }
 
 static void APP_ErrorHandler(){
+#if APP_TIMEOUT
+	timerVal = TU2_GetCounterValue(timerHandle);
+	if(timerVal >= 0xA000){
+		//timeout
+		error_res = ERR_OVERFLOW;
+	}
+#endif
 	switch(error_res){
 	case ERR_FAILED:
 	{
@@ -89,8 +106,7 @@ static void APP_ErrorHandler(){
 	}
 	case ERR_OVERFLOW:
 	{
-		//--> Fall through to last Error
-		//LED2_Neg();
+		COMM_SendError(" OVERFLOW/TIMEOUT");
 		//error_res = COMM_SendError("ERR_FAILED");
 		taskState = FSM_ERROR;
 		break;
@@ -105,6 +121,8 @@ static void APP_ErrorHandler(){
 }
 
 static void RunFeeder(void){
+
+
 	switch (taskState){
 		case FSM_INIT:
 		{
@@ -122,6 +140,9 @@ static void RunFeeder(void){
 		break;
 		case FSM_IDLE:
 		{
+#if APP_TIMEOUT
+		TU2_ResetCounter(timerHandle);
+#endif
 			ENC_ResetCnt();
 
 			if(APP_Counter > 0){
@@ -152,14 +173,13 @@ static void RunFeeder(void){
 		{
 			// First turn peeler back
 			peelState = PEEL_REV;
-			// let Peeler Run for a certain time (time calculated)
-			WAIT1_WaitOSms(700);
 			taskState = FSM_REV_SPROC;
 		}
 		break;
 		case FSM_REV_SPROC:
 		{
-
+			// let Peeler Run for a certain time (time calculated)
+			WAIT1_WaitOSms(700);
 			// then change case to reverse sprocket
 			MOT_Speed(MOT_SPROC,100,MOT_REV);
 			taskState = FSM_RUN;
@@ -192,7 +212,14 @@ static void RunFeeder(void){
 		case FSM_ERROR:
 		{
 			//Blink Status LED
-			LED2_Neg();
+			MOT_Speed(MOT_SPROC,0,MOT_FWD);
+			MOT_Speed(MOT_TAPE,0,MOT_FWD);
+
+			for(;;){
+				WAIT1_Waitms(250);
+				LED1_Neg();
+			}
+		break;
 		}
 		default:
 			// should not get here.
@@ -207,7 +234,7 @@ static void RunFeeder(void){
 		RunFeeder();
 		RunPeeler();
 		BUT_Process();
-
+		APP_ErrorHandler();
 	    vTaskDelay(pdMS_TO_TICKS(50));
 
 	} /* for */
@@ -217,6 +244,8 @@ void APP_Init(void){
 	error_res = ERR_OK;		// set ErrorFlag to OK
 	APP_Counter = 0;		// set start to 0 (no inc/dec of tape needed)
 	taskState = FSM_INIT;
+	timerHandle = TU2_Init(NULL);
+
 	MOT_Init();
 	BUT_Init();
 	COMM_Init();

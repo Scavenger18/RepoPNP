@@ -96,6 +96,7 @@ Sources/main.o: ../Sources/main.c \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/BitIoLdd10.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1config.h \
+ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TU2.h \
  ../Sources/application.h ../Sources/platform.h
 
 D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/Cpu.h:
@@ -291,6 +292,8 @@ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Cod
 D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1.h:
 
 D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1config.h:
+
+D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TU2.h:
 
 ../Sources/application.h:
 

@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K20P48M50SF0RM Rev. 1, Oct 2011
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2018-05-18, 21:37, # CodeGen: 47
+**     Date/Time   : 2018-05-28, 21:48, # CodeGen: 48
 **     Abstract    :
 **
 **     Settings    :
@@ -247,6 +247,7 @@
 #include "TGT_SWD_OE.h"
 #include "BitIoLdd10.h"
 #include "HF1.h"
+#include "TU2.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"

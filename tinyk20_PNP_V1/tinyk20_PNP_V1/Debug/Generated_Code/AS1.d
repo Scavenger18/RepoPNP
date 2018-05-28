@@ -96,7 +96,8 @@ Generated_Code/AS1.o: ../Generated_Code/AS1.c ../Generated_Code/AS1.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/BitIoLdd10.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/BitIoLdd10.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1.h \
- D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1config.h
+ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1config.h \
+ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TU2.h
 
 ../Generated_Code/AS1.h:
 
@@ -301,3 +302,5 @@ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Cod
 D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1.h:
 
 D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1config.h:
+
+D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TU2.h:

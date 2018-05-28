@@ -36,7 +36,7 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c \
  ../Generated_Code/LED2config.h ../Generated_Code/LEDpin2.h \
  ../Generated_Code/BitIoLdd9.h ../Generated_Code/TGT_SWD_OE.h \
  ../Generated_Code/BitIoLdd10.h ../Generated_Code/HF1.h \
- ../Generated_Code/HF1config.h \
+ ../Generated_Code/HF1config.h ../Generated_Code/TU2.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources/Events.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/PE_Types.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/PE_Error.h \
@@ -78,7 +78,8 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/ASerialLdd1.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TGT_SWD_OE.h \
  D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/BitIoLdd10.h \
- D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1.h
+ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1.h \
+ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TU2.h
 
 ../Generated_Code/FreeRTOS.h:
 
@@ -218,6 +219,8 @@ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/P
 
 ../Generated_Code/HF1config.h:
 
+../Generated_Code/TU2.h:
+
 D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Sources/Events.h:
 
 D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/PE_Types.h:
@@ -301,3 +304,5 @@ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Cod
 D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/BitIoLdd10.h:
 
 D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/HF1.h:
+
+D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Generated_Code/TU2.h:

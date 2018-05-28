@@ -36,7 +36,7 @@ Generated_Code/PE_LDD.o: ../Generated_Code/PE_LDD.c \
  ../Generated_Code/LED2config.h ../Generated_Code/LEDpin2.h \
  ../Generated_Code/BitIoLdd9.h ../Generated_Code/TGT_SWD_OE.h \
  ../Generated_Code/BitIoLdd10.h ../Generated_Code/HF1.h \
- ../Generated_Code/HF1config.h
+ ../Generated_Code/HF1config.h ../Generated_Code/TU2.h
 
 ../Generated_Code/FreeRTOS.h:
 
@@ -177,3 +177,5 @@ D:/Projects/SourceTree/Repos/RepoPNP/tinyk20_PNP_V1/tinyk20_PNP_V1/Static_Code/P
 ../Generated_Code/HF1.h:
 
 ../Generated_Code/HF1config.h:
+
+../Generated_Code/TU2.h:

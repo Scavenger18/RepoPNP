@@ -17,9 +17,7 @@
 
 #include "motor.h"
 
-#if PL_MOTOR_EN
-//#include "motor.h"
-#endif
+
 
 #define ENC_TICK_CNT (3)
 
@@ -121,7 +119,6 @@ void ENC_Init(void){
 	enc_tick = 0;
 	enc_step = 4;
 	enc_trigger = 0;
-
 	if (xTaskCreate(ENC_task, "ENC", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, NULL) != pdPASS) {
 		for(;;){} /* error! probably out of memory */
 	}

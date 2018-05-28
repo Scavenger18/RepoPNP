@@ -20,7 +20,8 @@
 #include "encoder.h"
 #endif
 
-static unsigned char buffer[64];
+#define MAX_BUFF (64)
+static unsigned char buffer[MAX_BUFF];
 
 //static const CLS1_ConstParseCommandCallback cmdTable[] =
 //{
@@ -50,7 +51,7 @@ void COMM_SetREV(){
 }
 
 void COMM_SendError(const unsigned char *cmd){
-	uint8_t maxBuf = 64;
+	uint8_t maxBuf = MAX_BUFF;
 	unsigned char tmpCMD[maxBuf];
 	unsigned char* ptr;
 
@@ -62,7 +63,7 @@ void COMM_SendError(const unsigned char *cmd){
 }
 
 void COMM_SendStatus(const unsigned char *cmd){
-	uint8_t maxBuf = 64;
+	uint8_t maxBuf = MAX_BUFF;
 	unsigned char tmpCMD[maxBuf];
 	unsigned char* ptr;
 

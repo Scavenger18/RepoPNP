@@ -13,9 +13,10 @@
 
 #define ADD_NEWLINE (1)
 
+
 void COMM_Init(void);
 
-//void COMM_SendError();
+void COMM_SendError(const unsigned char *cmd);
 //
 //uint8_t COMM_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
 //uint8_t COMM_ReadAndParse(uint8_t *cmdBuf, size_t cmdBufSize, CLS1_ConstStdIOType *io);
