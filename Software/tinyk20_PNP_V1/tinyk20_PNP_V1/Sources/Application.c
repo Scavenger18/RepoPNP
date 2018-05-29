@@ -259,11 +259,11 @@ static void RunFeeder(void){
   * Initializes all components belonging to app
   */
 void APP_Init(void){
+	LED1_Off();
 	error_res = ERR_OK;		// set ErrorFlag to OK
 	APP_Counter = 0;		// set start to 0 (no inc/dec of tape needed)
 	taskState = FSM_INIT;
 	timerHandle = TU2_Init(NULL);
-	BUT_Init();
 }
 
 /*

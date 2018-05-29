@@ -33,5 +33,8 @@ void PL_Init(){
 #if PL_MOTOR_EN
 	MOT_Init();
 #endif
+#if PL_BUTTON_EN
+	BUT_Init();
+#endif
 }
 
