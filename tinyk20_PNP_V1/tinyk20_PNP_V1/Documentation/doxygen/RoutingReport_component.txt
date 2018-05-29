@@ -1,5 +1,0 @@
-/*!
-\page page_pinalloc Pin Allocation
-Pins model not supported for the selected target Processor
-
-*/
