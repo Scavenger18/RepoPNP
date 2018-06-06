@@ -1,0 +1,6 @@
+
+Fine:
+layer height: 0.1 mm
+shell thickness: 0.8 mm
+bottom/top thickness: 0.8 mm
+fill density: 75%
